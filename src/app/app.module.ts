@@ -9,10 +9,12 @@ import { BasicButtonComponent } from './components/basic-button/basic-button.com
 import { PressViewerComponent } from './views/press-viewer/press-viewer.component';
 import { BioViewerComponent } from './views/bio-viewer/bio-viewer.component';
 import { IndexComponent } from './views/index/index.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavBarComponent,
     EventViewerComponent,
     PageTemplateComponent,
     BasicButtonComponent,

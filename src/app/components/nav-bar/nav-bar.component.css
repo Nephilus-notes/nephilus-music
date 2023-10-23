@@ -1,6 +1,7 @@
 .navbar {
     max-width: 1300px;
     margin-inline: auto;
+
 }
 
 .flexRow {
@@ -15,6 +16,7 @@
     background-color: black;
     gap: 20px;
     align-items: center;
+    justify-content: space-between;
 }
 
 .movingBackgroundRight {
