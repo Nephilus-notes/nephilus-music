@@ -10,6 +10,13 @@ import { PressViewerComponent } from './views/press-viewer/press-viewer.componen
 import { BioViewerComponent } from './views/bio-viewer/bio-viewer.component';
 import { IndexComponent } from './views/index/index.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { HeroImageComponent } from './hero-image/hero-image.component';
+import { IndexEventDisplayComponent } from './index-event-display/index-event-display.component';
+import { EventDisplayComponent } from './event-display/event-display.component';
+import { EventListComponent } from './event-list/event-list.component';
+import { BioDisplayComponent } from './bio-display/bio-display.component';
+import { VideoPlayerComponent } from './video-player/video-player.component';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +27,14 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     BasicButtonComponent,
     PressViewerComponent,
     BioViewerComponent,
-    IndexComponent
+    IndexComponent,
+    HeroImageComponent,
+    IndexEventDisplayComponent,
+    EventDisplayComponent,
+    EventListComponent,
+    BioDisplayComponent,
+    VideoPlayerComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
