@@ -17,6 +17,7 @@ import { EventListComponent } from './components/event-list/event-list.component
 import { BioDisplayComponent } from './components/bio-display/bio-display.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { ButtonComponent } from './components/button/button.component';
+import { GithubComponent } from './components/github/github.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ButtonComponent } from './components/button/button.component';
     EventListComponent,
     BioDisplayComponent,
     VideoPlayerComponent,
-    ButtonComponent
+    ButtonComponent,
+    GithubComponent
   ],
   imports: [
     BrowserModule,

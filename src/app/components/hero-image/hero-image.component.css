@@ -11,7 +11,7 @@
     background-repeat: no-repeat;
     height: 100vh;
     padding-top:10px;
-    
+
 }
 
 
@@ -21,4 +21,8 @@
     margin-top: 10%;
     color: white;
     max-width: 400px;
+}
+
+h1 {
+    line-height: 5rem;
 }
