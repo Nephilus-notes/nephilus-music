@@ -18,6 +18,9 @@ import { BioDisplayComponent } from './components/bio-display/bio-display.compon
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
 import { ButtonComponent } from './components/button/button.component';
 import { GithubComponent } from './components/github/github.component';
+import { RequestFormComponent } from './components/request-form/request-form.component';
+import { EventFormComponent } from './components/event-form/event-form.component';
+import { RsvpFormComponent } from './components/rsvp-form/rsvp-form.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { GithubComponent } from './components/github/github.component';
     BioDisplayComponent,
     VideoPlayerComponent,
     ButtonComponent,
-    GithubComponent
+    GithubComponent,
+    RequestFormComponent,
+    EventFormComponent,
+    RsvpFormComponent
   ],
   imports: [
     BrowserModule,
