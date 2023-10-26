@@ -9,6 +9,7 @@
     background-color: black;
     flex-wrap: wrap;
     border-radius: 20px;
+    justify-content: space-between;
 }
 
 .navbar-nav {
