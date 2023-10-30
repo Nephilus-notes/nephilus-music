@@ -21,6 +21,7 @@ import { GithubComponent } from './components/github/github.component';
 import { RequestFormComponent } from './components/request-form/request-form.component';
 import { EventFormComponent } from './components/event-form/event-form.component';
 import { RsvpFormComponent } from './components/rsvp-form/rsvp-form.component';
+import { AdminViewComponent } from './views/admin-view/admin-view.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { RsvpFormComponent } from './components/rsvp-form/rsvp-form.component';
     GithubComponent,
     RequestFormComponent,
     EventFormComponent,
-    RsvpFormComponent
+    RsvpFormComponent,
+    AdminViewComponent
   ],
   imports: [
     BrowserModule,
