@@ -18,5 +18,5 @@ export interface LiveEvent {
     deleted: boolean;
     event_type: string;
     short_description: string;
-    image_url: string;
+    image_url?: string;
 }

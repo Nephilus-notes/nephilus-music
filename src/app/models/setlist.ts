@@ -6,5 +6,5 @@ export interface Setlist {
     updated_at : Date;
     deleted_at : Date;
     deleted : boolean;
-    event_id : number;
+    event_id ?: number;
 }
