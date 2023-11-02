@@ -26,6 +26,9 @@ import { SingleEventComponent } from './components/single-event/single-event.com
 import { SinglePatronComponent } from './components/single-patron/single-patron.component';
 import { SingleSongComponent } from './components/single-song/single-song.component';
 import { SingleSetlistComponent } from './components/single-setlist/single-setlist.component';
+import { SongListComponent } from './components/song-list/song-list.component';
+import { PatronListComponent } from './components/patron-list/patron-list.component';
+import { SetListListComponent } from './components/set-list-list/set-list-list.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { SingleSetlistComponent } from './components/single-setlist/single-setli
     SingleEventComponent,
     SinglePatronComponent,
     SingleSongComponent,
-    SingleSetlistComponent
+    SingleSetlistComponent,
+    SongListComponent,
+    PatronListComponent,
+    SetListListComponent
   ],
   imports: [
     BrowserModule,
