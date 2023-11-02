@@ -22,6 +22,10 @@ import { RequestFormComponent } from './components/request-form/request-form.com
 import { EventFormComponent } from './components/event-form/event-form.component';
 import { RsvpFormComponent } from './components/rsvp-form/rsvp-form.component';
 import { AdminViewComponent } from './views/admin-view/admin-view.component';
+import { SingleEventComponent } from './components/single-event/single-event.component';
+import { SinglePatronComponent } from './components/single-patron/single-patron.component';
+import { SingleSongComponent } from './components/single-song/single-song.component';
+import { SingleSetlistComponent } from './components/single-setlist/single-setlist.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,11 @@ import { AdminViewComponent } from './views/admin-view/admin-view.component';
     RequestFormComponent,
     EventFormComponent,
     RsvpFormComponent,
-    AdminViewComponent
+    AdminViewComponent,
+    SingleEventComponent,
+    SinglePatronComponent,
+    SingleSongComponent,
+    SingleSetlistComponent
   ],
   imports: [
     BrowserModule,
