@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { LiveEvent } from 'src/app/models/liveEvent';
 
 @Component({
   selector: 'app-event-list',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./event-list.component.css']
 })
 export class EventListComponent {
+@Input() event_list!: LiveEvent[];
+
 
 }

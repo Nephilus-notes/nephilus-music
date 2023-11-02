@@ -1,1 +1,12 @@
-<p>event-list works!</p>
+<div>
+<li *ngFor="let live_event of event_list; index as i;" class="event_card">
+    <button class="event_button" type="button">{{live_event.title}}</button>
+    <p>{{live_event.start_date}}</p>
+
+  </li>
+
+</div>
+<!-- 
+<li *ngFor="let item of character.items; index as i;" class="equipment">
+    <button class="backpackItem" type="button" (click)="onSelect(item, i)">{{item.name}}</button>
+  </li> -->

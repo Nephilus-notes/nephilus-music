@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { LiveEvent } from '../models/event';
+import { LiveEvent } from '../models/liveEvent';
 import { Setlist } from '../models/setlist';
 import { Song } from '../models/song';
 import { Patron } from '../models/patron';
