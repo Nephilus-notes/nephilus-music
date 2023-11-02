@@ -1,5 +1,13 @@
 # NephilusMusic
 
+Event-List: On hover for the map link add a banner that follows the cursor saying "click here to map" or something
+Event-List: make the times more readable (Perhaps LiveEvent DTO that has easily readable stringsm, and a converter to make it happen?)
+
+
+
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
 
 ## Development server
