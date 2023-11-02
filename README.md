@@ -2,7 +2,8 @@
 
 Event-List: On hover for the map link add a banner that follows the cursor saying "click here to map" or something
 Event-List: make the times more readable (Perhaps LiveEvent DTO that has easily readable stringsm, and a converter to make it happen?)
-
+Song-List: figure out pagination
+Song/Event Lists: merge into a single view instead of component so they can take up half the screen
 
 
 

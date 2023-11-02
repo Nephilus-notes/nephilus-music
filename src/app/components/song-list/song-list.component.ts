@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Song } from 'src/app/models/song';
 
 @Component({
   selector: 'app-song-list',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./song-list.component.css']
 })
 export class SongListComponent {
-
+@Input() song_list!: Song[];
 }

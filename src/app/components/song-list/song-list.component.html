@@ -1,1 +1,17 @@
-<p>song-list works!</p>
+<h2 class="title">Songs</h2>
+<div class="list">
+    <div *ngFor="let song of song_list; index as i;" class="card">
+
+        <a class="header" routerLink="/" routerLinkActive="active">
+            <img class="thumbnail" *ngIf="song.image_url" src="{{song.image_url}}">{{song.title}}</a>
+        <p>By: {{song.artist}}</p>
+        <p *ngIf="song.album">From: {{song.album}}</p>
+        <p *ngIf="song.year">Year: {{song.year}}</p>
+        <!-- <p *ngIf="song.album">By: {{song.artist}}</p> -->
+        <p *ngIf="song.times_requested > 0">Requested {{song.times_requested}} times</p>
+        <p *ngIf="song.times_requested <= 0">Not Requested</p>
+
+
+    </div>
+
+</div>
