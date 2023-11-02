@@ -1,1 +1,15 @@
-<p>single-song works!</p>
+<h2 class="header"> {{song.title}}</h2>
+<p>By: {{song.artist}}</p>
+<p *ngIf="song.album">From: {{song.album}}</p>
+<p *ngIf="song.year">Year: {{song.year}}</p>
+<p *ngIf="song.genre">{{song.genre}}</p>
+<p *ngIf="song.duration">{{song.duration}}</p>
+<p *ngIf="song.times_requested > 0">Requested {{song.times_requested}} times</p>
+<p *ngIf="song.times_requested <= 0">Not Requested</p>
+<a *ngIf="song.audio_url">{{song.genre}}</a>
+<a *ngIf="song.image_url">{{song.genre}}</a>
+<a *ngIf="song.video_url">{{song.genre}}</a>
+<a *ngIf="song.lyrics">{{song.lyrics}}</a>
+<a *ngIf="song.tab">{{song.lyrics}}</a>
+
+
