@@ -9,7 +9,7 @@ import { Patron } from '../models/patron';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiServiceService {
+export class ApiService {
   constructor() {}
 
   public getAllEvents(): LiveEvent[] {

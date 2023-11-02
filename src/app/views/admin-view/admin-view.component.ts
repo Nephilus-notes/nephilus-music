@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-admin-view',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-view.component.css']
 })
 export class AdminViewComponent {
-
+  constructor( private apiService: ApiService) {}
 }
