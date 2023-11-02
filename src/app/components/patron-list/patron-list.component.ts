@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Patron } from 'src/app/models/patron';
 
 @Component({
   selector: 'app-patron-list',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./patron-list.component.css']
 })
 export class PatronListComponent {
-
+@Input() patron_list!: Patron[];
 }

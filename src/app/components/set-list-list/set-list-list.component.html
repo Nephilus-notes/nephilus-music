@@ -1,1 +1,14 @@
-<p>set-list-list works!</p>
+<h2 class="title">Setlists</h2>
+<div class="list">
+    <div *ngFor="let setlist of set_list; index as i;" class="card">
+
+        <a class="header" routerLink="/" routerLinkActive="active">
+            {{setlist.title}}</a>
+        <p>By: {{setlist.description}}</p>
+        <!-- <p *ngIf="setlist.album">From: {{setlist.album}}</p>
+        <p *ngIf="setlist.year">Year: {{setlist.year}}</p>
+         <p *ngIf="setlist.album">By: {{setlist.artist}}</p> -->
+        
+    </div>
+
+</div>
