@@ -1,6 +1,6 @@
 <h2 class="title">Events</h2>
 <div class="event_list">
-    <div *ngFor="let live_event of event_list; index as i;" class="event_card">
+    <div *ngFor="let live_event of event_list; index as i;" class="event_card bg-slate-800 hover:bg-red-950">
 
         <a class="event_header" routerLink="/" routerLinkActive="active">
             <img class="event_thumbnail" *ngIf="live_event.image_url"
