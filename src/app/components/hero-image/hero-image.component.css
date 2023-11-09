@@ -4,6 +4,10 @@
     /* max-height: 100vh; */
 }
 
+.hero_title {
+    font-size: 4rem;
+}
+
 #hero-image {
     background-image: URL("/assets/img/GuitarfrombehindByKalenJesse..jpg");
     background-size: cover;
