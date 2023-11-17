@@ -13,6 +13,10 @@ export class ApiService {
   constructor() {}
 
   public getAllEvents(): LiveEvent[] {
+
+    /*
+    Add a step to change the date to human readable
+    */
     return [
       {
         id: 1,
@@ -34,7 +38,7 @@ export class ApiService {
         deleted: false,
         event_type: 'Test Type',
         short_description: 'This is a test event',
-        image_url: 'https://www.testimageurl.com',
+        image_url: '/assets/img/cafe_smok_n_pi.jfif',
       },
       {
         id: 2,
@@ -77,7 +81,7 @@ export class ApiService {
         deleted: false,
         event_type: 'Test Type',
         short_description: 'This is my second test event',
-        image_url: 'https://www.testimageurl.com',
+        image_url: '/assets/img/cafe_smok_n_pi.jfif',
       },
     ];
   }

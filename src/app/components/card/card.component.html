@@ -1,3 +1,4 @@
+<div class="card">
 <a class="event_header" routerLink="/" routerLinkActive="active">
     <img class="event_thumbnail" *ngIf="show.image_url"
         src="{{show.image_url}}">{{show.title}}</a>
@@ -12,3 +13,4 @@
 <p> Website: <a *ngIf="show.venue_url" target="blank" href="{{show.venue_url}}">Click here</a></p>
 
 <p>{{show.venue_phone}} </p>
+</div>

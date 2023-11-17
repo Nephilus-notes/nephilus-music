@@ -14,7 +14,14 @@ export class EventViewerComponent {
 
   show_list!: LiveEvent[]
   public getAllEvents(): void {
-    this.show_list = this.apiService.getAllEvents()
+    let full_list = this.apiService.getAllEvents()
+    for (let show of full_list) {
+      if (show.start_date < new Date) {
+        full_list.splice(full_list.indexOf(show), 1)
+      }
+    }
+
+    this.show_list = full_list
     console.warn(this.show_list)
     }
 
