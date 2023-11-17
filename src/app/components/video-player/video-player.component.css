@@ -1,4 +1,12 @@
-#player {
-    height:80vh;
-    width: max-content;
+/* #player {
+    @media screen {
+        
+    }
+height: 500px;  
+  width: 500px; */
+/* } */
+
+.container {
+    /* padding: 5rem; */
+    background-color: gray;
 }
