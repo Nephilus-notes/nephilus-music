@@ -1,1 +1,14 @@
-<p>card works!</p>
+<a class="event_header" routerLink="/" routerLinkActive="active">
+    <img class="event_thumbnail" *ngIf="show.image_url"
+        src="{{show.image_url}}">{{show.title}}</a>
+<p>Starts: {{show.start_date}}</p>
+<p>Ends: {{show.end_date}}</p>
+<p *ngIf="!show.venue_address">@ {{show.venue_name}}</p>
+<a *ngIf="show.venue_address" target="blank"
+    href="https://www.google.com/maps/place/{{show.venue_address}}">{{show.venue_name}}<br>
+    {{show.venue_address}}<br>{{show.venue_city}}, {{show.venue_state}},
+    {{show.venue_zip_code}} </a>
+<p>{{show.short_description}}</p>
+<p> Website: <a *ngIf="show.venue_url" target="blank" href="{{show.venue_url}}">Click here</a></p>
+
+<p>{{show.venue_phone}} </p>
