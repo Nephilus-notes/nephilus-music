@@ -29,6 +29,7 @@ import { SingleSetlistComponent } from './components/single-setlist/single-setli
 import { SongListComponent } from './components/song-list/song-list.component';
 import { PatronListComponent } from './components/patron-list/patron-list.component';
 import { SetListListComponent } from './components/set-list-list/set-list-list.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { SetListListComponent } from './components/set-list-list/set-list-list.c
     SingleSetlistComponent,
     SongListComponent,
     PatronListComponent,
-    SetListListComponent
+    SetListListComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
