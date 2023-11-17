@@ -50,7 +50,7 @@ import { SubscribeFormComponent } from './components/subscribe-form/subscribe-fo
     VideoPlayerComponent,
     ButtonComponent,
     GithubComponent,
-    RequestFormComponent,
+    // RequestFormComponent,
     EventFormComponent,
     RsvpFormComponent,
     AdminViewComponent,
