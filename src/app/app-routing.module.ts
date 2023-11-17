@@ -9,6 +9,8 @@ import { SingleSongComponent } from './components/single-song/single-song.compon
 import { SinglePatronComponent } from './components/single-patron/single-patron.component';
 import { SingleSetlistComponent } from './components/single-setlist/single-setlist.component';
 import { SingleEventComponent } from './components/single-event/single-event.component';
+import { RequestFormComponent } from './components/request-form/request-form.component';
+import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'setlist/:id', component: SingleSetlistComponent},
   { path: 'event/:id', component: SingleEventComponent},
   { path: 'admin', component: AdminViewComponent},
+  { path: 'request', component: RequestFormComponent},
+  { path: 'subscribe', component: SubscribeFormComponent},
   { path: '**', component: IndexComponent}
 ];
 

@@ -30,6 +30,7 @@ import { SongListComponent } from './components/song-list/song-list.component';
 import { PatronListComponent } from './components/patron-list/patron-list.component';
 import { SetListListComponent } from './components/set-list-list/set-list-list.component';
 import { CardComponent } from './components/card/card.component';
+import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { CardComponent } from './components/card/card.component';
     SongListComponent,
     PatronListComponent,
     SetListListComponent,
-    CardComponent
+    CardComponent,
+    SubscribeFormComponent
   ],
   imports: [
     BrowserModule,
