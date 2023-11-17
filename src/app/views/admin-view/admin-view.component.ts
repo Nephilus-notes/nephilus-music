@@ -12,13 +12,17 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AdminViewComponent {
   constructor( private apiService: ApiService) {}
-  event_list!: LiveEvent[];
+  show_list!: LiveEvent[];
   song_list!: Song[];
   set_list!: Setlist[];
   patron_list!: Patron[];
+  showControl: number = 1;
+  songControl: number = 2;
+  patronControl: number = 3;
+  setListControl: number = 4;
 
   public getAllEvents(): void {
-  this.event_list = this.apiService.getAllEvents()
+  this.show_list = this.apiService.getAllEvents()
   // console.warn(this.event_list)
   }
 

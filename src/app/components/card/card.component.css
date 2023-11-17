@@ -5,8 +5,8 @@ a:hover{
 .card {
     max-width: 60rem;
     margin-inline: auto;
-    margin-top: 2rem;
-    margin-bottom: 4rem;
+    /* margin-top: 2rem;
+    margin-bottom: 4rem; */
 }
 
 .event_header {

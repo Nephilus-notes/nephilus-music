@@ -1,19 +1,31 @@
-<div class="card">
+<div *ngIf="control==1" class="card mt-8 mb-16">
 <a class="event_header" routerLink="/event/{{show.id}}" routerLinkActive="active">
     <img class="event_thumbnail" *ngIf="show.image_url"
         src="{{show.image_url}}">{{show.title}}</a>
 <p class="text-2xl">{{show.start_date.toDateString()}}</p>
 <p class="mb-3">{{show.start_date.toLocaleTimeString('en-us')}} - {{show.end_date.toLocaleTimeString('en-us')}}</p>
+<p>{{show.short_description}}</p>
 <p class="text-2xl">Venue:</p>
 <a *ngIf="show.venue_address; else justName" target="blank"
 href="https://www.google.com/maps/place/{{show.venue_address}}"> {{show.venue_name}}<br>
-{{show.venue_address}}<br>{{show.venue_city}}, {{show.venue_state}},
-{{show.venue_zip_code}} </a>
+{{show.venue_address}}, {{show.venue_city}}, {{show.venue_state}}, {{show.venue_zip_code}} </a>
 <ng-template #justName>
     <p>{{show.venue_name}}</p>
 </ng-template>
-<p>{{show.short_description}}</p>
 <p> Website: <a *ngIf="show.venue_url" target="blank" href="{{show.venue_url}}">Click here</a></p>
 
 <p>{{show.venue_phone}} </p>
+</div>
+
+
+<div class="card" *ngIf="control==2">
+        <a class="header text-3xl" routerLink="/" routerLinkActive="active">
+            <img class="thumbnail" *ngIf="song.image_url" src="{{song.image_url}}">{{song.title}}</a>
+        <p>By: {{song.artist}}</p>
+        <p *ngIf="song.album">From: {{song.album}}</p>
+        <p *ngIf="song.year">Year: {{song.year}}</p>
+        <!-- <p *ngIf="song.album">By: {{song.artist}}</p> -->
+        <p *ngIf="song.times_requested > 0">Requested {{song.times_requested}} times</p>
+        <p *ngIf="song.times_requested <= 0">Not Requested</p>
+
 </div>

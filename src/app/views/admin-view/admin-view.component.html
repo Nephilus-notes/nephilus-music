@@ -1,6 +1,16 @@
-<div class="flexbox bg-red-50">
-<app-event-list [event_list]="event_list"></app-event-list>
-<app-song-list [song_list]="song_list"></app-song-list>
+<div class="flex flex-wrap bg-red-50">
+    <div class="half ml-0">
+<h1 class="text-3xl">Events</h1>
+    <app-card *ngFor="let show of show_list" [show]="show"[control]="showControl"></app-card> 
+    </div>
+
+    <div class="half ml-0 max-w-md">
+        <h1 class="text-3xl">Songs</h1>
+            <app-card *ngFor="let song of song_list" [song]="song"[control]="songControl"></app-card> 
+            </div>
+    
+    <!-- <app-event-list [event_list]="event_list"></app-event-list> -->
+<!-- <app-song-list [song_list]="song_list"></app-song-list> -->
 <app-set-list-list [set_list]="set_list"></app-set-list-list>
 <app-patron-list [patron_list]="patron_list"></app-patron-list>
 </div>

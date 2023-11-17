@@ -1,3 +1,7 @@
 * {
     padding:.5rem;
 }
+
+.half {
+    min-width: 40vw;
+}

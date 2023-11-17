@@ -13,6 +13,9 @@ export class EventViewerComponent {
   constructor( private apiService: ApiService) {}
 
   show_list!: LiveEvent[]
+  showControl: number = 1;
+
+  
   public getAllEvents(): void {
     let full_list = this.apiService.getAllEvents()
     for (let show of full_list) {
