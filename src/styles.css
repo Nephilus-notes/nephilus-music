@@ -12,3 +12,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold;
+  }
+  h2 {
+    @apply text-3xl font-bold;
+  }
+  h3 {
+    @apply text-2xl font-bold;
+  }
+  h4 {
+    @apply text-xl font-bold;
+  }
+
+  p {
+    @apply text-lg;
+  }
+
+  .card {
+    @apply max-w-4xl mx-auto bg-slate-300 rounded-lg p-8
+  }
+}

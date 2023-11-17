@@ -1,4 +1,4 @@
-<div *ngIf="control==1" class="card mt-8 mb-16">
+<div *ngIf="control==1" class="card">
 <a class="event_header" routerLink="/event/{{show.id}}" routerLinkActive="active">
     <img class="event_thumbnail" *ngIf="show.image_url"
         src="{{show.image_url}}">{{show.title}}</a>
@@ -19,7 +19,7 @@ href="https://www.google.com/maps/place/{{show.venue_address}}"> {{show.venue_na
 
 
 <div class="card" *ngIf="control==2">
-        <a class="header text-3xl" routerLink="/" routerLinkActive="active">
+        <a class="header text-3xl" routerLink="/song/{{song.id}}" routerLinkActive="active">
             <img class="thumbnail" *ngIf="song.image_url" src="{{song.image_url}}">{{song.title}}</a>
         <p>By: {{song.artist}}</p>
         <p *ngIf="song.album">From: {{song.album}}</p>
