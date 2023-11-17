@@ -62,11 +62,11 @@ import { SubscribeFormComponent } from './components/subscribe-form/subscribe-fo
     PatronListComponent,
     SetListListComponent,
     CardComponent,
-    SubscribeFormComponent
+    // SubscribeFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]
