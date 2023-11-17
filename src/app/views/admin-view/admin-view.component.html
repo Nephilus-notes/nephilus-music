@@ -1,4 +1,4 @@
-<div class="flex flex-wrap justify-evenly bg-red-50">
+<div class="flex flex-wrap justify-evenly bg-red-50 relative">
     <div class="half ml-0">
 <h1 class="text-5xl text-center">Events</h1>
     <app-card *ngFor="let show of show_list" [show]="show"[control]="showControl"></app-card> 
@@ -13,4 +13,5 @@
 <!-- <app-song-list [song_list]="song_list"></app-song-list> -->
 <app-set-list-list [set_list]="set_list"></app-set-list-list>
 <app-patron-list [patron_list]="patron_list"></app-patron-list>
+<p class="text-3xl bg-black text-white absolute min-w-full bottom-0">&#169; 2023 Charles McCall</p>
 </div>
