@@ -1,11 +1,7 @@
-.left-side {
-    max-width: 50%;
-    min-width: 375;
-}
+
 
 .right-side {
     /* margin-left: 50%; */
-    max-width: 40%;
     min-width: 380px;
     display: flex;
     flex-direction: column;
@@ -14,9 +10,9 @@
 
 .bio-image {
     object-fit: scale-down;
-    width:50vw;
+    /* width:50vw; */
     height: 100vh;
-    margin-inline: auto;
+    /* margin-inline: auto; */
     /* border: 2px solid rgb(0, 0, 0); */
     background-color: rgba(0, 0, 0, 0.432);
     box-shadow: inset 0px 0px 20px 15px rgba(0, 0, 0, 0.432);
@@ -24,17 +20,15 @@
 }
 
 .component {
-    display: flex;
     background-color: rgba(0, 0, 0, 0.658);
-    flex-wrap: wrap;
-    /* justify-content: space-evenly; */
+    justify-content: space-evenly;
     gap: 30px;
     padding: 20px;
 }
 
 .text {
-    max-width: 90%;
+    /* max-width: 90%; */
     line-height: 2.5rem;
     font-size: 1.5rem;
-    margin-inline: auto;
+    /* margin-inline: auto; */
 }
