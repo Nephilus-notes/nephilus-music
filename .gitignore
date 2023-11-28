@@ -43,3 +43,6 @@ Thumbs.db
 
 
 # img
+/src/environments/environment.development.ts
+/src/environments/environment.staging.ts
+.env
