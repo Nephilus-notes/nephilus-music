@@ -19,14 +19,14 @@
 }
 
 
-#text {
+/* #text {
     margin-left: 30%;
     margin-right: 5%;
     margin-top: 10%;
     color: white;
-    max-width: 800px;
+    max-width: 800px; */
     /* background-color: rgba(0, 0, 0, 0.642); */
-}
+/* } */
 
 h1 {
     line-height: 5rem;
