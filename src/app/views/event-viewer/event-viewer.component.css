@@ -1,3 +1,7 @@
-/* * {
-    padding: .5rem;
-} */
+.relative {
+background-image: URL("/assets/img/Enchanted Evening.jpg");
+background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
