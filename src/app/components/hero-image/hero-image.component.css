@@ -24,8 +24,8 @@
     margin-right: 5%;
     margin-top: 10%;
     color: white;
-    max-width: 400px;
-    background-color: rgba(0, 0, 0, 0);
+    max-width: 800px;
+    /* background-color: rgba(0, 0, 0, 0.642); */
 }
 
 h1 {
@@ -35,4 +35,8 @@ h1 {
 
 p, h3 {
     background-color: rgba(0, 0, 0, 0);
+}
+
+.fadedGray {
+    background-color: rgba(3, 3, 3, 0.5);
 }

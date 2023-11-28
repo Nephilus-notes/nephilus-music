@@ -1,5 +1,5 @@
 <div *ngIf="control==1" class="card">
-<a class="event_header" routerLink="/event/{{show.id}}" routerLinkActive="active">
+<a class="event_header" routerLink="/event/{{show.id -1}}" routerLinkActive="active">
     <img class="event_thumbnail" *ngIf="show.image_url"
         src="{{show.image_url}}">{{show.title}}</a>
 <p class="text-2xl">{{show.start_date.toDateString()}}</p>
