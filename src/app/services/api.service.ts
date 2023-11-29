@@ -90,7 +90,7 @@ export class ApiService {
   }
   public getOneEvent(id: number): LiveEvent {
     
-    return this.events[id-1]
+    return this.events[id]
   }
 
   public getAllSetlists(): Setlist[] {

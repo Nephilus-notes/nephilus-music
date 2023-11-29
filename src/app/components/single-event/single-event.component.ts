@@ -11,6 +11,30 @@ import { ApiService } from 'src/app/services/api.service';
 export class SingleEventComponent {
   id!: number;
   live_event!: LiveEvent;
+  months: string[] = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
+
+  weeks: string[] = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ];
   
     constructor(private route: ActivatedRoute, private apiService: ApiService) { }
   

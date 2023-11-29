@@ -1,17 +1,19 @@
 
-<div class="card">
+<div class="card mt-8">
 <a class="event_header" routerLink="/" routerLinkActive="active">
-    <img class="event_thumbnail" *ngIf="live_event.image_url"
+    <img class="event_thumbnail inline-block" *ngIf="live_event.image_url"
         src="{{live_event.image_url}}">{{live_event.title}}</a>
-<p>Starts: {{live_event.start_date}}</p>
-<p>Ends: {{live_event.end_date}}</p>
-<p *ngIf="!live_event.venue_address">@ {{live_event.venue_name}}</p>
-<a *ngIf="live_event.venue_address" target="blank"
-    href="https://www.google.com/maps/place/{{live_event.venue_address}}">{{live_event.venue_name}}<br>
-    {{live_event.venue_address}}<br>{{live_event.venue_city}}, {{live_event.venue_state}},
-    {{live_event.venue_zip_code}} </a>
+        <p *ngIf="!live_event.venue_address" class="text-2xl"> {{live_event.venue_name}}</p>
+        <br>
+        <a *ngIf="live_event.venue_address" target="blank"
+        href="https://www.google.com/maps/place/{{live_event.venue_address}}" class="text-sm">
+        <!-- {{live_event.venue_name}}<br> -->
+        {{live_event.venue_address}} {{live_event.venue_city}}, {{live_event.venue_state}},
+        {{live_event.venue_zip_code}} </a>
+        <p>{{live_event.start_date.toLocaleTimeString('en-us')}} - {{live_event.end_date.toLocaleTimeString('en-us')}}, 
+            {{weeks[live_event.start_date.getDay()]}} {{months[live_event.start_date.getMonth()]}} {{live_event.start_date.getDate()}}</p>
 <p>{{live_event.short_description}}</p>
-<p> Website: <a *ngIf="live_event.venue_url" target="blank" href="{{live_event.venue_url}}">Click here</a></p>
+<p> Website: <a *ngIf="live_event.venue_url" target="blank" href="{{live_event.venue_url}}" class="text-blue-500">Click here</a></p>
 
 <p>{{live_event.venue_phone}} </p>
 
