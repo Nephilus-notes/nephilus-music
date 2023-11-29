@@ -1,20 +1,24 @@
 <div *ngIf="control==1" class="card">
-<a class="event_header" routerLink="/event/{{show.id -1}}" routerLinkActive="active">
-    <img class="event_thumbnail" *ngIf="show.image_url"
-        src="{{show.image_url}}">{{show.title}}</a>
+<!-- <a class="event_header" routerLink="/event/{{show.id -1}}" routerLinkActive="active"> -->
+    <p class="event_header">
+        
+        <img class="event_thumbnail mr-4 mb-2" *ngIf="show.image_url"
+            src="{{show.image_url}}">{{show.title}}
+    </p>
+    <a *ngIf="show.venue_address; else justName" target="blank"
+    href="https://www.google.com/maps/place/{{show.venue_name}}"> 
+    {{show.venue_address}}, {{show.venue_city}}, {{show.venue_state}}, {{show.venue_zip_code}} </a>
+    <!-- </a> -->
 <p class="text-2xl">{{show.start_date.toDateString()}}</p>
 <p class="mb-3">{{show.start_date.toLocaleTimeString('en-us')}} - {{show.end_date.toLocaleTimeString('en-us')}}</p>
-<p>{{show.short_description}}</p>
-<p class="text-2xl">Venue:</p>
-<a *ngIf="show.venue_address; else justName" target="blank"
-href="https://www.google.com/maps/place/{{show.venue_address}}"> {{show.venue_name}}<br>
-{{show.venue_address}}, {{show.venue_city}}, {{show.venue_state}}, {{show.venue_zip_code}} </a>
+<p class="mb-2">{{show.short_description}}</p>
+<!-- <p class="text-2xl">Venue:</p> -->
 <ng-template #justName>
     <p>{{show.venue_name}}</p>
 </ng-template>
 <p> Website: <a *ngIf="show.venue_url" target="blank" href="{{show.venue_url}}">Click here</a></p>
 
-<p>{{show.venue_phone}} </p>
+<p>Phone: {{show.venue_phone}} </p>
 </div>
 
 
