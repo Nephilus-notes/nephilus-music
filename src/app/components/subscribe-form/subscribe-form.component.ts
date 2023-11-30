@@ -18,6 +18,7 @@ export class SubscribeFormComponent {
   })
   onSubmit() {
     // TODO: Use EventEmitter with form value
+    // Do I need an eventEmitter? Or can I just import my api service here?
     console.warn(this.subscribeForm.value);
   }
 

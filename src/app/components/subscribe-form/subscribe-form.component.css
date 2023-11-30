@@ -10,3 +10,11 @@ input {
 form {
     margin-top: 2rem;
 }
+
+.bg {
+    background-image: URL("/assets/img/Lonely Stage.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}

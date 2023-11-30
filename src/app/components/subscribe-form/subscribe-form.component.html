@@ -1,4 +1,17 @@
-<h1 class="mt-6">Subscribe to hear about my shows</h1>
+<!-- <h1 class="mt-6">Subscribe to hear about my shows</h1> -->
+<div class= "bg">
+
+
+<div class="mx-auto container text-center text-white">
+
+  <h1 class="p-8 ">Want show details in your email?
+  </h1>
+     <p class="text-2xl mb-4">
+
+   Subscribe below and I'll make sure you always know where I'm singing next!</p>
+
+   <p>And if you want to request a song <a href="">click here</a> once I've gotten my songlist up.</p>
+</div>
 
 <form [formGroup]="subscribeForm" (ngSubmit)="onSubmit()" class="card text-center my-8">
 
@@ -12,7 +25,7 @@
     <input id="email-address" type="email" name="email" ngModel [email]="true" formControlName="emailAddress">
 
     <p>Complete the form to enable button.</p>
-<button type="submit" [disabled]="!subscribeForm.valid">Submit</button>
+<button type="submit" [disabled]="!subscribeForm.valid" class="disabled:bg-gray-300 disabled:text-gray-50">Submit</button>
   </form>
-
-  <p class="text-3xl bg-black text-white absolute min-w-full bottom-0">&#169; 2023 Charles McCall</p>
+</div>
+<p class="text-3xl bg-black text-white min-w-full">&#169; 2023 Charles McCall</p>
