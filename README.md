@@ -7,6 +7,9 @@ Song/Event Lists: merge into a single view instead of component so they can take
 Set-List-List: Make a setlist DTO that takes the name and ID of the event it was played at.
 
 
+1. adjust colors of button fades for readability
+2. white line below footer
+
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.

@@ -12,7 +12,4 @@ export class CardComponent {
   @Input() show!:LiveEvent;
   @Input() song!: Song;
   @Input() control!: number;
-
-
-
 }

@@ -89,7 +89,8 @@ export class ApiService {
     return this.events
   }
   public getOneEvent(id: number): LiveEvent {
-    
+    // console.log(id)
+    // console.log(this.events)
     return this.events[id]
   }
 

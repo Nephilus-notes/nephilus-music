@@ -48,6 +48,7 @@ export class SingleEventComponent {
         
         this.id = +id;
       }
+      // console.log(this.id)
       this.getEvent()
     }
 }

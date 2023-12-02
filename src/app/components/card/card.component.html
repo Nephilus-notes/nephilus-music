@@ -1,10 +1,11 @@
 <div *ngIf="control==1" class="card">
-<!-- <a class="event_header" routerLink="/event/{{show.id -1}}" routerLinkActive="active"> -->
+<a class="event_header" routerLink="/event/{{show.id -1}}" routerLinkActive="active">
     <p class="event_header">
         
         <img class="event_thumbnail mr-4 mb-2" *ngIf="show.image_url"
             src="{{show.image_url}}">{{show.title}}
-    </p>
+        </p>
+    </a>
     <a *ngIf="show.venue_address; else justName" target="blank"
     href="https://www.google.com/maps/place/{{show.venue_name}}"> 
     {{show.venue_address}}, {{show.venue_city}}, {{show.venue_state}}, {{show.venue_zip_code}} </a>
