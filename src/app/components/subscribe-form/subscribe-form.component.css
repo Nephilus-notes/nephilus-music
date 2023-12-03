@@ -1,6 +1,10 @@
 input {
     display: block;
     margin: 0 auto 2rem auto;
+    @apply text-black;
+}
+input::placeholder {
+    @apply text-gray-500;
 }
 
 /* * {
@@ -9,6 +13,7 @@ input {
 
 form {
     margin-top: 5rem;
+
 }
 
 .bg {

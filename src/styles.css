@@ -49,4 +49,7 @@
   .bg {
     @apply bg-black bg-cover bg-center bg-no-repeat min-h-screen rounded-none;
   }
+  :disabled {
+    @apply opacity-70 cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-50;
+  }
 }
