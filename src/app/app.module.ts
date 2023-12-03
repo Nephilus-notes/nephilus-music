@@ -5,14 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventViewerComponent } from './views/event-viewer/event-viewer.component';
 import { PageTemplateComponent } from './views/page-template/page-template.component';
-import { BasicButtonComponent } from './components/basic-button/basic-button.component';
 import { PressViewerComponent } from './views/press-viewer/press-viewer.component';
 import { BioViewerComponent } from './views/bio-viewer/bio-viewer.component';
 import { IndexComponent } from './views/index/index.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HeroImageComponent } from './components/hero-image/hero-image.component';
-import { IndexEventDisplayComponent } from './components/index-event-display/index-event-display.component';
-import { EventDisplayComponent } from './components/event-display/event-display.component';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { BioDisplayComponent } from './components/bio-display/bio-display.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
@@ -31,6 +28,7 @@ import { PatronListComponent } from './components/patron-list/patron-list.compon
 import { SetListListComponent } from './components/set-list-list/set-list-list.component';
 import { CardComponent } from './components/card/card.component';
 import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +36,10 @@ import { SubscribeFormComponent } from './components/subscribe-form/subscribe-fo
     NavBarComponent,
     EventViewerComponent,
     PageTemplateComponent,
-    BasicButtonComponent,
     PressViewerComponent,
     BioViewerComponent,
     IndexComponent,
     HeroImageComponent,
-    IndexEventDisplayComponent,
-    EventDisplayComponent,
     EventListComponent,
     BioDisplayComponent,
     VideoPlayerComponent,
@@ -62,6 +57,7 @@ import { SubscribeFormComponent } from './components/subscribe-form/subscribe-fo
     PatronListComponent,
     SetListListComponent,
     CardComponent,
+    FooterComponent,
     // SubscribeFormComponent
   ],
   imports: [
