@@ -20,5 +20,5 @@ form {
 }
 
 .header {
-    @apply mt-6 text-white mt-0;
+    @apply text-white mt-0;
 }
