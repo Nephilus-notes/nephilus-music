@@ -8,17 +8,14 @@ input {
 } */
 
 form {
-    margin-top: 2rem;
+    @apply mt-20;
 }
 
 .bg {
     background-image: URL("/assets/img/1-empty-stage-spotlight-allan-swart.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     @apply h-screen mt-0 pt-12;
 }
 
 .header {
-    @apply text-white mt-0;
+    @apply text-white mt-40;
 }

@@ -8,13 +8,11 @@ input {
 } */
 
 form {
-    margin-top: 2rem;
+    margin-top: 5rem;
 }
 
 .bg {
     background-image: URL("/assets/img/Lonely Stage.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
+    @apply h-screen mt-0 pt-12;
+
 }

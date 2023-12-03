@@ -38,4 +38,11 @@
   button {
     @apply enabled:bg-green-500 p-4 rounded-xl disabled:bg-yellow-200 disabled:text-slate-400;
   }
+  
+  .viewer {
+    @apply mt-36;
+  }
+  .bg {
+    @apply bg-black text-white bg-cover bg-center bg-no-repeat min-h-screen rounded-none;
+  }
 }
