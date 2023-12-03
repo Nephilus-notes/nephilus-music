@@ -17,5 +17,5 @@ form {
 }
 
 .header {
-    @apply text-white mt-40;
+    @apply mt-40;
 }
