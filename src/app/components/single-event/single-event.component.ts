@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class SingleEventComponent {
   id!: number;
-  live_event!: LiveEvent;
+  show!: LiveEvent;
   months: string[] = [
     'January',
     'February',
@@ -39,7 +39,7 @@ export class SingleEventComponent {
     constructor(private route: ActivatedRoute, private apiService: ApiService) { }
   
     public getEvent(): void {
-      this.live_event = this.apiService.getOneEvent(this.id)
+      this.show = this.apiService.getOneEvent(this.id)
     }
   
     ngOnInit(): void {

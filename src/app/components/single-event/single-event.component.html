@@ -1,20 +1,25 @@
-
-<div class="card mt-8">
-<a class="event_header" routerLink="/" routerLinkActive="active">
-    <img class="event_thumbnail inline-block" *ngIf="live_event.image_url"
-        src="{{live_event.image_url}}">{{live_event.title}}</a>
-        <p *ngIf="!live_event.venue_address" class="text-2xl"> {{live_event.venue_name}}</p>
+<div class="viewer p-10 bg bg-gray-500">
+    <div class="card my-36">
+        <!-- <a class="event_header" routerLink="/" routerLinkActive="active"> -->
+            
+                <p class="event_header"><img class="event_thumbnail inline-block" *ngIf="show.image_url"
+                src="{{show.image_url}}">{{show.title}}</p>
+            <!-- </a> -->
+        <p *ngIf="!show.venue_address" class="text-2xl"> {{show.venue_name}}</p>
         <br>
-        <a *ngIf="live_event.venue_address" target="blank"
-        href="https://www.google.com/maps/place/{{live_event.venue_address}}" class="text-sm">
-        <!-- {{live_event.venue_name}}<br> -->
-        {{live_event.venue_address}} {{live_event.venue_city}}, {{live_event.venue_state}},
-        {{live_event.venue_zip_code}} </a>
-        <p>{{live_event.start_date.toLocaleTimeString('en-us')}} - {{live_event.end_date.toLocaleTimeString('en-us')}}, 
-            {{weeks[live_event.start_date.getDay()]}} {{months[live_event.start_date.getMonth()]}} {{live_event.start_date.getDate()}}</p>
-<p>{{live_event.short_description}}</p>
-<p> Website: <a *ngIf="live_event.venue_url" target="blank" href="{{live_event.venue_url}}" class="text-blue-500">Click here</a></p>
+        <a *ngIf="show.venue_address" target="blank"
+            href="https://www.google.com/maps/place/{{show.venue_address}}" class="text-sm">
+            <!-- {{show.venue_name}}<br> -->
+            {{show.venue_address}} {{show.venue_city}}, {{show.venue_state}},
+            {{show.venue_zip_code}} </a>
+        <p>{{show.start_date.toLocaleTimeString('en-us')}} - {{show.end_date.toLocaleTimeString('en-us')}},
+            {{weeks[show.start_date.getDay()]}} {{months[show.start_date.getMonth()]}}
+            {{show.start_date.getDate()}}</p>
+        <p>{{show.short_description}}</p>
+        <p> Website: <a *ngIf="show.venue_url" target="blank" href="{{show.venue_url}}"
+                class="text-blue-500">Click here</a></p>
 
-<p>{{live_event.venue_phone}} </p>
+        <p>{{show.venue_phone}} </p>
 
+    </div>
 </div>
