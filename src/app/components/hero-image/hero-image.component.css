@@ -19,14 +19,9 @@
 }
 
 
-/* #text {
-    margin-left: 30%;
-    margin-right: 5%;
-    margin-top: 10%;
-    color: white;
-    max-width: 800px; */
-    /* background-color: rgba(0, 0, 0, 0.642); */
-/* } */
+#text {
+    @apply rounded-lg p-5 lg:p-20 w-full mt-60 md:w-2/3 md:mx-auto bg-[rgba(3,3,3,0.75)];
+}
 
 h1 {
     line-height: 5rem;
@@ -34,9 +29,8 @@ h1 {
 }
 
 p, h3 {
-    background-color: rgba(0, 0, 0, 0);
+    @apply bg-transparent mb-4
 }
-
-.fadedGray {
-    background-color: rgba(3, 3, 3, 0.5);
+.videoLink {
+    @apply underline
 }
