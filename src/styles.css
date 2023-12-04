@@ -69,7 +69,7 @@ a:active {
   }
   
   .viewer {
-    @apply mt-36;
+    @apply mt-32;
   }
   .bg {
     @apply bg-black bg-cover bg-center bg-no-repeat min-h-screen rounded-none;
