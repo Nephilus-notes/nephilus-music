@@ -18,6 +18,6 @@ form {
 
 .bg {
     background-image: URL("/assets/img/Lonely Stage.jpg");
-    @apply h-screen mt-0 pt-12;
+    @apply mt-0 pt-12 p-2;
 
 }
