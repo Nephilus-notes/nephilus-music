@@ -28,7 +28,7 @@ import { PatronListComponent } from './components/patron-list/patron-list.compon
 import { SetListListComponent } from './components/set-list-list/set-list-list.component';
 import { CardComponent } from './components/card/card.component';
 import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
