@@ -4,26 +4,13 @@
 
 
 .flexRow {
-    display: flex;
-    background-color: black;
-    flex-wrap: wrap;
-    border-radius: 20px;
-    justify-content: space-between;
-    flex-direction: column;
-    /* margin-bottom: .8rem; */
-    /* box-shadow: 5px 0px 5px 15px black; */
-    gap:20px
+    @apply flex flex-col justify-between flex-wrap gap-5 bg-black;
 }
 .navbar-nav {
-    display: flex;
-    /* gap: 30px; */
-    align-items: center;
-    /* justify-content: center; */
-    padding: 10px;
-
+    @apply p-3 items-center flex flex-row;
 }
 
-.movingBackgroundRight {
+/* .movingBackgroundRight {
 box-shadow: inset 2px 2px 2px 3px rgba(171, 171, 171, 0.25), inset -2px -2px 2px 3px rgba(6, 6, 6, 0.25);
 background-image: linear-gradient(275deg, black, rgb(17, 5, 84), rgb(3, 79, 79), rgb(44, 6, 105));    background-position: left;
 background-position: left; 
@@ -31,7 +18,7 @@ background-position: left;
     animation: bganimation 2s infinite alternate;
     background-repeat: none;
     text-rendering: optimizeSpeed;
-}
+} */
 
 .movingBackgroundLeft {
  box-shadow: inset 2px 2px 2px 3px rgba(179, 179, 179, 0.25), inset -2px -2px 2px 3px rgba(6, 6, 6, 0.25);
@@ -49,42 +36,8 @@ background-position: left;
     text-rendering: optimizeSpeed;
 }
 .homeLink {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
-    font-size: 2rem;
-    padding:12px;
-    border-radius: 10px;
-    max-width: fit-content;
-    margin-inline: auto;
+    @apply text-4xl mx-auto max-w-fit p-3;
    }
-
-
-.nav-link {
-    padding: 10px;
-    border-radius: 30px;
-    
-}
-
-.nav-item {
-    list-style-type: none;
-}
-a {
-    text-decoration: none;
-}
-a:link {
-    color: green
-}
-
-a:visited {
-    color:white
-}
-a:hover {
-    color:antiquewhite
-}
-a:active {
-    color:yellow
-}
 
 
 @keyframes bganimation {
