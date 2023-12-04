@@ -10,17 +10,12 @@
 
 #hero-image {
     background-image: URL("/assets/img/GuitarfrombehindByKalenJesse..jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    padding-top:10px;
-    
+    @apply pt-1 mt-0; 
 }
 
 
 #text {
-    @apply rounded-lg p-5 lg:p-20 w-full mt-60 md:w-2/3 md:mx-auto bg-[rgba(3,3,3,0.75)];
+    @apply rounded-none sm:rounded-lg p-5 lg:p-20 w-full mt-40 sm:mt-60 md:w-2/3 md:mx-auto bg-[rgba(3,3,3,0.75)];
 }
 
 h1 {
