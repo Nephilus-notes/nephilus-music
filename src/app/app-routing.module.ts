@@ -15,8 +15,8 @@ import { SubscribeFormComponent } from './components/subscribe-form/subscribe-fo
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'bio', component: BioViewerComponent },
-  { path: 'events', component: EventViewerComponent },
-  { path: 'videos', component: PressViewerComponent},
+  { path: 'performances', component: EventViewerComponent },
+  { path: 'listen-online', component: PressViewerComponent},
   { path: 'song/:id', component: SingleSongComponent},
   { path: 'patron/:id', component: SinglePatronComponent},
   { path: 'setlist/:id', component: SingleSetlistComponent},
