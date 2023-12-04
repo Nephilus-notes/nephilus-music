@@ -9,6 +9,8 @@ Set-List-List: Make a setlist DTO that takes the name and ID of the event it was
 
 1. adjust colors of button fades for readability
 2. white line below footer
+3. mobile bio needs padding on the left
+4. mobile index bg needs to expand
 
 
 
