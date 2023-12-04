@@ -1,31 +1,31 @@
 <div class="component">
-  <nav class="navbar max-w-{1300px} mx-auto p-2">
-    <div class="flexRow bg-slate-50">
+  <nav class="navbar">
+    <div class="flexRow">
       <a class="homeLink button movingBackgroundLeft" routerLink="/">Charles McCall</a>
-      <ul class="navbar-nav justify-evenly sm:justify-center sm:gap-8">
+      <ul class="navbar-nav" [class.is-open]="isMenuOpen">
         <li>
-          <a class="movingBackgroundLeft button active" aria-current="home" routerLink="/"
+          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="home" routerLink="/"
             routerLinkActive="active">Home</a>
         </li>
         <li>
-          <a class="movingBackgroundLeft button active" aria-current="Dragon's Tail Game" routerLink="/bio"
+          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="Bio" routerLink="/bio"
             routerLinkActive="active">Bio</a>
         </li>
         <li>
-          <a class="movingBackgroundLeft button active" aria-current="Dragon's Tail Game" routerLink="/performances"
+          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="Performance Dates" routerLink="/performances"
           routerLinkActive="active">Events</a>
         </li>
         <li>
-          <a class="movingBackgroundLeft button active" aria-current="Dragon's Tail Game" routerLink="/listen-online"
+          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="Listen Online" routerLink="/listen-online"
             routerLinkActive="active">Hear Me</a>
         </li>
 
         <li>
-          <a class="movingBackgroundLeft button active" aria-current="Dragon's Tail Game" routerLink="/subscribe"
+          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="Subscribe" routerLink="/subscribe"
             routerLinkActive="active">Be in the know</a>
         </li>
         <li>
-          <a class="movingBackgroundLeft button active" aria-current="Dragon's Tail Game" routerLink="/request"
+          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="Request a song" routerLink="/request"
             routerLinkActive="active">Requests</a>
         </li>
 
@@ -41,6 +41,13 @@
         <!-- <app-auth-button></app-auth-button> -->
 
       </ul>
+      <div class="menuToggle" (click)="toggleMenu()">
+        <i class="materials-icons menu-button"> {{ isMenuOpen ? "close" : "menu" }}</i>
+    </div>
+
+    <button class="menuToggle" (click)="toggleMenu()">
+      {{buttonText}}
+   </button>
     </div>
   </nav>
 </div>

@@ -8,4 +8,23 @@ import { Component } from '@angular/core';
 })
 export class NavBarComponent {
 
+  buttonText:string = "v"
+isMenuOpen:boolean = true;
+
+
+toggleMenu(): void {
+  this.isMenuOpen = !this.isMenuOpen;
+  if (!this.isMenuOpen) {
+    this.buttonText = "v"
+  } else {
+    this.buttonText = "^"
+  }
+
+}
+
+public closeMenu(): void {
+  this.isMenuOpen = false;
+  this.buttonText = "v"
+}
+
 }

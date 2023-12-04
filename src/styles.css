@@ -77,4 +77,8 @@ a:active {
   :disabled {
     @apply opacity-70 cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-50;
   }
+  .generic-bg {
+    @apply bg-gradient-to-r from-black via-[rgb(148,148,148)] to-[rgb(24,24,24)];
+    /* linear-gradient(275deg, black, rgb(111, 111, 111), rgb(148, 148, 148), rgb(24, 24, 24)); */
+  }
 }
