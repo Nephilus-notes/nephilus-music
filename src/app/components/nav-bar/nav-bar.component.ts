@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class NavBarComponent {
 
   buttonText:string = "v"
-isMenuOpen:boolean = true;
+isMenuOpen:boolean = false;
 
 
 toggleMenu(): void {
