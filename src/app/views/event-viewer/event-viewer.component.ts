@@ -21,6 +21,12 @@ export class EventViewerComponent {
     this.apiService.getAllEvents().subscribe((events) => {
       this.show_list = events;
       console.log(this.show_list)
+
+      for (let show of this.show_list) {
+        show.start_date = new Date(show.start_date)
+        show.end_date = new Date(show.end_date)
+        
+      }
     });
 
     // let full_list = [...this.apiService.getAllEvents()]

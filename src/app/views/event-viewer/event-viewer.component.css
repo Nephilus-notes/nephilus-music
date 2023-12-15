@@ -1,3 +1,20 @@
 .relative {
 background-image: URL("/assets/img/Enchanted Evening.jpg");    
 }
+
+.card {
+    margin-inline: auto;
+    max-width: 60rem;
+    margin-top: 2rem;
+}
+
+
+.event_header {
+    font-size: 3rem;
+}
+
+.event_thumbnail {
+    display: inline-block;
+    max-width: 5rem;
+    max-height: 5rem;
+}
