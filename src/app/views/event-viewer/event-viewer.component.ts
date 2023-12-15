@@ -12,23 +12,28 @@ export class EventViewerComponent {
 
   constructor( private apiService: ApiService) {}
 
-  show_list: LiveEvent[] = [];
+  show_list: Array<LiveEvent> = [];
   showControl: number = 1;
 
   
   public getAllEvents(): void {
+    console.warn('getting all events')
+    this.apiService.getAllEvents().subscribe((events) => {
+      this.show_list = events;
+      console.log(this.show_list)
+    });
 
-    let full_list = [...this.apiService.getAllEvents()]
-    for (let show of full_list) {
-      let today = new Date()
-      console.log(show.start_date, today)
-      if (show.start_date > today) {
-        this.show_list.push(show)
-      }
-      else {
-        console.log('show has not happened yet')
-      }
-    }
+    // let full_list = [...this.apiService.getAllEvents()]
+    // for (let show of full_list) {
+    //   let today = new Date()
+    //   console.log(show.start_date, today)
+    //   if (show.start_date > today) {
+    //     this.show_list.push(show)
+    //   }
+    //   else {
+    //     console.log('show has not happened yet')
+    //   }
+    // }
     }
 
 

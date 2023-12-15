@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+import { environment } from 'src/environments/environment';
 
 import { LiveEvent } from '../models/liveEvent';
 import { Setlist } from '../models/setlist';
@@ -10,7 +13,7 @@ import { Patron } from '../models/patron';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor() {}
+  constructor(private http:HttpClient) {}
   events: LiveEvent[] = [
     {
       id: 1,
@@ -81,13 +84,15 @@ export class ApiService {
 
 
 
-  public getAllEvents(): LiveEvent[] {
+  public getAllEvents(): Observable<Array<LiveEvent>> {
 
-    /*
-    Add a step to change the date to human readable
-    */
-    return this.events
+   let url = `${environment.BASE_URL}${environment.SHOW_EXT}${environment.URL_SUFFIX}`
+   console.log(url + ' is the url')
+   const events = this.http.get<Array<LiveEvent>>(url)
+
+   return events
   }
+  
   public getOneEvent(id: number): LiveEvent {
     // console.log(id)
     // console.log(this.events)

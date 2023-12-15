@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { EventViewerComponent } from './views/event-viewer/event-viewer.component';
 import { PageTemplateComponent } from './views/page-template/page-template.component';
@@ -62,7 +63,9 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
+    HttpClientModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

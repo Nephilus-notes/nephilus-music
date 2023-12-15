@@ -22,7 +22,7 @@ export class AdminViewComponent {
   setListControl: number = 4;
 
   public getAllEvents(): void {
-  this.show_list = this.apiService.getAllEvents()
+  // this.show_list = this.apiService.getAllEvents()
   // console.warn(this.event_list)
   }
 
