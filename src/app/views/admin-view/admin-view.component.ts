@@ -8,10 +8,10 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-admin-view',
   templateUrl: './admin-view.component.html',
-  styleUrls: ['./admin-view.component.css']
+  styleUrls: ['./admin-view.component.css'],
 })
 export class AdminViewComponent {
-  constructor( private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {}
   show_list!: LiveEvent[];
   song_list!: Song[];
   set_list!: Setlist[];
@@ -21,28 +21,56 @@ export class AdminViewComponent {
   patronControl: number = 3;
   setListControl: number = 4;
 
+  public populateEvents(): void {
+    if (this.apiService.events.length > 0) {
+      this.show_list = this.apiService.events;
+    } else {
+      this.getAllEvents();
+    }
+  }
   public getAllEvents(): void {
-  // this.show_list = this.apiService.getAllEvents()
-  // console.warn(this.event_list)
+    this.apiService.getAllEvents().subscribe((events) => {
+      this.show_list = events;
+      console.log(this.show_list);
+
+      for (let show of this.show_list) {
+        show.start_date = new Date(show.start_date);
+        show.end_date = new Date(show.end_date);
+      }
+      this.apiService.sortEventsByDate(this.show_list);
+      this.apiService.cacheEvents(this.show_list);
+    });
+  }
+
+  public populateSongs(): void {
+    if (this.apiService.songs.length > 0) {
+      this.song_list = this.apiService.songs;
+    } else {
+      this.getAllSongs();
+    }
   }
 
   public getAllSongs(): void {
-    this.song_list = this.apiService.getAllSongs()
+    this.apiService.getAllSongs().subscribe((songs) => {
+      this.song_list = songs;
+      console.log(this.song_list);
+      this.apiService.cacheSongs(this.song_list);
+    });
   }
 
+
   public getAllSetlists(): void {
-    this.set_list = this.apiService.getAllSetlists()
+    this.set_list = this.apiService.getAllSetlists();
   }
 
   public getAllPatrons(): void {
     // this.patron_list = this.apiService.getAllPatrons()
   }
 
-
   ngOnInit(): void {
-    this.getAllEvents()
-    this.getAllSongs()
-    this.getAllSetlists()
-    this.getAllPatrons()
+    this.populateEvents();
+    this.populateSongs();
+    this.getAllSetlists();
+    this.getAllPatrons();
   }
 }

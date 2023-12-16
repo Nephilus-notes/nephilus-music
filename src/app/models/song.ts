@@ -3,17 +3,20 @@ export interface Song {
     title: string;
     artist: string;
     album?: string;
-    year?: string;
     genre?: string;
+    year?: string;
     audio_url?: string;
     image_url?: string;
     times_requested: number;
-    created_at: Date;
-    updated_at: Date;
-    deleted_at: Date;
-    deleted: boolean;
     lyrics?: string;
     tab?: string;
     video_url?: string;
     duration?: number;
+    deleted: boolean;
+    sets?: number; // setlist ids?
+    requesting_patrons?: string; // patron Name?
+    known: boolean;
+    created_at: Date;
+    updated_at: Date;
+    deleted_at: Date;
 }

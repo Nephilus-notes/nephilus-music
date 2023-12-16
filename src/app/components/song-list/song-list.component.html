@@ -1,6 +1,6 @@
 <h2 class="title">Songs</h2>
 <div class="list">
-    <div *ngFor="let song of song_list; index as i;" class="card">
+    <div *ngFor="let song of song_list; index as i;" class="">
 
         <a class="header" routerLink="/" routerLinkActive="active">
             <img class="thumbnail" *ngIf="song.image_url" src="{{song.image_url}}">{{song.title}}</a>

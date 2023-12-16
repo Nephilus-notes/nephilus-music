@@ -14,7 +14,7 @@ export class RequestFormComponent {
   upcoming_events!: LiveEvent[];
 
   requestForm = this.formBuilder.group({
-    firstName: ['', Validators.required],
+    firstName: [''],
     songTitle: ['', Validators.required],
     songArtist: ['']
   });

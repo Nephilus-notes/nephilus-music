@@ -16,6 +16,7 @@ import { PatronDTO } from '../models/patronDTO';
 export class ApiService {
   constructor(private http:HttpClient) {}
   events: Array<LiveEvent> = [];
+  songs: Array<Song> = [];
 
 // event functions
   public getAllEvents(): Observable<Array<LiveEvent>> {
@@ -46,6 +47,12 @@ export class ApiService {
       }
     }
     return this.events[0];
+  }
+
+  public sortEventsByDate(show_list:Array<LiveEvent>): void {
+    show_list.sort((a, b) => {
+      return a.start_date.getTime() - b.start_date.getTime();
+    });
   }
 
 // setlist functions
@@ -106,51 +113,18 @@ export class ApiService {
 
 // song functions
 
-  public getAllSongs(): Song[] {
-    return [
-      {
-        id: 1,
-        title: 'As Hope and Promise Fade test',
-        artist: 'Chris Cornell test',
-        album: 'Test Album',
-        year: "good question",
-        genre: 'Test Genre',
-        duration: 180,
-        created_at: new Date(),
-        updated_at: new Date(),
-        deleted_at: new Date(),
-        deleted: false,
-        times_requested: 4,
-      },
-      {
-        id: 2,
-        title: 'Test Song 2',
-        artist: 'Test Artist 2',
-        album: 'Test Album 2',
-        genre: 'Test Genre 2',
-        duration: 180,
-        created_at: new Date(),
-        updated_at: new Date(),
-        deleted_at: new Date(),
-        deleted: false,
-        times_requested: 0,
-      },
-      {
-        id: 3,
-        title: 'Wicked Game',
-        artist: 'Chris Isaak',
-        created_at: new Date(),
-        updated_at: new Date(),
-        deleted_at: new Date(),
-        deleted: false,
-        times_requested: 10,
-      },
-    ];
+  public getAllSongs(): Observable<Array<Song>> {
+    let url = `${environment.BASE_URL}${environment.SONG_EXT}${environment.URL_SUFFIX}`
+    const songs = this.http.get<Array<Song>>(url)
+    return songs
+  }
+
+  public cacheSongs(songs: Array<Song>): void {
+    this.songs = songs
   }
 
   public getOneSong(id: number): Song {
-    switch (id) {
-      case 1: 
+
       return{
       id: 1,
       title: 'As Hope and Promise Fade test',
@@ -163,46 +137,20 @@ export class ApiService {
       updated_at: new Date(),
       deleted_at: new Date(),
       deleted: false,
-      times_requested: 4 };
+      times_requested: 4,
+      known : true,
+     };
 
-      case 2:
-        return {
-          id: 2,
-          title: 'Test Song 2',
-          artist: 'Test Artist 2',
-          album: 'Test Album 2',
-          genre: 'Test Genre 2',
-          duration: 180,
-          created_at: new Date(),
-          updated_at: new Date(),
-          deleted_at: new Date(),
-          deleted: false,
-          times_requested: 0,
-        };
-      case 3:
-        return  {
-          id: 3,
-          title: 'Wicked Game',
-          artist: 'Chris Isaak',
-          created_at: new Date(),
-          updated_at: new Date(),
-          deleted_at: new Date(),
-          deleted: false,
-          times_requested: 10,
-        }
+  }
 
-      default: 
-      return  {
-        id: 3,
-        title: 'Wicked Game',
-        artist: 'Chris Isaak',
-        created_at: new Date(),
-        updated_at: new Date(),
-        deleted_at: new Date(),
-        deleted: false,
-        times_requested: 10,
+  public postSong(song: Song): void {
+    let url = `${environment.BASE_URL}${environment.SONG_EXT}`
+    // console.log(url + ' is the url')
+    console.log(song)
+  this.http.post<Song>(url, song).subscribe((response) => {
+        console.log(response)
       }
-    }
+      )
   }
 
 // patron functions
