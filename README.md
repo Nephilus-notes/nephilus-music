@@ -6,11 +6,9 @@ Song-List: figure out pagination
 Song/Event Lists: merge into a single view instead of component so they can take up half the screen
 Set-List-List: Make a setlist DTO that takes the name and ID of the event it was played at.
 
-
-1. adjust colors of button fades for readability
-2. white line below footer
-3. mobile bio needs padding on the left
-4. mobile index bg needs to expand
+1. refresh subsscribe page on success or navigate away.
+2. add an auto mailer for events
+3. 
 
 
 
