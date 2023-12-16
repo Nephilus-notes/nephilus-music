@@ -33,6 +33,10 @@ export class SubscribeFormComponent {
       name: String(this.subscribeForm.value.firstName + ' ' + this.subscribeForm.value.lastName),
       email: String(this.subscribeForm.value.emailAddress),
       is_admin: false,
+      is_subscribed: true,
+      one_time_donation: 0,
+      recurring_donation: 0,
+      times_at_show: 0,
     };
 
     this.apiService.postPatron(newPatron);

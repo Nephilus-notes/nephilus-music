@@ -14,7 +14,7 @@ export interface Patron {
     updated_at: Date;
     deleted_at: Date;
     deleted: boolean;
-    one_time_donations: number;
-    recurring_donations: number;
-    events_attended: number;
+    one_time_donation: number;
+    recurring_donation: number;
+    times_at_show: number;
 }

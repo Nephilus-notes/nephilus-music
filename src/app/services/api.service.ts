@@ -216,9 +216,7 @@ export class ApiService {
   }
 
   public getOnePatron(id: number): Patron {
-  switch (id) {
     
-    case 1:
       return {
         id: 1,
         first_name: 'Test',
@@ -229,42 +227,11 @@ export class ApiService {
         updated_at: new Date(),
         deleted_at: new Date(),
         deleted: false,
-        one_time_donations: 0,
-        recurring_donations: 0,
-        events_attended: 0,
+        one_time_donation: 0,
+        recurring_donation: 0,
+        times_at_show: 0,
       }
-      case 2:
-        return {
-          id: 2,
-          first_name: 'Test',
-          last_name: 'Admin',
-          email: '',
-          is_admin: true,
-          created_at: new Date(),
-          updated_at: new Date(),
-          deleted_at: new Date(),
-          deleted: false,
-          one_time_donations: 0,
-          recurring_donations: 0,
-          events_attended: 0,
-        }
-        default : {
-          return {
-            id: 1,
-            first_name: 'Test',
-            last_name: 'Patron',
-            email: '',
-            is_admin: false,
-            created_at: new Date(),
-            updated_at: new Date(),
-            deleted_at: new Date(),
-            deleted: false,
-            one_time_donations: 0,
-            recurring_donations: 0,
-            events_attended: 0,
-          }
-      }
-      }
+      
   }
 
   public postPatron(patron: PatronDTO): void {
