@@ -16,5 +16,5 @@ export interface SongDTO {
     deleted?: boolean,
     sets?: number, // setlist ids
     requesting_patrons?: string, // patron Name
-    known: boolean,
+    known?: boolean,
 }

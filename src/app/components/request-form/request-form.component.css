@@ -9,6 +9,7 @@ input {
 
 form {
     @apply mt-20;
+
 }
 
 .bg {
@@ -18,4 +19,8 @@ form {
 
 .header {
     @apply mt-40;
+}
+
+input {
+    @apply w-1/2 text-black p-1;
 }

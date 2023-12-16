@@ -9,6 +9,7 @@ import { Setlist } from '../models/setlist';
 import { Song } from '../models/song';
 import { Patron } from '../models/patron';
 import { PatronDTO } from '../models/patronDTO';
+import { SongDTO } from '../models/songDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -143,8 +144,8 @@ export class ApiService {
 
   }
 
-  public postSong(song: Song): void {
-    let url = `${environment.BASE_URL}${environment.SONG_EXT}`
+  public postSong(song: SongDTO): void {
+    let url = `${environment.BASE_URL}${environment.REQUEST_EXT}`
     // console.log(url + ' is the url')
     console.log(song)
   this.http.post<Song>(url, song).subscribe((response) => {
