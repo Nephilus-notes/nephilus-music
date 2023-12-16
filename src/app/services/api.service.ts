@@ -30,10 +30,29 @@ export class ApiService {
     this.events = events
   }
   
-  public getOneEvent(id: number): LiveEvent {
-    // console.log(id)
-    // console.log(this.events)
-    return this.events[id]
+  public getOneEventFromAPI(id: number): Observable<LiveEvent> {
+    let url = `${environment.BASE_URL}${environment.SHOW_EXT}${id}${environment.URL_SUFFIX}`
+    console.log(url + ' is the url')
+    const event = this.http.get<LiveEvent>(url)
+
+    return event
+  }
+
+  public getOneEventFromCache(id: number): LiveEvent {
+    for (let event of this.events) {
+      if (event.id === id) {
+        return event;
+      }
+    }
+    return this.events[0];
+  }
+
+  public callOneEvent(id: number): Observable<LiveEvent> {
+    let url = `${environment.BASE_URL}${environment.SHOW_EXT}${id}${environment.URL_SUFFIX}`
+    console.log(url + ' is the url')
+    const event = this.http.get<LiveEvent>(url)
+
+    return event
   }
 
   public getAllSetlists(): Setlist[] {

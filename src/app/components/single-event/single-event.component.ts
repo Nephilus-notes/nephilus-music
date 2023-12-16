@@ -6,7 +6,7 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-single-event',
   templateUrl: './single-event.component.html',
-  styleUrls: ['./single-event.component.css']
+  styleUrls: ['./single-event.component.css'],
 })
 export class SingleEventComponent {
   id!: number;
@@ -23,7 +23,7 @@ export class SingleEventComponent {
     'September',
     'October',
     'November',
-    'December'
+    'December',
   ];
 
   weeks: string[] = [
@@ -33,22 +33,33 @@ export class SingleEventComponent {
     'Wednesday',
     'Thursday',
     'Friday',
-    'Saturday'
+    'Saturday',
   ];
-  
-    constructor(private route: ActivatedRoute, private apiService: ApiService) { }
-  
-    public getEvent(): void {
-      this.show = this.apiService.getOneEvent(this.id)
+
+  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
+
+  public populateEvents(): void {
+    if (this.apiService.events.length > 0) {
+      this.show = this.apiService.getOneEventFromCache(this.id);
+      console.log('getting events from cache');
     }
-  
-    ngOnInit(): void {
-      let id = this.route.snapshot.paramMap.get('id');
-      if (id) {
-        
-        this.id = +id;
-      }
-      // console.log(this.id)
-      this.getEvent()
+    if (this.show.id !== this.id) {
+      this.apiService.getOneEventFromAPI(this.id).subscribe((event) => {
+        this.show = event;
+      });
     }
+  }
+
+  // public getEvent(): void {
+  //   this.show = this.apiService.getOneEvent(this.id)
+  // }
+
+  ngOnInit(): void {
+    let id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.id = +id;
+    }
+    // console.log(this.id)
+    this.populateEvents();
+  }
 }

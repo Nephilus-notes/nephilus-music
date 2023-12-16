@@ -18,3 +18,7 @@ background-image: URL("/assets/img/Enchanted Evening.jpg");
     max-width: 5rem;
     max-height: 5rem;
 }
+
+.venue_link {
+    text-decoration: underline;
+}

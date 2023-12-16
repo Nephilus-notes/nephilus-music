@@ -6,7 +6,7 @@ barefoot, playing his original songs.">
     <!-- <div class="h-60"></div> -->
 <!-- <app-card *ngFor="let show of show_list" [show]="show" [control]="showControl" class="p-3 mt-20"></app-card>  -->
 <div *ngFor="let show of show_list" class="card">
-    <a class="event_header" routerLink="/event/{{show.id -1}}" routerLinkActive="active">
+    <a class="event_header" routerLink="/event/{{show.id}}" routerLinkActive="active">
         <p class="event_header">
             
             <img class="event_thumbnail mr-4 mb-2" *ngIf="show.image_url"
@@ -25,7 +25,7 @@ barefoot, playing his original songs.">
     <ng-template #justName>
         <p>{{show.venue_name}}</p>
     </ng-template>
-    <p> Website: <a *ngIf="show.venue_url" target="blank" href="https://{{show.venue_url}}"> {{show.venue_url}} Click here</a></p>
+    <p> Website: <a *ngIf="show.venue_url" target="blank" href="https://{{show.venue_url}}" class="venue_link">Click here</a></p>
     
     <p>Phone: {{show.venue_phone}} </p>
     </div>
