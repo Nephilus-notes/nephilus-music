@@ -8,7 +8,7 @@ describe('SubscribeFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SubscribeFormComponent]
+      // declarations: [SubscribeFormComponent]
     });
     fixture = TestBed.createComponent(SubscribeFormComponent);
     component = fixture.componentInstance;

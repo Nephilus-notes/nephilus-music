@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BioViewerComponent } from './bio-viewer.component';
+import { BioDisplayComponent } from 'src/app/components/bio-display/bio-display.component';
 
 describe('BioViewerComponent', () => {
   let component: BioViewerComponent;
@@ -8,7 +9,7 @@ describe('BioViewerComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BioViewerComponent]
+      declarations: [BioViewerComponent, BioDisplayComponent]
     });
     fixture = TestBed.createComponent(BioViewerComponent);
     component = fixture.componentInstance;
