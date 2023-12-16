@@ -8,7 +8,8 @@ Set-List-List: Make a setlist DTO that takes the name and ID of the event it was
 
 1. refresh subsscribe page on success or navigate away.
 2. add an auto mailer for events
-3. 
+3. testing activated routes
+4. testing components that use api service (that uses a service for http requests/pipelines)
 
 
 
