@@ -8,6 +8,7 @@ import { LiveEvent } from '../models/liveEvent';
 import { Setlist } from '../models/setlist';
 import { Song } from '../models/song';
 import { Patron } from '../models/patron';
+import { PatronDTO } from '../models/patronDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -266,25 +267,21 @@ export class ApiService {
       }
   }
 
-  public postPatron(patron: Patron): void {
+  public postPatron(patron: PatronDTO): void {
     let url = `${environment.BASE_URL}${environment.SUBSCRIBE_EXT}`
-    console.log(url + ' is the url')
+    // console.log(url + ' is the url')
     console.log(patron)
-    this.http.post<Patron>(url, patron)
-  }
-
-  public getNewPatronId(): number {
-    let allPatrons!: Array<Patron>;
-    this.getAllPatrons().subscribe((patrons) => {
-      allPatrons = patrons
-    })
-
-    let id = 0
-    for (let patron of allPatrons) {
-      if (patron.id > id) {
-        id = patron.id
-      }
+ this.http.post<Patron>(url, patron).subscribe((response) => {
+      console.log(response)
     }
-    return id + 1
-  }
+    )  }
+
+  // public getNewPatronId(): number {
+  //   let id = 0
+  //   this.getAllPatrons().subscribe((patrons) => {
+  //     // console.log(patrons.length)
+  //     id = patrons.length + 1
+  //   })
+  //   return id
+  // }
 }
