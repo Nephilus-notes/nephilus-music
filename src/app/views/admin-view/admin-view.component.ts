@@ -35,7 +35,7 @@ export class AdminViewComponent {
   }
 
   public getAllPatrons(): void {
-    this.patron_list = this.apiService.getAllPatrons()
+    // this.patron_list = this.apiService.getAllPatrons()
   }
 
 

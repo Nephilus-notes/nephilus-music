@@ -25,6 +25,6 @@
     <input id="email-address" type="email" name="email" ngModel [email]="true" formControlName="emailAddress">
 
     <p>Complete the form to enable button.</p>
-<button type="submit" [disabled]="!subscribeForm.valid" class="button">Submit</button>
+<button type="submit" [disabled]="!subscribeForm.valid" class="button" (click)="">Submit</button>
   </form>
 </div>

@@ -16,7 +16,7 @@ export class ApiService {
   constructor(private http:HttpClient) {}
   events: Array<LiveEvent> = [];
 
-
+// event functions
   public getAllEvents(): Observable<Array<LiveEvent>> {
 
    let url = `${environment.BASE_URL}${environment.SHOW_EXT}${environment.URL_SUFFIX}`
@@ -47,13 +47,7 @@ export class ApiService {
     return this.events[0];
   }
 
-  public callOneEvent(id: number): Observable<LiveEvent> {
-    let url = `${environment.BASE_URL}${environment.SHOW_EXT}${id}${environment.URL_SUFFIX}`
-    console.log(url + ' is the url')
-    const event = this.http.get<LiveEvent>(url)
-
-    return event
-  }
+// setlist functions
 
   public getAllSetlists(): Setlist[] {
     return [
@@ -108,6 +102,8 @@ export class ApiService {
       }
     }
   }
+
+// song functions
 
   public getAllSongs(): Song[] {
     return [
@@ -208,37 +204,14 @@ export class ApiService {
     }
   }
 
-  public getAllPatrons(): Patron[] {
-    return [
-      {
-        id: 1,
-        first_name: 'Test',
-        last_name: 'Patron',
-        email: '',
-        is_admin: false,
-        created_at: new Date(),
-        updated_at: new Date(),
-        deleted_at: new Date(),
-        deleted: false,
-        one_time_donations: 0,
-        recurring_donations: 0,
-        events_attended: 0,
-      },
-      {
-        id: 2,
-        first_name: 'Test',
-        last_name: 'Admin',
-        email: '',
-        is_admin: true,
-        created_at: new Date(),
-        updated_at: new Date(),
-        deleted_at: new Date(),
-        deleted: false,
-        one_time_donations: 0,
-        recurring_donations: 0,
-        events_attended: 0,
-      },
-    ];
+// patron functions
+
+  public getAllPatrons(): Observable<Array<Patron>> {
+    let url = `${environment.BASE_URL}${environment.PATRON_EXT}${environment.URL_SUFFIX}`
+    console.log(url + ' is the url')
+    const patrons = this.http.get<Array<Patron>>(url)
+
+    return patrons
   }
 
   public getOnePatron(id: number): Patron {
@@ -291,5 +264,27 @@ export class ApiService {
           }
       }
       }
+  }
+
+  public postPatron(patron: Patron): void {
+    let url = `${environment.BASE_URL}${environment.SUBSCRIBE_EXT}`
+    console.log(url + ' is the url')
+    console.log(patron)
+    this.http.post<Patron>(url, patron)
+  }
+
+  public getNewPatronId(): number {
+    let allPatrons!: Array<Patron>;
+    this.getAllPatrons().subscribe((patrons) => {
+      allPatrons = patrons
+    })
+
+    let id = 0
+    for (let patron of allPatrons) {
+      if (patron.id > id) {
+        id = patron.id
+      }
+    }
+    return id + 1
   }
 }
