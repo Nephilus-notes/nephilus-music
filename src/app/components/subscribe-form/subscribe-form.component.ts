@@ -21,6 +21,7 @@ export class SubscribeFormComponent {
   subscribeForm = this.formbuilder.group({
     firstName: ['', Validators.required],
     lastName: [''],
+    phoneNumber: [''],
     emailAddress: ['', Validators.required],
   });
   onSubmit() {
@@ -32,6 +33,7 @@ export class SubscribeFormComponent {
     let newPatron: PatronDTO = {
       name: String(this.subscribeForm.value.firstName + ' ' + this.subscribeForm.value.lastName),
       email: String(this.subscribeForm.value.emailAddress),
+      phone: String(this.subscribeForm.value.phoneNumber),
       is_admin: false,
       is_subscribed: true,
       one_time_donation: 0,
