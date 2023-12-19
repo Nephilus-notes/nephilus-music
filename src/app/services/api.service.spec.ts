@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClient, HttpHandler,  } from '@angular/common/http';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
@@ -9,6 +9,8 @@ import { LiveEvent } from '../models/liveEvent';
 describe('ApiServiceService', () => {
   let service: ApiService;
   let mockHttp: HttpClient;
+  let httpClient: HttpClient;
+  let httpTestController:HttpTestingController;
   let events: Array<LiveEvent> 
 
   beforeEach(() => {
@@ -89,10 +91,27 @@ describe('ApiServiceService', () => {
 
     }).compileComponents();
     service = TestBed.inject(ApiService);
+    // httpClient = TestBed.inject(httpClient);
+    httpTestController = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('tests the HttpClient.get method', () => {
+    const testData: LiveEvent = events[1];
+    httpClient.get<LiveEvent>('http://localhost:3000/events/1').subscribe(data =>
+      expect(data).toEqual(testData)
+    );
+
+    // const req = httpTestController.expectOne('http://localhost:3000/events/1');
+
+    // expect(req.request.method).toEqual('GET');
+
+    // req.flush(testData);
+
+    httpTestController.verify();
   });
 
   it('should return all events in the database', () =>  { 
