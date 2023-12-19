@@ -83,9 +83,12 @@ describe('EventViewerComponent', () => {
     },
   ];
   let show_list: Array<LiveEvent> = [];
+  // const mockEventsList = {
+  //   allEvents: of({})
+  // }
 
   beforeEach(async() => {
-    mockApiService = jasmine.createSpyObj(['getAllEvents']);      
+    mockApiService = jasmine.createSpyObj(['getAllEvents', 'populateEvents']);      
     TestBed.configureTestingModule({
       declarations: [EventViewerComponent],
       imports: [HttpClientTestingModule],
@@ -101,11 +104,18 @@ describe('EventViewerComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EventViewerComponent);
+    TestBed.inject(mockApiService)
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    
+    console.warn(events)
+    // debug
+    mockApiService.populateEvents.and.returnValue(events);
+    // console.warn(events)
+
     expect(component).toBeTruthy();
   });
 
