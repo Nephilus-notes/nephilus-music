@@ -21,7 +21,7 @@ song!: Song;
   }
 
   ngOnInit(): void {
-    let id = this.route.snapshot.paramMap.get('id');
+    let id = this.route.snapshot.params['id'];
     if (id) {
       
       this.id = +id;

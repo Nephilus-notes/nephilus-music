@@ -13,7 +13,6 @@ import { ParamMap } from '@angular/router';
 describe('SingleEventComponent', () => {
   let component: SingleEventComponent;
   let fixture: ComponentFixture<SingleEventComponent>;
-  let id: number;
   let httpClient: HttpClient;
   let apiService: ApiService;
   let router: ActivatedRoute;
