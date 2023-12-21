@@ -43,7 +43,7 @@ export class SingleEventComponent {
   public populateEvents(): void {
     if (this.apiService.events.length > 0) {
       this.show = this.apiService.getOneEventFromCache(this.id);
-      console.log('getting events from cache');
+      // console.log('getting events from cache');
     }
     if (this.show.id !== this.id) {
       this.apiService.getOneEventFromAPI(this.id).subscribe((event) => {
