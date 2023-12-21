@@ -123,7 +123,7 @@ describe('EventViewerComponent', () => {
 
   it('should create', () => {
     
-    console.warn(events)
+    // console.warn(events)
     // debug
     // apiService.populateEvents().and.returnValue(events);
     // console.warn(events)

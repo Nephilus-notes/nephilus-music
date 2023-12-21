@@ -57,8 +57,9 @@ export class SingleEventComponent {
   // }
 
   ngOnInit(): void {
-    let id = this.route.snapshot.paramMap.get('id');
+    let id = this.route.snapshot.params['id'];
     if (id) {
+      // plus sign converts string to number
       this.id = +id;
     }
     // console.log(this.id)
