@@ -17,17 +17,17 @@ export class EventViewerComponent {
   public populateEvents(): void {
     if (this.apiService.events.length > 0) {
       this.show_list = this.apiService.events;
-      console.log('getting events from cache');
+      // console.log('getting events from cache');
     } else {
-      console.log('getting events from api');
+      // console.log('getting events from api');
       this.getAllEvents();
     }
-    console.warn('culling shows');
+    // console.warn('culling shows');
     this.showOnlyUpcoming();
   }
 
   public getAllEvents(): void {
-    console.warn('getting all events');
+    // console.warn('getting all events');
     this.apiService.getAllEvents().subscribe((events) => {
       this.show_list = events;
       console.log(this.show_list);
@@ -37,7 +37,7 @@ export class EventViewerComponent {
         show.end_date = new Date(show.end_date);
       }
       this.apiService.cacheEvents(this.show_list);
-      console.warn('culling shows');
+      // console.warn('culling shows');
       this.showOnlyUpcoming();
     });
   }
@@ -45,16 +45,16 @@ export class EventViewerComponent {
   public showOnlyUpcoming(): void {
     let upcomingShows: Array<LiveEvent> = [];
     let today = new Date();
-    console.log(today);
+    // console.log(today);
     for (let show of this.show_list) {
       if (show.start_date > today) {
-        console.log(show.start_date + ' is after ' + today);
+        // console.log(show.start_date + ' is after ' + today);
         upcomingShows.push(show);
       }
     }
     this.show_list = upcomingShows;
     this.sortEventsByDate();
-    console.log(this.show_list)
+    // console.log(this.show_list)
   }
 
   public sortEventsByDate(): void {
