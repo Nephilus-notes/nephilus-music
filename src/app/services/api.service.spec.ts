@@ -8,6 +8,8 @@ import { LiveEvent } from '../models/liveEvent';
 import { Setlist } from '../models/setlist';
 import { Song } from '../models/song';
 import { Patron } from '../models/patron';
+import { PatronDTO } from '../models/patronDTO';
+import { SongDTO } from '../models/songDTO';
 
 describe('ApiServiceService', () => {
   let service: ApiService;
@@ -299,10 +301,21 @@ describe('ApiServiceService', () => {
     service.cacheSongs(songs);
     expect(service.songs).toEqual(songs);
   });
-  it('should return one song from the database', () =>  {
+  it('should return one song from getOneSong using id property', () =>  {
     let oneSong!: Song;
     spyOn(httpClient, 'get').and.returnValue(of(songs[1]));
     let oneSong$ = service.getOneSong(2);
+    expect(oneSong$).toBeTruthy();
+    expect(httpClient.get).toHaveBeenCalledTimes(1);
+    oneSong$.subscribe((data) => {
+      oneSong = data;
+    });
+    expect(oneSong).toEqual(songs[1]);
+  });
+  it('should return one song from getOneSong using title property', () =>  {
+    let oneSong!: Song;
+    spyOn(httpClient, 'get').and.returnValue(of(songs[1]));
+    let oneSong$ = service.getSongByTitle('Test Song 2');
     expect(oneSong$).toBeTruthy();
     expect(httpClient.get).toHaveBeenCalledTimes(1);
     oneSong$.subscribe((data) => {
@@ -340,16 +353,116 @@ describe('ApiServiceService', () => {
     expect(onePatron).toEqual(patrons[1]);
   });
 
-  it('should make a new event in the database', () =>  {
+  // it('should make a new event in the database', () =>  {
+  //   let newEvent: LiveEvent = {
+
+  //     title: 'Test Event',
+  //     description: 'This is a test event',
+  //     start_date: new Date('10-27-2023 06:00:00'),
+  //     end_date: new Date('10-27-2023 09:00:00'),
+  //     venue_name: 'Cafe Smok N Pi',
+  //     venue_address: '12636 MO-21',
+  //     venue_city: 'DeSoto',
+  //     venue_state: 'MO',
+  //     venue_zip_code: '63020',
+  //     venue_country: 'USA',
+  //     venue_url: 'http://www.cafesmoknpi.com/',
+  //     venue_phone: '(636)337-5577',
+  //     created_at: new Date(),
+  //     updated_at: new Date(),
+  //     deleted_at: new Date(),
+  //     deleted: false,
+  //     event_type: 'Test Type',
+  //     short_description: 'This is my second test event',
+  //   };
+  // });
+  // it('should make a new setlist with an http call and get back a more complete setlist object', () =>  {
+  //   pending();
+  // });
+  it('should make a new song using addSong with an http call and get back a more complete Song object', () =>  {
+    
+    let newSongDTO: SongDTO = {
+      title: 'Test Song',
+      artist: 'Test Artist',
+      album: 'Test Album',
+      year: 'Test Year',
+      genre: 'Test Genre',
+      duration: 180,
+      times_requested: 0,
+      known: true,
+    };
+    let newSong: Song = {
+      id: 4,
+      title: 'Test Song',
+      artist: 'Test Artist',
+      album: 'Test Album',
+      year: 'Test Year',
+      genre: 'Test Genre',
+      duration: 180,
+      created_at: new Date(),
+      updated_at: new Date(),
+      deleted_at: new Date(),
+      deleted: false,
+      times_requested: 0,
+      known: true,
+    };
+    spyOn(httpClient, 'post').and.returnValue(of(newSong));
+    let newSong$ = service.addSong(newSongDTO);
+    expect(newSong$).toBeTruthy();
+    expect(httpClient.post).toHaveBeenCalledTimes(1);
+    newSong$.subscribe((data) => {
+      expect(data).toEqual(newSong);
+    });
+  });
+  it('should make a new patron with an http call and get back a more complete patron object', () =>  {
+  
+    let newPatronDTO: PatronDTO = {
+      name: 'Test Patron',
+      email: '',
+      is_admin: false,
+      deleted: false,
+      one_time_donation: 0,
+      recurring_donation: 0,
+      times_at_show: 0,
+    };
+    let newPatron: Patron = {
+      id: 3,
+      first_name: 'Test',
+      last_name: 'Patron',
+      email: '',
+      is_admin: false,
+      created_at: new Date(),
+      updated_at: new Date(),
+      deleted_at: new Date(),
+      deleted: false,
+      one_time_donation: 0,
+      recurring_donation: 0,
+      times_at_show: 0,
+    };
+
+    spyOn(httpClient, 'post').and.returnValue(of(newPatron));
+    let newPatron$ = service.postPatron(newPatronDTO);
+    expect(newPatron$).toBeTruthy();
+    expect(httpClient.post).toHaveBeenCalledTimes(1);
+    newPatron$.subscribe((data) => {
+      expect(data).toEqual(newPatron);
+    });
+
+    });
+
+  it('should update a song in the database', () =>  {
     pending();
   });
-  it('should make a new setlist in the database', () =>  {
+  it('should update a patron in the database', () =>  {
     pending();
   });
-  it('should make a new song in the database', () =>  {
+  it('should delete a song from the database', () =>  {
     pending();
   });
-  it('should make a new patron in the database', () =>  {
+  it('should delete a patron from the database', () =>  {
+    pending();
+  });
+  it('should check the database for a song by title, then update the song if it is found or create the song if it does not yet exist', () =>  {
     pending();
   });
 

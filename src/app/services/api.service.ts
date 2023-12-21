@@ -15,30 +15,29 @@ import { SongDTO } from '../models/songDTO';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) {}
   events: Array<LiveEvent> = [];
   songs: Array<Song> = [];
 
-// event functions
+  // event functions
   public getAllEvents(): Observable<Array<LiveEvent>> {
+    let url = `${environment.BASE_URL}${environment.SHOW_EXT}${environment.URL_SUFFIX}`;
+    //  console.log(url + ' is the url')
+    const events = this.http.get<Array<LiveEvent>>(url);
 
-   let url = `${environment.BASE_URL}${environment.SHOW_EXT}${environment.URL_SUFFIX}`
-  //  console.log(url + ' is the url')
-   const events = this.http.get<Array<LiveEvent>>(url)
-
-   return events
+    return events;
   }
 
   public cacheEvents(events: Array<LiveEvent>): void {
-    this.events = events
+    this.events = events;
   }
-  
-  public getOneEventFromAPI(id: number): Observable<LiveEvent> {
-    let url = `${environment.BASE_URL}${environment.SHOW_EXT}${id}${environment.URL_SUFFIX}`
-    console.log(url + ' is the url')
-    const event = this.http.get<LiveEvent>(url)
 
-    return event
+  public getOneEventFromAPI(id: number): Observable<LiveEvent> {
+    let url = `${environment.BASE_URL}${environment.SHOW_EXT}${id}${environment.URL_SUFFIX}`;
+    console.log(url + ' is the url');
+    const event = this.http.get<LiveEvent>(url);
+
+    return event;
   }
 
   public getOneEventFromCache(id: number): LiveEvent {
@@ -50,83 +49,115 @@ export class ApiService {
     return this.events[0];
   }
 
-  public sortEventsByDate(show_list:Array<LiveEvent>): void {
+  public sortEventsByDate(show_list: Array<LiveEvent>): void {
     show_list.sort((a, b) => {
       return a.start_date.getTime() - b.start_date.getTime();
     });
   }
 
-// setlist functions
+  // setlist functions
 
   public getAllSetlists(): Observable<Array<Setlist>> {
-    let url = `${environment.BASE_URL}${environment.SETLIST_EXT}${environment.URL_SUFFIX}`
+    let url = `${environment.BASE_URL}${environment.SETLIST_EXT}${environment.URL_SUFFIX}`;
     // console.log(url + ' is the url')
-    const setlists = this.http.get<Array<Setlist>>(url)
+    const setlists = this.http.get<Array<Setlist>>(url);
 
-    return setlists
+    return setlists;
   }
 
   public getOneSetlist(id: number): Observable<Setlist> {
-    let url = `${environment.BASE_URL}${environment.SETLIST_EXT}${id}${environment.URL_SUFFIX}`
+    let url = `${environment.BASE_URL}${environment.SETLIST_EXT}${id}${environment.URL_SUFFIX}`;
     // console.log(url + ' is the url')
-    const setlist = this.http.get<Setlist>(url)
+    const setlist = this.http.get<Setlist>(url);
 
-    return setlist
+    return setlist;
   }
 
-// song functions
+  // song functions
 
   public getAllSongs(): Observable<Array<Song>> {
-    let url = `${environment.BASE_URL}${environment.SONG_EXT}${environment.URL_SUFFIX}`
-    const songs = this.http.get<Array<Song>>(url)
-    return songs
+    let url = `${environment.BASE_URL}${environment.SONG_EXT}${environment.URL_SUFFIX}`;
+    const songs = this.http.get<Array<Song>>(url);
+    return songs;
   }
 
   public cacheSongs(songs: Array<Song>): void {
-    this.songs = songs
+    this.songs = songs;
   }
 
   public getOneSong(id: number): Observable<Song> {
-    let url = `${environment.BASE_URL}${environment.SONG_EXT}${id}${environment.URL_SUFFIX}`
-    const song = this.http.get<Song>(url)
-    return song
+    let url = `${environment.BASE_URL}${environment.SONG_EXT}${id}${environment.URL_SUFFIX}`;
+    const song = this.http.get<Song>(url);
+    return song;
+  }
+
+  public updateSong(song: Song): void {
+    let url = `${environment.BASE_URL}${environment.SONG_EXT}${song.id}${environment.URL_SUFFIX}`;
+    this.http.put<Song>(url, song).subscribe((response) => {
+      console.log(response);
+    });
+  }
+
+  public getSongByTitle(title: string): Observable<Song>{
+    // check database to see if songs exists using it's title
+    // if it does, return the song
+    // if not, return null
+    let url = `${environment.BASE_URL}${environment.SONG_EXT}${title}${environment.URL_SUFFIX}`;
+    const song = this.http.get<Song>(url);
+    return song;
   }
 
   public postSong(song: SongDTO): void {
-    let url = `${environment.BASE_URL}${environment.REQUEST_EXT}`
-    // console.log(url + ' is the url')
-    console.log(song)
-  this.http.post<Song>(url, song).subscribe((response) => {
-        console.log(response)
+    // check if the song is in the database already
+    // if it is, increment the times requested
+    // if not, add it to the database
+    //
+    this.getSongByTitle(song.title).subscribe((response) => {
+      if (response) {
+        response.times_requested++;
+        this.updateSong(response);
+      } else {
+        this.addSong(song);
       }
-      )
+    });
   }
 
-// patron functions
+  public addSong(song: SongDTO): Observable<Song> {
+    let url = `${environment.BASE_URL}${environment.SONG_EXT}`;
+    // console.log(url + ' is the url')
+    console.log(song);
+    let newSong = this.http.post<Song>(url, song);
+    return newSong;
+  }
+
+  // patron functions
 
   public getAllPatrons(): Observable<Array<Patron>> {
-    let url = `${environment.BASE_URL}${environment.PATRON_EXT}${environment.URL_SUFFIX}`
-    console.log(url + ' is the url')
-    const patrons = this.http.get<Array<Patron>>(url)
+    let url = `${environment.BASE_URL}${environment.PATRON_EXT}${environment.URL_SUFFIX}`;
+    console.log(url + ' is the url');
+    const patrons = this.http.get<Array<Patron>>(url);
 
-    return patrons
+    return patrons;
   }
 
   public getOnePatron(id: number): Observable<Patron> {
-    let url = `${environment.BASE_URL}${environment.PATRON_EXT}${id}${environment.URL_SUFFIX}`
-    const patron = this.http.get<Patron>(url)
+    let url = `${environment.BASE_URL}${environment.PATRON_EXT}${id}${environment.URL_SUFFIX}`;
+    const patron = this.http.get<Patron>(url);
 
-    return patron
+    return patron;
   }
 
-  public postPatron(patron: PatronDTO): void {
-    let url = `${environment.BASE_URL}${environment.SUBSCRIBE_EXT}`
+  public postPatron(patron: PatronDTO): Observable<any> {
+    // let newPatron!: Patron;
+    let url = `${environment.BASE_URL}${environment.SUBSCRIBE_EXT}`;
     // console.log(url + ' is the url')
-    console.log(patron)
- this.http.post<Patron>(url, patron).subscribe((response) => {
-      console.log(response)
-    }
-    )  }
+    console.log(patron);
+    let newPatron = this.http.post<Patron>(url, patron);
+    newPatron.subscribe((response) => {
+      console.log(response);
+    });
+    return newPatron;
+  }
 
   // public getNewPatronId(): number {
   //   let id = 0
