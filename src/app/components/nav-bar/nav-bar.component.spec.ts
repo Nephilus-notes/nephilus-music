@@ -20,4 +20,19 @@ describe('NavBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle the menu', () => {
+    component.toggleMenu();
+    expect(component.isMenuOpen).toBeTrue();
+    expect(component.buttonText).toEqual("^");
+    component.toggleMenu();
+    expect(component.isMenuOpen).toBeFalse();
+    expect(component.buttonText).toEqual("v");
+  })
+
+  it('should close the menu', () => {
+    component.closeMenu();
+    expect(component.isMenuOpen).toBeFalse();
+    expect(component.buttonText).toEqual("v");
+  })
 });

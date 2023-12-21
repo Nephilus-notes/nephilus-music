@@ -19,7 +19,6 @@ toggleMenu(): void {
   } else {
     this.buttonText = "^"
   }
-
 }
 
 public closeMenu(): void {
