@@ -5,8 +5,8 @@ barefoot, playing his original songs.">
     <h1 class="text-5xl text-center  my-20">Events</h1>
     <!-- <div class="h-60"></div> -->
 <!-- <app-card *ngFor="let show of show_list|sortByDate|upcoming" [show]="show" [control]="showControl" class="p-3 mt-20"></app-card>  -->
-<div *ngFor="let show of show_list|sortByDateImpure|upcomingImpure" class="card">
-    <!-- |sortByDate|upcoming -->
+<div *ngFor="let show of show_list" class="card">
+    <!-- |sortByDateImpure|upcomingImpure -->
     <a class="event_header" routerLink="/event/{{show.id}}" routerLinkActive="active">
         <p class="event_header">
             

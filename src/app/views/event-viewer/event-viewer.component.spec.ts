@@ -1,18 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { EventViewerComponent } from './event-viewer.component';
-import { ApiService } from 'src/app/services/api.service';
-import { Observable } from 'rxjs';
-
-import { LiveEvent } from 'src/app/models/liveEvent';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Observable, of } from 'rxjs';
+
+import { ApiService } from 'src/app/services/api.service';
+import { EventViewerComponent } from './event-viewer.component';
+import { UpcomingPipe } from 'src/app/pipes/upcoming.pipe';
+import { SortByDatePipe } from 'src/app/pipes/sort-by-date.pipe';
+import { LiveEvent } from 'src/app/models/liveEvent';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('EventViewerComponent', () => {
   let component: EventViewerComponent;
   let fixture: ComponentFixture<EventViewerComponent>;
-  let mockApiService: any;
+  let apiService: ApiService;
   let events: Array<LiveEvent> ;
   let show_list: Array<LiveEvent> = [];
+  let httpClient: HttpClient;
   // const mockEventsList = {
   //   allEvents: of({})
   // }
@@ -89,17 +94,21 @@ describe('EventViewerComponent', () => {
         image_url: '/assets/img/cafe_smok_n_pi.jfif',
       },
     ];
-    mockApiService = jasmine.createSpyObj(['getAllEvents', 'cacheEvents']);      
+    // mockApiService = jasmine.createSpyObj(['getAllEvents', 'cacheEvents']);      
     TestBed.configureTestingModule({
       declarations: [EventViewerComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
+        UpcomingPipe,
+        SortByDatePipe,
         {
-          provide: ApiService,
-          useValue: mockApiService,
+          provide: HttpClientTestingModule,
+          useValue: apiService,
         },
       ],
     }).compileComponents();
+    apiService = TestBed.inject(ApiService);
+    apiService.events = events;
    
   });
 
@@ -107,22 +116,25 @@ describe('EventViewerComponent', () => {
     fixture = TestBed.createComponent(EventViewerComponent);
     // TestBed.inject(mockApiService)
     component = fixture.componentInstance;
+    // spyOn(httpClient, 'get').and.returnValue();
+    // spyOn(httpClient, 'get').and.returnValue(of(events));
+
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
+  it('should create', () => {
     
-  //   console.warn(events)
-  //   // debug
-  //   mockApiService.populateEvents.and.returnValue(events);
-  //   // console.warn(events)
+    console.warn(events)
+    // debug
+    // apiService.populateEvents().and.returnValue(events);
+    // console.warn(events)
 
-  //   expect(component).toBeTruthy();
-  // });
+    expect(component).toBeTruthy();
+  });
 
   it('#getAllEvents should return multiple events (not async)', (done: DoneFn) => {
     // console.warn(events)
-    // mockApiService.getAllEvents.and.returnValue(events);
+    // apiService.getAllEvents.and.returnValue(events);
     // done();
     pending();
   });
