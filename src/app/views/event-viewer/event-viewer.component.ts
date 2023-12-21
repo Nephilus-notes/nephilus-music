@@ -3,15 +3,17 @@ import { DatePipe } from '@angular/common';
 
 import { ApiService } from 'src/app/services/api.service';
 import { LiveEvent } from 'src/app/models/liveEvent';
+import { SortByDatePipe } from 'src/app/pipes/sort-by-date.pipe';
+import { UpcomingPipe } from 'src/app/pipes/upcoming.pipe';
 
 @Component({
   selector: 'app-event-viewer',
   templateUrl: './event-viewer.component.html',
   styleUrls: ['./event-viewer.component.css'],
-  providers: [DatePipe],
+  providers: [DatePipe, SortByDatePipe, UpcomingPipe],
 })
 export class EventViewerComponent {
-  constructor(private apiService: ApiService, private datePipe: DatePipe) {}
+  constructor(private apiService: ApiService, private datePipe: DatePipe, private sortByDatePipe: SortByDatePipe, private upcomingPipe: UpcomingPipe) {}
 
   show_list: Array<LiveEvent> = [];
   showControl: number = 1;
@@ -25,7 +27,7 @@ export class EventViewerComponent {
       this.getAllEvents();
     }
     // console.warn('culling shows');
-    this.showOnlyUpcoming();
+    // this.showOnlyUpcoming();
   }
 
   public getAllEvents(): void {
@@ -40,7 +42,7 @@ export class EventViewerComponent {
       }
       this.apiService.cacheEvents(this.show_list);
       // console.warn('culling shows');
-      this.showOnlyUpcoming();
+      // this.showOnlyUpcoming();
     });
   }
 

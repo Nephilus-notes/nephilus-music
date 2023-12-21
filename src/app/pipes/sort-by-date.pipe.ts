@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { LiveEvent } from '../models/liveEvent';
 
 @Pipe({
-  name: 'sortByDate',
+  name: 'sortByDateImpure',
   pure: false
 })
 export class SortByDatePipe implements PipeTransform {

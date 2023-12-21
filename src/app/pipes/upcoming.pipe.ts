@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { LiveEvent } from '../models/liveEvent';
 
 @Pipe({
-  name: 'upcoming'
+  name: 'upcomingImpure',
+  pure: false
 })
 export class UpcomingPipe implements PipeTransform {
 
