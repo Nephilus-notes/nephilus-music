@@ -26,46 +26,25 @@ export class EventViewerComponent {
       // console.log('getting events from api');
       this.getAllEvents();
     }
-    // console.warn('culling shows');
-    // this.showOnlyUpcoming();
+
   }
 
   public getAllEvents(): void {
     // console.warn('getting all events');
     this.apiService.getAllEvents().subscribe((events) => {
       this.show_list = events;
-      console.log(this.show_list);
+      // console.log(this.show_list);
 
       for (let show of this.show_list) {
         show.start_date = new Date(show.start_date);
         show.end_date = new Date(show.end_date);
       }
       this.apiService.cacheEvents(this.show_list);
-      // console.warn('culling shows');
-      // this.showOnlyUpcoming();
+
     });
   }
 
-  public showOnlyUpcoming(): void {
-    let upcomingShows: Array<LiveEvent> = [];
-    let today = new Date();
-    // console.log(today);
-    for (let show of this.show_list) {
-      if (show.start_date > today) {
-        // console.log(show.start_date + ' is after ' + today);
-        upcomingShows.push(show);
-      }
-    }
-    this.show_list = upcomingShows;
-    this.sortEventsByDate();
-    // console.log(this.show_list)
-  }
 
-  public sortEventsByDate(): void {
-    this.show_list.sort((a, b) => {
-      return a.start_date.getTime() - b.start_date.getTime();
-    });
-  }
 
   ngOnInit(): void {
     this.populateEvents();
