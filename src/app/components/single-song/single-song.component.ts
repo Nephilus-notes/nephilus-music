@@ -15,7 +15,9 @@ song!: Song;
   constructor(private route: ActivatedRoute, private apiService: ApiService) { }
 
   public getSong(): void {
-    this.song = this.apiService.getOneSong(this.id)
+    this.apiService.getOneSong(this.id).subscribe((song) => {
+    this.song = song;
+    });
   }
 
   ngOnInit(): void {

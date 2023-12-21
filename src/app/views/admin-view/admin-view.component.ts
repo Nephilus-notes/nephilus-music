@@ -60,7 +60,10 @@ export class AdminViewComponent {
 
 
   public getAllSetlists(): void {
-    this.set_list = this.apiService.getAllSetlists();
+    this.apiService.getAllSetlists().subscribe((setlists) => {
+      this.set_list = setlists;
+      console.log(this.set_list);
+    });
   }
 
   public getAllPatrons(): void {

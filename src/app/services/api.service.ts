@@ -23,7 +23,7 @@ export class ApiService {
   public getAllEvents(): Observable<Array<LiveEvent>> {
 
    let url = `${environment.BASE_URL}${environment.SHOW_EXT}${environment.URL_SUFFIX}`
-   console.log(url + ' is the url')
+  //  console.log(url + ' is the url')
    const events = this.http.get<Array<LiveEvent>>(url)
 
    return events
@@ -58,58 +58,20 @@ export class ApiService {
 
 // setlist functions
 
-  public getAllSetlists(): Setlist[] {
-    return [
-      {
-        id: 1,
-        title: 'December Smok N Pi test Setlist',
-        description: 'This is a test setlist',
-        created_at: new Date(),
-        updated_at: new Date(),
-        deleted_at: new Date(),
-        deleted: false,
-        event_id: 3,
-      },
-      {
-        id: 2,
-        title: 'October Smoke N Pi test Setlist',
-        description: 'This is a second test setlist',
-        created_at: new Date(),
-        updated_at: new Date(),
-        deleted_at: new Date(),
-        deleted: false,
-        event_id: 2,
-      },
-    ];
+  public getAllSetlists(): Observable<Array<Setlist>> {
+    let url = `${environment.BASE_URL}${environment.SETLIST_EXT}${environment.URL_SUFFIX}`
+    // console.log(url + ' is the url')
+    const setlists = this.http.get<Array<Setlist>>(url)
+
+    return setlists
   }
 
-  public getOneSetlist(id: number): Setlist {
-    switch (id) {
-      case 2: {
-        return {
-          id: 2,
-          title: 'October Smoke N Pi test Setlist',
-          description: 'This is a second test setlist',
-          created_at: new Date(),
-          updated_at: new Date(),
-          deleted_at: new Date(),
-          deleted: false,
-          event_id: 2,
-        };
-      }
-      default: {
-        return {
-          id: 1,
-          title: 'December Smok N Pi test Setlist',
-          description: 'This is a test setlist',
-          created_at: new Date(),
-          updated_at: new Date(),
-          deleted_at: new Date(),
-          deleted: false,
-          event_id: 3,
-        };
-      }
-    }
+  public getOneSetlist(id: number): Observable<Setlist> {
+    let url = `${environment.BASE_URL}${environment.SETLIST_EXT}${id}${environment.URL_SUFFIX}`
+    // console.log(url + ' is the url')
+    const setlist = this.http.get<Setlist>(url)
+
+    return setlist
   }
 
 // song functions
@@ -124,24 +86,10 @@ export class ApiService {
     this.songs = songs
   }
 
-  public getOneSong(id: number): Song {
-
-      return{
-      id: 1,
-      title: 'As Hope and Promise Fade test',
-      artist: 'Chris Cornell test',
-      album: 'Test Album',
-      year: "good question",
-      genre: 'Test Genre',
-      duration: 180,
-      created_at: new Date(),
-      updated_at: new Date(),
-      deleted_at: new Date(),
-      deleted: false,
-      times_requested: 4,
-      known : true,
-     };
-
+  public getOneSong(id: number): Observable<Song> {
+    let url = `${environment.BASE_URL}${environment.SONG_EXT}${id}${environment.URL_SUFFIX}`
+    const song = this.http.get<Song>(url)
+    return song
   }
 
   public postSong(song: SongDTO): void {
@@ -164,23 +112,11 @@ export class ApiService {
     return patrons
   }
 
-  public getOnePatron(id: number): Patron {
-    
-      return {
-        id: 1,
-        first_name: 'Test',
-        last_name: 'Patron',
-        email: '',
-        is_admin: false,
-        created_at: new Date(),
-        updated_at: new Date(),
-        deleted_at: new Date(),
-        deleted: false,
-        one_time_donation: 0,
-        recurring_donation: 0,
-        times_at_show: 0,
-      }
-      
+  public getOnePatron(id: number): Observable<Patron> {
+    let url = `${environment.BASE_URL}${environment.PATRON_EXT}${id}${environment.URL_SUFFIX}`
+    const patron = this.http.get<Patron>(url)
+
+    return patron
   }
 
   public postPatron(patron: PatronDTO): void {
