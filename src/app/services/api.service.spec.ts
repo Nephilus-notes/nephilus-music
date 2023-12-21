@@ -11,7 +11,7 @@ import { Patron } from '../models/patron';
 import { PatronDTO } from '../models/patronDTO';
 import { SongDTO } from '../models/songDTO';
 
-describe('ApiServiceService', () => {
+describe('ApiService', () => {
   let service: ApiService;
   let mockHttp: HttpClient;
   let httpClient: HttpClient;
@@ -156,7 +156,7 @@ describe('ApiServiceService', () => {
         deleted_at: new Date(),
         deleted: false,
         times_requested: 10,
-                known : true,
+        known : true,
 
       },
     ];
@@ -199,6 +199,11 @@ describe('ApiServiceService', () => {
     httpClient = TestBed.inject(HttpClient);
     // httpClient = TestBed.inject(httpClient);
     httpTestController = TestBed.inject(HttpTestingController);
+  });
+
+  
+  afterEach(() => {
+    httpTestController.verify();
   });
 
   it('should be created', () => {
@@ -451,7 +456,24 @@ describe('ApiServiceService', () => {
     });
 
   it('should update a song in the database', () =>  {
-    pending();
+    let updatedSong: Song = {
+      id: 3,
+      title: 'Wicked Game',
+      artist: 'Chris Isaak',
+      created_at: new Date(),
+      updated_at: new Date(),
+      deleted_at: new Date(),
+      deleted: false,
+      times_requested: 10,
+      known: true,
+    };
+    spyOn(httpClient, 'put').and.returnValue(of(updatedSong));
+    let updatedSong$ = service.updateSong(updatedSong);
+    expect(updatedSong$).toBeTruthy();
+    expect(httpClient.put).toHaveBeenCalledTimes(1);
+    updatedSong$.subscribe((data) => {
+      expect(data).toEqual(updatedSong);
+    });
   });
   it('should update a patron in the database', () =>  {
     pending();
@@ -462,9 +484,75 @@ describe('ApiServiceService', () => {
   it('should delete a patron from the database', () =>  {
     pending();
   });
-  it('should check the database for a song by title, then update the song if it is found or create the song if it does not yet exist', () =>  {
-    pending();
+  it('should check the database for a song by title, then create the song if it does not yet exist', () =>  {
+    let newSongDTO: SongDTO = {
+      title: 'Test Song',
+      artist: 'Test Artist',
+      album: 'Test Album',
+      year: 'Test Year',
+      genre: 'Test Genre',
+      duration: 180,
+      times_requested: 0,
+      known: true,
+    };
+    let newSong: Song = {
+      id: 4,
+      title: 'Test Song',
+      artist: 'Test Artist',
+      album: 'Test Album',
+      year: 'Test Year',
+      genre: 'Test Genre',
+      duration: 180,
+      created_at: new Date(),
+      updated_at: new Date(),
+      deleted_at: new Date(),
+      deleted: false,
+      times_requested: 0,
+      known: true,
+    };
+    spyOn(httpClient, 'get').and.returnValue(of(null));
+    spyOn(httpClient, 'post').and.returnValue(of(newSong));
+    let newSong$ = service.postSong(newSongDTO);
+
+    expect(newSong$).toBeTruthy();
+    expect(httpClient.post).toHaveBeenCalledTimes(1); 
+    expect(httpClient.get).toHaveBeenCalledTimes(1);
+    if (newSong$) {
+      newSong$.subscribe((data) => {
+      expect(data).toEqual(newSong);
+      });
+    }
   });
+
+  it('should check the database for a song by title, then update the song if it is found', () =>  {
+    let songAfterUpdate: Song = {
+      id: 3,
+      title: 'Wicked Game',
+      artist: 'Chris Isaak',
+      created_at: new Date(),
+      updated_at: new Date(),
+      deleted_at: new Date(),
+      deleted: false,
+      times_requested: 11,
+      known: true,
+    };
+    let songToUpdate: Song = songs[2];
+    spyOn(httpClient, 'get').and.returnValue(of(songToUpdate));
+    spyOn(httpClient, 'put').and.returnValue(of(songAfterUpdate));
+    let updatedSong$ = service.postSong(songToUpdate);
+    expect(updatedSong$).toBeTruthy();
+    expect(httpClient.put).toHaveBeenCalledTimes(1);
+    expect(httpClient.get).toHaveBeenCalledTimes(1);
+    if (updatedSong$) {
+      updatedSong$.subscribe((data) => {
+        expect(data).toEqual(songAfterUpdate);
+      });
+    }
+
+  });
+  // should I make a full cycle of tests for live Song and Patron crud operations? 
+
+
 
 
 });

@@ -91,11 +91,14 @@ export class ApiService {
     return song;
   }
 
-  public updateSong(song: Song): void {
+  public updateSong(song: Song): Observable<Song> {
     let url = `${environment.BASE_URL}${environment.SONG_EXT}${song.id}${environment.URL_SUFFIX}`;
-    this.http.put<Song>(url, song).subscribe((response) => {
+    let updatedSong = this.http.put<Song>(url, song);
+    updatedSong.subscribe((response) => {
       console.log(response);
     });
+    return updatedSong;
+    
   }
 
   public getSongByTitle(title: string): Observable<Song>{
@@ -107,19 +110,27 @@ export class ApiService {
     return song;
   }
 
-  public postSong(song: SongDTO): void {
+  public postSong(song: SongDTO): Observable<Song>|null {
     // check if the song is in the database already
     // if it is, increment the times requested
     // if not, add it to the database
     //
-    this.getSongByTitle(song.title).subscribe((response) => {
+    let flag = true;
+   let potentialSong = this.getSongByTitle(song.title);
+   potentialSong.subscribe((response) => {
       if (response) {
         response.times_requested++;
-        this.updateSong(response);
+        flag = false;
+        return this.updateSong(response);
       } else {
-        this.addSong(song);
+        return null;
       }
     });
+    if (flag) {
+      return this.addSong(song);
+    } else {
+      return null;
+    }
   }
 
   public addSong(song: SongDTO): Observable<Song> {
