@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LiveEvent } from 'src/app/models/liveEvent';
 import { ApiService } from 'src/app/services/api.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-single-event',
   templateUrl: './single-event.component.html',
   styleUrls: ['./single-event.component.css'],
+  providers: [DatePipe],
 })
 export class SingleEventComponent {
   id!: number;
@@ -36,7 +38,7 @@ export class SingleEventComponent {
     'Saturday',
   ];
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private datePipe:DatePipe) {}
 
   public populateEvents(): void {
     if (this.apiService.events.length > 0) {

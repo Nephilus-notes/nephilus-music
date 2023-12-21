@@ -12,7 +12,7 @@
             <!-- {{show.venue_name}}<br> -->
             {{show.venue_address}} {{show.venue_city}}, {{show.venue_state}},
             {{show.venue_zip_code}} </a>
-        <p>{{show.start_date.toLocaleTimeString('en-us')}} - {{show.end_date.toLocaleTimeString('en-us')}},
+        <p>{{show.start_date|date:"shortTime"}} - {{show.end_date|date:"shortTime"}},
             {{weeks[show.start_date.getDay()]}} {{months[show.start_date.getMonth()]}}
             {{show.start_date.getDate()}}</p>
         <p>{{show.description}}</p>

@@ -18,7 +18,7 @@ barefoot, playing his original songs.">
         {{show.venue_address}}, {{show.venue_city}}, {{show.venue_state}}, {{show.venue_zip_code}} </a>
         <!-- </a> -->
      <p class="text-2xl">{{show.start_date.toDateString()}}</p> 
-    <p class="mb-3">{{show.start_date.toLocaleTimeString('en-us')}} - {{show.end_date.toLocaleTimeString('en-us')}}</p> 
+    <p class="mb-3">{{show.start_date|date:"shortTime"}} - {{show.end_date|date:"shortTime"}}</p> 
     <!-- <p class="mb-3">{{show.start_date.toTimeString()}} - {{show.end_date.toLocaleTimeString('en-us')}}</p>  -->
     <p class="mb-2">{{show.description}}</p>
     <!-- <p class="text-2xl">Venue:</p> -->

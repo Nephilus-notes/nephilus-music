@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 import { ApiService } from 'src/app/services/api.service';
 import { LiveEvent } from 'src/app/models/liveEvent';
@@ -7,9 +8,10 @@ import { LiveEvent } from 'src/app/models/liveEvent';
   selector: 'app-event-viewer',
   templateUrl: './event-viewer.component.html',
   styleUrls: ['./event-viewer.component.css'],
+  providers: [DatePipe],
 })
 export class EventViewerComponent {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private datePipe: DatePipe) {}
 
   show_list: Array<LiveEvent> = [];
   showControl: number = 1;
