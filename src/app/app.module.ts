@@ -30,6 +30,9 @@ import { SetListListComponent } from './components/set-list-list/set-list-list.c
 import { CardComponent } from './components/card/card.component';
 import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SortByDatePipe } from './pipes/sort-by-date.pipe';
+import { UpcomingPipe } from './pipes/upcoming.pipe';
+import { KnownPipe } from './pipes/known.pipe';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,9 @@ import { FooterComponent } from './components/footer/footer.component';
     SetListListComponent,
     CardComponent,
     FooterComponent,
+    SortByDatePipe,
+    UpcomingPipe,
+    KnownPipe,
     // SubscribeFormComponent
   ],
   imports: [
