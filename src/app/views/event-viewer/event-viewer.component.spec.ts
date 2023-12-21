@@ -7,7 +7,6 @@ import { EventViewerComponent } from './event-viewer.component';
 import { UpcomingPipe } from 'src/app/pipes/upcoming.pipe';
 import { SortByDatePipe } from 'src/app/pipes/sort-by-date.pipe';
 import { LiveEvent } from 'src/app/models/liveEvent';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 

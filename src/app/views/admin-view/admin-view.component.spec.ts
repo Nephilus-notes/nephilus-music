@@ -6,18 +6,18 @@ import { ApiService } from 'src/app/services/api.service';
 import { CardComponent } from 'src/app/components/card/card.component';
 import { SetListListComponent } from 'src/app/components/set-list-list/set-list-list.component';
 import { PatronListComponent } from 'src/app/components/patron-list/patron-list.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AdminViewComponent', () => {
   let component: AdminViewComponent;
   let fixture: ComponentFixture<AdminViewComponent>;
-  let mockApiService: any;
+  let apiService: ApiService;
 
   beforeEach(() => {    
-    mockApiService = jasmine.createSpyObj(['getAllEvents']);      
     TestBed.configureTestingModule({
-    imports: [ HttpClientTestingModule],
-    providers: [ApiService, {
-      provide: ApiService, useValue: mockApiService }],
+    imports: [ HttpClientTestingModule, RouterTestingModule],
+    providers: [{
+      provide: HttpClientTestingModule, useValue: apiService }],
       declarations: [AdminViewComponent, CardComponent, PatronListComponent, SetListListComponent]
     });
     fixture = TestBed.createComponent(AdminViewComponent);
