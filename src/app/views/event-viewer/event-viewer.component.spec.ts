@@ -95,11 +95,11 @@ describe('EventViewerComponent', () => {
     ];
     // mockApiService = jasmine.createSpyObj(['getAllEvents', 'cacheEvents']);      
     TestBed.configureTestingModule({
-      declarations: [EventViewerComponent],
+      declarations: [EventViewerComponent,UpcomingPipe,
+        SortByDatePipe,],
       imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
-        UpcomingPipe,
-        SortByDatePipe,
+        
         {
           provide: HttpClientTestingModule,
           useValue: apiService,
