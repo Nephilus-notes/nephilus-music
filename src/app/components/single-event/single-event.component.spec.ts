@@ -68,7 +68,7 @@ describe('SingleEventComponent', () => {
     fixture = TestBed.createComponent(SingleEventComponent);
     component = fixture.componentInstance;
     // spyOn(httpClient, 'get').and.returnValue(of({show}));
-    console.warn('trying shit' + show)
+    // console.warn('trying shit' + show)
     spyOn(apiService, 'getOneEventFromAPI').and.returnValue(of(show));
     fixture.detectChanges();
   });
@@ -76,4 +76,8 @@ describe('SingleEventComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  // at least two tests are possible here
+  it('should populate the html with populateEvent by either calling the cached event with the same id or making an api call'), () => {
+    pending();
+  }
 });

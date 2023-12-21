@@ -104,7 +104,7 @@ export class ApiService {
 
   public getOneEventFromAPI(id: number): Observable<LiveEvent> {
     let url = `${environment.BASE_URL}${environment.SHOW_EXT}${id}${environment.URL_SUFFIX}`;
-    console.log(url + ' is the url');
+    // console.log(url + ' is the url');
     const event = this.http.get<LiveEvent>(url);
 
     return event;
@@ -165,7 +165,7 @@ export class ApiService {
     let url = `${environment.BASE_URL}${environment.SONG_EXT}${song.id}${environment.URL_SUFFIX}`;
     let updatedSong = this.http.put<Song>(url, song);
     updatedSong.subscribe((response) => {
-      console.log(response);
+      // console.log(response);
     });
     return updatedSong;
     
@@ -206,7 +206,7 @@ export class ApiService {
   public addSong(song: SongDTO): Observable<Song> {
     let url = `${environment.BASE_URL}${environment.SONG_EXT}`;
     // console.log(url + ' is the url')
-    console.log(song);
+    // console.log(song);
     let newSong = this.http.post<Song>(url, song);
     return newSong;
   }
@@ -215,7 +215,7 @@ export class ApiService {
 
   public getAllPatrons(): Observable<Array<Patron>> {
     let url = `${environment.BASE_URL}${environment.PATRON_EXT}${environment.URL_SUFFIX}`;
-    console.log(url + ' is the url');
+    // console.log(url + ' is the url');
     const patrons = this.http.get<Array<Patron>>(url);
 
     return patrons;
@@ -232,11 +232,11 @@ export class ApiService {
     // let newPatron!: Patron;
     let url = `${environment.BASE_URL}${environment.SUBSCRIBE_EXT}`;
     // console.log(url + ' is the url')
-    console.log(patron);
+    // console.log(patron);
     let newPatron = this.http.post<Patron>(url, patron);
-    newPatron.subscribe((response) => {
-      console.log(response);
-    });
+    // newPatron.subscribe((response) => {
+    //   console.log(response);
+    // });
     return newPatron;
   }
 

@@ -26,4 +26,8 @@ describe('RequestFormComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('submits the form and calls the api service', () => {
+    pending();
+  });
+  
 });

@@ -24,18 +24,5 @@ export class UpcomingPipe implements PipeTransform {
     return value;
   }
 
-  // public showOnlyUpcoming(): void {
-  //   let upcomingShows: Array<LiveEvent> = [];
-  //   let today = new Date();
-  //   // console.log(today);
-  //   for (let show of this.show_list) {
-  //     if (show.start_date > today) {
-  //       // console.log(show.start_date + ' is after ' + today);
-  //       upcomingShows.push(show);
-  //     }
-  //   }
-  //   this.show_list = upcomingShows;
-  //   this.sortEventsByDate();
-    // console.log(this.show_list)
-  // }
+
 }

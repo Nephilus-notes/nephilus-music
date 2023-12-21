@@ -31,7 +31,7 @@ export class AdminViewComponent {
   public getAllEvents(): void {
     this.apiService.getAllEvents().subscribe((events) => {
       this.show_list = events;
-      console.log(this.show_list);
+      // console.log(this.show_list);
 
       for (let show of this.show_list) {
         show.start_date = new Date(show.start_date);
@@ -53,7 +53,7 @@ export class AdminViewComponent {
   public getAllSongs(): void {
     this.apiService.getAllSongs().subscribe((songs) => {
       this.song_list = songs;
-      console.log(this.song_list);
+      // console.log(this.song_list);
       this.apiService.cacheSongs(this.song_list);
     });
   }
@@ -62,7 +62,7 @@ export class AdminViewComponent {
   public getAllSetlists(): void {
     this.apiService.getAllSetlists().subscribe((setlists) => {
       this.set_list = setlists;
-      console.log(this.set_list);
+      // console.log(this.set_list);
     });
   }
 

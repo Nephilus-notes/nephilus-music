@@ -69,6 +69,14 @@ describe('SingleSongComponent', () => {
     pending();
   });
 
+  // tests for the getSong function
+  it('should call the getOneSong function', () => {
+    component.getSong();
+    expect(apiService.getOneSong).toHaveBeenCalled();
+    expect(component.song).toEqual(song);
+    expect(component.song.title).toEqual('test song');
+  });
+
   // it('should not be zero', (done) => {
   //   // paramsSubject.next({ id1: 1, id2: 3});
   //   route.params.subscribe(params => {
