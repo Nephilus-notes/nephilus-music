@@ -131,11 +131,5 @@ describe('EventViewerComponent', () => {
     pending();
   });
 
-  it('sortEventsByDate should sort the events by date', () => {
-    pending();
-  });
 
-  it('showOnlyUpcoming should return only upcoming events', () => {
-    pending();
-  });
 });
