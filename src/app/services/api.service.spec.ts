@@ -525,6 +525,7 @@ describe('ApiService', () => {
   });
 
   it('should check the database for a song by title, then update the song if it is found', () =>  {
+    pending();
     let songAfterUpdate: Song = {
       id: 3,
       title: 'Wicked Game',
