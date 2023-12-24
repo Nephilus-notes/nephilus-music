@@ -18,5 +18,5 @@ export interface Song {
     known: boolean;
     created_at: Date;
     updated_at: Date;
-    deleted_at: Date;
+    deleted_at?: Date;
 }
