@@ -17,6 +17,7 @@ export class EventViewerComponent {
 
   show_list: Array<LiveEvent> = [];
   showControl: number = 1;
+  openMicBoolean: Boolean = true;
 
   public populateEvents(): void {
     if (this.apiService.events.length > 0) {
@@ -42,6 +43,15 @@ export class EventViewerComponent {
       this.apiService.cacheEvents(this.show_list);
 
     });
+  }
+
+  private checkUpcoming() {
+    const today = new Date;
+    for (let show of this.show_list) {
+      if (show.start_date > today) {
+        this.openMicBoolean = false;
+      }
+    }
   }
 
 

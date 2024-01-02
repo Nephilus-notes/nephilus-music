@@ -5,6 +5,13 @@ barefoot, playing his original songs.">
     <h1 class="text-5xl text-center  my-20">Events</h1>
     <!-- <div class="h-60"></div> -->
 <!-- <app-card *ngFor="let show of show_list|sortByDate|upcoming" [show]="show" [control]="showControl" class="p-3 mt-20"></app-card>  -->
+<!-- <p *ngIf="(show_list|sortByDateImpure|upcomingImpure) ? (show_list|sortByDateImpure|upcomingImpure)"></p> -->
+<div class="card" *ngIf="openMicBoolean">
+
+    <p>No upcoming solo shows. </p>
+    <br>
+    <p> Catch me at various open mics including 1860s Saloon Tuesday late, Highway 61 Roadhouse Wednesday 9pm, and the Blue Strawberry Sunday Night.</p>
+</div>
 <div *ngFor="let show of show_list|sortByDateImpure|upcomingImpure" class="card">
     <!-- |sortByDateImpure|upcomingImpure -->
     <a class="event_header" routerLink="/event/{{show.id}}" routerLinkActive="active">
