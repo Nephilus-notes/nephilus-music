@@ -20,17 +20,31 @@ export class EventViewerComponent {
   openMicBoolean: Boolean = false;
 
   public populateEvents(): void {
+    /**
+     * if the events array is empty, get all events from the API
+     * otherwise, use the cached events
+     * 
+     * this is to prevent the API from being called every time the user navigates to the events page
+     */
     if (this.apiService.events.length > 0) {
       this.show_list = this.apiService.events;
-      // console.log('getting events from cache');
     } else {
-      // console.log('getting events from api');
       this.getAllEvents();
     }
    
   }
 
   public getAllEvents(): void {
+    /**
+     *  
+     * subscribe to the API service to get all events
+     * 
+     * convert the start_date and end_date strings to Date objects
+     * 
+     * cache the events
+     * 
+     * if there are no upcoming events, display the open mic message
+     */
     // console.warn('getting all events');
     this.apiService.getAllEvents().subscribe((events) => {
       this.show_list = events;
@@ -42,29 +56,21 @@ export class EventViewerComponent {
       }
       this.apiService.cacheEvents(this.show_list);
 
-      // if (this.show_list.length > 0) {
-      //   this.openMicBoolean = false;
-      // }
-      if (this.upcomingPipe.transform(this.show_list).length > 0) {
-        this.openMicBoolean = false;
-      }
-      else if (this.upcomingPipe.transform(this.show_list).length === 0) {
-        this.openMicBoolean = true;
-      }
-
+      this.openMicCheck();
     });
   }
 
-  // private checkUpcoming() {
-  //   const today = new Date;
-  //   for (let show of this.show_list) {
-  //     if (show.start_date > today) {
-  //       this.openMicBoolean = false;
-  //     }
-  //   }
-  // }
-
-
+  openMicCheck(): void {
+    /**
+     * if there are no upcoming events, display the open mic message
+     */
+    if (this.upcomingPipe.transform(this.show_list).length > 0) {
+      this.openMicBoolean = false;
+    }
+    else if (this.upcomingPipe.transform(this.show_list).length === 0) {
+      this.openMicBoolean = true;
+    }
+  }
 
   ngOnInit(): void {
     this.populateEvents();
