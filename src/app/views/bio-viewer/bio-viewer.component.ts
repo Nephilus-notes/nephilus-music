@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AnalyticsService } from 'src/app/services/analytics.service';
 
 @Component({
   selector: 'app-bio-viewer',
@@ -8,9 +7,6 @@ import { AnalyticsService } from 'src/app/services/analytics.service';
 })
 export class BioViewerComponent {
   
-    constructor(private analyticsService:AnalyticsService) { }
+    constructor() { }
 
-    // ngOnInit(): void {
-    //   this.analyticsService.setCurrentPage();
-    // }
 }

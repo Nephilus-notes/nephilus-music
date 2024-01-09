@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AnalyticsService } from 'src/app/services/analytics.service';
+import { AnalyticsService } from 'src/app/services/routerAnalytics.service';
 
 @Component({
   selector: 'app-footer',
