@@ -7,5 +7,4 @@ export interface pageAnalytics {
     priorPages: Array<string>;
     nextPages: Array<string>;
     uniqueIpAddresses: Array<string>;
-
 }
