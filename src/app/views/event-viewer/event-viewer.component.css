@@ -26,3 +26,7 @@ background-image: URL("/assets/img/Enchanted Evening.jpg");
 p {
     @apply text-center;
 }
+
+.mapLink {
+    @apply text-center block mt-2;
+}

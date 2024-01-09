@@ -17,7 +17,7 @@ export class EventViewerComponent {
 
   show_list: Array<LiveEvent> = [];
   showControl: number = 1;
-  openMicBoolean: Boolean = true;
+  openMicBoolean: Boolean = false;
 
   public populateEvents(): void {
     if (this.apiService.events.length > 0) {
@@ -27,7 +27,7 @@ export class EventViewerComponent {
       // console.log('getting events from api');
       this.getAllEvents();
     }
-
+   
   }
 
   public getAllEvents(): void {
@@ -42,17 +42,27 @@ export class EventViewerComponent {
       }
       this.apiService.cacheEvents(this.show_list);
 
+      // if (this.show_list.length > 0) {
+      //   this.openMicBoolean = false;
+      // }
+      if (this.upcomingPipe.transform(this.show_list).length > 0) {
+        this.openMicBoolean = false;
+      }
+      else if (this.upcomingPipe.transform(this.show_list).length === 0) {
+        this.openMicBoolean = true;
+      }
+
     });
   }
 
-  private checkUpcoming() {
-    const today = new Date;
-    for (let show of this.show_list) {
-      if (show.start_date > today) {
-        this.openMicBoolean = false;
-      }
-    }
-  }
+  // private checkUpcoming() {
+  //   const today = new Date;
+  //   for (let show of this.show_list) {
+  //     if (show.start_date > today) {
+  //       this.openMicBoolean = false;
+  //     }
+  //   }
+  // }
 
 
 

@@ -21,7 +21,7 @@ barefoot, playing his original songs.">
                 src="{{show.image_url}}">{{show.title}}
             </p>
         </a>
-        <a *ngIf="show.venue_address; else justName" target="blank"
+        <a class="mapLink" *ngIf="show.venue_address; else justName" target="blank"
         href="https://www.google.com/maps/place/{{show.venue_name}}"> 
         {{show.venue_address}}, {{show.venue_city}}, {{show.venue_state}}, {{show.venue_zip_code}} </a>
         <!-- </a> -->
@@ -33,9 +33,7 @@ barefoot, playing his original songs.">
     <ng-template #justName>
         <p>{{show.venue_name}}</p>
     </ng-template>
-    <p> Website: <a *ngIf="show.venue_url" target="blank" href="https://{{show.venue_url}}" class="venue_link">Click here</a></p>
-    
-    <p>Phone: {{show.venue_phone}} </p>
+    <p> Website: <a *ngIf="show.venue_url" target="blank" href="https://{{show.venue_url}}" class="venue_link">Click here</a> Phone: {{show.venue_phone}} </p>
     </div>
 
 </div>
