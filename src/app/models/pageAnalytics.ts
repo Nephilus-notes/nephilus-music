@@ -1,6 +1,6 @@
 export interface pageAnalytics {
     pageUrl: string;
-    pageName: string;
+    pageName?: string;
     views: number;
     uniqueViews: number;
     timeOnPage: number;
