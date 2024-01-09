@@ -8,5 +8,6 @@ export const environment = {
     SETLIST_EXT: `${SETLIST_EXT}`,
     SUBSCRIBE_EXT: `${SUBSCRIBE_EXT}`,
     REQUEST_EXT: `${REQUEST_EXT}`,
-    URL_SUFFIX: `${URL_SUFFIX}` ,
+    URL_SUFFIX: `${URL_SUFFIX}`,
+    LOG_ENDPOINT: `${LOG_ENDPOINT}`
   };

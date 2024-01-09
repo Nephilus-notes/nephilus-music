@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  title: ``,
+  title: `prod Title`,
   BASE_URL: ``,
   SONG_EXT: ``,
   SHOW_EXT: ``,
@@ -8,6 +8,6 @@ export const environment = {
   SETLIST_EXT: ``,
   SUBSCRIBE_EXT: ``,
   REQUEST_EXT: ``,
-  URL_SUFFIX: `` ,
-
+  URL_SUFFIX: ``,
+  LOG_ENDPOINT: ``
   };

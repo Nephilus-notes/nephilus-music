@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  title: ``,
+  title: `General Title`,
   BASE_URL: ``,
   SONG_EXT: ``,
   SHOW_EXT: ``,
@@ -8,4 +8,6 @@ export const environment = {
   SETLIST_EXT: ``,
   SUBSCRIBE_EXT: ``,
   REQUEST_EXT: ``,
-  URL_SUFFIX: `` ,  };
+  URL_SUFFIX: ``,
+  LOG_ENDPOINT: ``
+  };
