@@ -10,7 +10,6 @@ export class AnalyticsService {
 
   lastIn: number = 0;
   currentPage!: pageAnalytics;
-  timeSpentOnPages: any[] = [];
 
   setCurrentPage() {
     this.router.events.subscribe((event: any) => {
@@ -52,15 +51,6 @@ export class AnalyticsService {
 
   private addPageToCache() {
     this.pagesViewed[this.currentPage.pageUrl] = this.currentPage;
-  }
-
-  ngOnInit(): void {
-    this.router.events.subscribe((val: any) => {
-      // instantiating new page analytics object
-      this.setCurrentPage();
-      // console.log(this.currentPage);
-      // console.log(this.pagesViewed);
-    });
   }
 
   constructor(private router: Router) {
