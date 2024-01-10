@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-event-form',
@@ -7,10 +9,19 @@ import { Component } from '@angular/core';
 })
 export class EventFormComponent {
 
-  constructor(private http:http)
+  constructor(private http: HttpClient) { }
+  userIp!:string;
+  userLocation!:string;
+
+  public getIp() {
+    let ip = document.location.hostname
+
+    this.userIp = ip;
+
+    // this.http.get('https://api.ipify.org/?format=json')
+  }
 
   public getLocation() {
-    let ip = document.location.hostname
 
     
   }
