@@ -73,10 +73,13 @@ export class AnalyticsService {
       timeOnPage: 0,
       priorPages: [],
       nextPages: [],
-      uniqueIpAddresses: [],
+      uniqueIpAddresses: [(this.getIpAddress())],
     };
   }
 
+  getIpAddress(): string {
+    return document.location.hostname;
+  }
 
   private addPageToCache() {
     this.pagesViewed[this.currentPage.pageUrl] = this.currentPage;
