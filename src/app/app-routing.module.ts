@@ -25,8 +25,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminViewComponent},
   { path: 'request', component: RequestFormComponent},
   { path: 'subscribe', component: SubscribeFormComponent},
+  { path: 'escoteric', component: EventFormComponent},
   { path: '**', component: IndexComponent},
-  { path: 'escoteric', component: EventFormComponent}
 ];
 
 @NgModule({
