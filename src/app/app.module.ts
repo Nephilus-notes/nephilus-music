@@ -29,6 +29,8 @@ import { SetListListComponent } from './components/set-list-list/set-list-list.c
 import { CardComponent } from './components/card/card.component';
 import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
