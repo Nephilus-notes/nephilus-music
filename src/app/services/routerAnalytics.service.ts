@@ -23,16 +23,7 @@ export class AnalyticsService {
           !this.currentPage ||
           this.pagesViewed[event.routerEvent.url] === undefined
         ) {
-          this.currentPage = {
-            pageUrl: event.routerEvent.url,
-            // pageName: val.url.split('/')[1],
-            views: 1,
-            uniqueViews: 1,
-            timeOnPage: 0,
-            priorPages: [],
-            nextPages: [],
-            uniqueIpAddresses: [],
-          };
+          this.createPageAnalyticsObject(event);
           // this.currentUrl = event.routerEvent.url;
         } else if (this.currentPage) {
           // if current page exists, add time spent on page to timeOnPage and add it to the cache
@@ -51,18 +42,41 @@ export class AnalyticsService {
         this.lastIn = Date.now();
 
         if(this.currentUrl) {
-          this.previousUrl = this.currentUrl;
-          // console.log('making previous url ' + this.previousUrl)
-          this.pagesViewed[event.routerEvent.url].priorPages.push(this.previousUrl);
+          this.cachePreviousPageUrl(event)
+          this.cacheNextPageUrl(event)
         }
 
-        this.currentUrl = event.routerEvent.url;
-        // console.log('making current url ' + this.currentUrl)
-      
-        
+        this.setCurrentUrl(event)
       }
     });
   }
+
+  private cachePreviousPageUrl(event: any) {
+    this.previousUrl = this.currentUrl;
+    this.pagesViewed[event.routerEvent.url].priorPages.push(this.previousUrl);
+  }
+
+  private cacheNextPageUrl(event: any) {
+    this.pagesViewed[this.previousUrl].nextPages.push(event.routerEvent.url);
+  }
+
+  private setCurrentUrl(event:any){
+    this.currentUrl = event.routerEvent.url;
+  }
+
+  private createPageAnalyticsObject(event: any) {
+    this.currentPage = {
+      pageUrl: event.routerEvent.url,
+      // pageName: val.url.split('/')[1],
+      views: 1,
+      uniqueViews: 1,
+      timeOnPage: 0,
+      priorPages: [],
+      nextPages: [],
+      uniqueIpAddresses: [],
+    };
+  }
+
 
   private addPageToCache() {
     this.pagesViewed[this.currentPage.pageUrl] = this.currentPage;
