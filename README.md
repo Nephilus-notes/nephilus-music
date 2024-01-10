@@ -39,3 +39,21 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Development Goals
+
+1. Fully integrate backend
+
+2. Build and maintain higher than 90% test coverage
+
+3. Build custom analytics engine
+
+4. Problem solve storage for analytics data/ push frequency vs server load
+
+
+4. 1. Get general location of users (city)
+4. 2. Track time on page without navigating away
+4. 3. Track Buttons clicked
+4. 4. Time tracking for HTTP reqeusts
+4. 5. 
