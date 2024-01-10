@@ -1,8 +1,8 @@
 <div class="container bg">
 
     <p>event-form works!</p>
-    <button (onClick)="getLocation()">location?</button>
-    <button (onClick)="getIp()">IP</button>
+    <button (click)="getLocation()">location?</button>
+    <button (click)="getIp()">IP</button>
     <p class="" *ngIf="userLocation">{{userLocation}}</p>
     <p class="" *ngIf="userIp">{{userIp}}</p>
 </div>

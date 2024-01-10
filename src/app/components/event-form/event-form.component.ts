@@ -16,6 +16,7 @@ export class EventFormComponent {
   public getIp() {
     let ip = document.location.hostname
 
+    console.log(ip)
     this.userIp = ip;
 
     // this.http.get('https://api.ipify.org/?format=json')

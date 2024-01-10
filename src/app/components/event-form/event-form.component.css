@@ -1,0 +1,14 @@
+* {
+    color:white;
+}
+
+.container {
+padding:10rem 5rem;
+}
+
+button {
+    display: block;
+    background-color: gray;
+    padding:10px;
+
+}
