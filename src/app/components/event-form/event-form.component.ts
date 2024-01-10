@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class EventFormComponent {
 
+  constructor(private http:http)
+
+  public getLocation() {
+    let ip = document.location.hostname
+
+    
+  }
+
 }
