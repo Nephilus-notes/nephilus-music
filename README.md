@@ -56,4 +56,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 4. 2. Track time on page without navigating away
 4. 3. Track Buttons clicked
 4. 4. Time tracking for HTTP reqeusts
-4. 5. 
+4. 5. Track time spent on pages and overall page view count
