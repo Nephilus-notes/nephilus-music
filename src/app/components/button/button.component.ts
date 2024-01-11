@@ -16,7 +16,6 @@ export class ButtonComponent {
     type: 'link',
     text: 'My Button',
     url: '/bio',
-    function: () => {},
     classes: 'movingBackgroundLeft button active navLink',
     title: '',
     ariaLabel: 'Performance Dates'
