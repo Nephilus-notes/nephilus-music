@@ -51,6 +51,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 4. Problem solve storage for analytics data/ push frequency vs server load
 
+5. Add page for leatherworking/verbiage about site building
+
 
 4. 1. Get general location of users (city)
 4. 2. Track time on page without navigating away
