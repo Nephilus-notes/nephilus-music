@@ -33,6 +33,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { UpcomingPipe } from './pipes/upcoming.pipe';
 import { KnownPipe } from './pipes/known.pipe';
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { KnownPipe } from './pipes/known.pipe';
     SortByDatePipe,
     UpcomingPipe,
     KnownPipe,
+    TestComponent,
     // SubscribeFormComponent
   ],
   imports: [

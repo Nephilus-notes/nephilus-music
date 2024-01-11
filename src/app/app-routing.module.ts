@@ -11,6 +11,7 @@ import { SingleSetlistComponent } from './components/single-setlist/single-setli
 import { SingleEventComponent } from './components/single-event/single-event.component';
 import { RequestFormComponent } from './components/request-form/request-form.component';
 import { SubscribeFormComponent } from './components/subscribe-form/subscribe-form.component';
+import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminViewComponent},
   { path: 'request', component: RequestFormComponent},
   { path: 'subscribe', component: SubscribeFormComponent},
+  { path: 'test', component: TestComponent},
   { path: '**', component: IndexComponent}
 ];
 
