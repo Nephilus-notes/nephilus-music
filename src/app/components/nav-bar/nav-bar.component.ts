@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ButtonInfo } from 'src/app/models/buttonInfo';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,6 +11,66 @@ export class NavBarComponent {
 
   buttonText:string = "v"
 isMenuOpen:boolean = false;
+
+homeButtonInfo:ButtonInfo = {
+  id: 'navBarHomeButton',
+  type: 'link',
+  text: 'Home',
+  url: '/',
+  classes: 'movingBackgroundLeft button active navLink',
+  title: 'Home',
+  ariaLabel: 'Link to home page.'
+};
+
+bioButtonInfo:ButtonInfo = {
+  id: 'navBarBioButton',
+  type: 'link',
+  text: 'Bio',
+  url: '/bio',
+  classes: 'movingBackgroundLeft button active navLink',
+  title: 'Bio',
+  ariaLabel: 'Link to bio page.'
+};
+
+performancesButtonInfo:ButtonInfo = {
+  id: 'navBarPerformancesButton',
+  type: 'link',
+  text: 'Events',
+  url: '/performances',
+  classes: 'movingBackgroundLeft button active navLink',
+  title: 'Performances',
+  ariaLabel: 'Link to performances page.'
+};
+
+listenOnlineButtonInfo:ButtonInfo = {
+  id: 'navBarListenOnlineButton',
+  type: 'link',
+  text: 'Hear Me',
+  url: '/listen-online',
+  classes: 'movingBackgroundLeft button active navLink',
+  title: 'Listen Online',
+  ariaLabel: 'Link to listen online page.'
+};
+
+subscribeButtonInfo:ButtonInfo = {
+  id: 'navBarSubscribeButton',
+  type: 'link',
+  text: 'Subscribe',
+  url: '/subscribe',
+  classes: 'movingBackgroundLeft button active navLink',
+  title: 'Subscribe',
+  ariaLabel: 'Link to subscribe page.'
+};
+
+requestButtonInfo:ButtonInfo = {
+  id: 'navBarRequestButton',
+  type: 'link',
+  text: 'Requests',
+  url: '/request',
+  classes: 'movingBackgroundLeft button active navLink',
+  title: 'Request',
+  ariaLabel: 'Link to request page.'
+};
 
 
 toggleMenu(): void {

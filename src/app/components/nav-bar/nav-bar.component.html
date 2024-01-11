@@ -4,29 +4,28 @@
       <a class="homeLink button movingBackgroundLeft" routerLink="/">Charles McCall</a>
       <ul class="navbar-nav" [class.is-open]="isMenuOpen">
         <li>
-          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="home" routerLink="/"
-            routerLinkActive="active">Home</a>
+          <app-button [buttonInfo]="homeButtonInfo"></app-button>
         </li>
         <li>
-          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="Bio" routerLink="/bio" id="bioLink"
-            routerLinkActive="active">Bio</a>
+                   <app-button [buttonInfo]="bioButtonInfo"></app-button>
+
         </li>
         <li>
-          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="Performance Dates" routerLink="/performances" id="performancesLink"
-          routerLinkActive="active">Events</a>
+                    <app-button [buttonInfo]="performancesButtonInfo"></app-button>
+
         </li>
         <li>
-          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="Listen Online" routerLink="/listen-online" id="listenOnlineLink"
-            routerLinkActive="active">Hear Me</a>
+                   <app-button [buttonInfo]="listenOnlineButtonInfo"></app-button>
+
         </li>
 
         <li>
-          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="Subscribe" routerLink="/subscribe" id="subscribeLink"
-            routerLinkActive="active">Be in the know</a>
+                    <app-button [buttonInfo]="subscribeButtonInfo"></app-button>
+
         </li>
         <li>
-          <a class="movingBackgroundLeft button active navLink" title="" (click)="closeMenu()" aria-current="Request a song" routerLink="/request" id="requestLink"
-            routerLinkActive="active">Requests</a>
+                    <app-button [buttonInfo]="requestButtonInfo"></app-button>
+
         </li>
 
         <!-- <span class="relative flex h-3 w-3">
