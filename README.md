@@ -56,6 +56,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 4. 1. Get general location of users (city)
 4. 2. Track time on page without navigating away
-4. 3. Track Buttons clicked
+4. 3. Add analytics to Button component and links
 4. 4. Time tracking for HTTP reqeusts
-4. 5. Track time spent on pages and overall page view count
+4. 5. ~Track time spent on pages and overall page view count~
