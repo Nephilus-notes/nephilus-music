@@ -9,16 +9,16 @@ import { ButtonInfo } from 'src/app/models/buttonInfo';
 export class ButtonComponent {
   @Input() URl!: string;
   @Input() text!: string;
-  // @Input() buttonInfo!: ButtonInfo;
+  @Input() buttonInfo!: ButtonInfo;
 
-  buttonInfo: ButtonInfo = {
-    id: 'testButton',
-    type: 'link',
-    text: 'My Button',
-    url: '/bio',
-    classes: 'movingBackgroundLeft button active navLink',
-    title: '',
-    ariaLabel: 'Performance Dates'
-  };
+  // buttonInfo: ButtonInfo = {
+  //   id: 'testButton',
+  //   type: 'link',
+  //   text: 'My Button',
+  //   url: '/bio',
+  //   classes: 'movingBackgroundLeft button active navLink',
+  //   title: '',
+  //   ariaLabel: 'Performance Dates'
+  // };
 
 }
