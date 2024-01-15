@@ -6,5 +6,10 @@ export interface pageAnalytics {
     timeOnPage: number;
     priorPages: Array<string>;
     nextPages: Array<string>;
-    uniqueIpAddresses: Array<string>;
+    ipAddress: string;
+    location?: {
+        city: string;
+        country: string;
+        state: string;
+    };
 }

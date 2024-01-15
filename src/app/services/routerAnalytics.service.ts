@@ -15,6 +15,7 @@ export class RouterAnalyticsService {
   previousUrl!: string;
   currentUrl!: string;
   ip!: string;
+  geolocation!: { city: string; country: string; state: string};
 
   setCurrentPage() {
     this.router.events.subscribe((event: any) => {
@@ -50,6 +51,7 @@ export class RouterAnalyticsService {
         }
 
         this.setCurrentUrl(event);
+        this.getIpAddressLocation();
       }
     });
   }
@@ -76,44 +78,52 @@ export class RouterAnalyticsService {
       timeOnPage: 0,
       priorPages: [],
       nextPages: [],
-      uniqueIpAddresses: [this.getIpAddress()],
+      ipAddress: this.ip ? this.ip : '',
+      location: this.geolocation ? this.geolocation : undefined,
     };
-  }
-
-
-  public check() {
-    console.log(this.pagesViewed);
   }
 
   getIpAddress(): string {
     return document.location.hostname;
   }
 
-  // private getIpAddressLocation() {
-  //   console.log('checking ip address')
-  //   if (!this.ip) {
-  //     console.log('getting ip address')
-  //     // // other link https://myexternalip.com/json
-  //     // const url = 'https://myexternalip.com/json';
-  //     // let geoUrl = `${environment.IP_GEOLOCATION_ENDPOINT}?apiKey=${environment.IP_GEOLOCATION_API_KEY}&ip=`;
-  //     // // const url = 'https://api.ipify.org/?format=json';
-  //     // this.http.get(url).subscribe((response: any) => {
-  //     //   console.log(response.ip);
-  //     //   geoUrl += response.ip;
-  //     //   this.http.get(geoUrl).subscribe((response: any) => {
-  //     //     console.log(response);
-  //     //     return response;
-  //     //   });
-  //     //   return response.ip;
-  //     // });
-  //   }
-  // }
+  public getIpAddressLocation() {
+    console.log('checking ip address')
+    if (!this.ip) {
+      console.log('getting ip address')
+      // other link https://myexternalip.com/json
+      const url = 'https://myexternalip.com/json';
+      let geoUrl = `${environment.IP_GEOLOCATION_ENDPOINT}?apiKey=${environment.IP_GEOLOCATION_API_KEY}&ip=`;
+      // const url = 'https://api.ipify.org/?format=json';
+      this.http.get(url).subscribe((response: any) => {
+        console.log(response.ip);
+        this.ip = response.ip;
+        geoUrl += response.ip;
+        this.http.get(geoUrl).subscribe((response: any) => {
+          this.geolocation = {
+            city: response.city,
+            country: response.country_name,
+            state: response.state_prov
+          }
+          console.log(response);
+          this.addLocationAndIpToPage();
+          return response;
+        });
+        return response.ip;
+      });
+    }
+  }
 
   private addPageToCache() {
     this.pagesViewed[this.currentPage.pageUrl] = this.currentPage;
   }
 
-  constructor(private router: Router) {
+  private addLocationAndIpToPage() {
+    this.currentPage.ipAddress = this.ip;
+    this.currentPage.location = this.geolocation;
+  }
+
+  constructor(private router: Router, private http: HttpClient) {
     this.setCurrentPage();
 
   }
