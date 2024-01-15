@@ -27,7 +27,7 @@ export class ButtonAnalyticsService {
     // // this.buttonAnalyticsCache.push(buttonAnalytics);
   }
 
-  private createButtonAnalyticsObject(buttonInfo: ButtonInfo) {
+  public createButtonAnalyticsObject(buttonInfo: ButtonInfo) {
     let buttonAnalytics: buttonAnalytics = {
       id: buttonInfo.id,
       type: buttonInfo.type,
@@ -43,11 +43,11 @@ export class ButtonAnalyticsService {
     return buttonAnalytics;
   }
 
-  private addButtonClickToCache(buttonAnalytics: buttonAnalytics) {
+  public addButtonClickToCache(buttonAnalytics: buttonAnalytics) {
     this.buttonAnalyticsCache[buttonAnalytics.id] = buttonAnalytics;
   }
 
-  private incrementButtonInfo(buttonAnalytics: buttonAnalytics) {
+  public incrementButtonInfo(buttonAnalytics: buttonAnalytics) {
     buttonAnalytics.clicks++;
     // buttonAnalytics.uniqueClicks++;
     // buttonAnalytics.uniqueIpAddresses.push(this.getIpAddress());

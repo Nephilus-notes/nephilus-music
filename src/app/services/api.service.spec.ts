@@ -554,6 +554,10 @@ describe('ApiService', () => {
   // should I make a full cycle of tests for live Song and Patron crud operations? 
 
 
+  
+  it('should send a complete analytics bundle to the database with button and page analytics info with sendAnalyticsBundle', () =>  {
+    pending();
+  });
 
 
 });
