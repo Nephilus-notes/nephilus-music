@@ -3,6 +3,7 @@ import { pageAnalytics } from '../models/pageAnalytics';
 import { NavigationEnd, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { TimerService } from './timer.service';
 
 @Injectable({
   providedIn: 'root',
@@ -88,15 +89,15 @@ export class RouterAnalyticsService {
   }
 
   public getIpAddressLocation() {
-    console.log('checking ip address')
+    // console.log('checking ip address')
     if (!this.ip) {
-      console.log('getting ip address')
+      // console.log('getting ip address')
       // other link https://myexternalip.com/json
       const url = 'https://myexternalip.com/json';
       let geoUrl = `${environment.IP_GEOLOCATION_ENDPOINT}?apiKey=${environment.IP_GEOLOCATION_API_KEY}&ip=`;
       // const url = 'https://api.ipify.org/?format=json';
       this.http.get(url).subscribe((response: any) => {
-        console.log(response.ip);
+        // console.log(response.ip);
         this.ip = response.ip;
         geoUrl += response.ip;
         this.http.get(geoUrl).subscribe((response: any) => {
@@ -105,7 +106,7 @@ export class RouterAnalyticsService {
             country: response.country_name,
             state: response.state_prov
           }
-          console.log(response);
+          // console.log(response);
           this.addLocationAndIpToPage();
           return response;
         });
@@ -123,7 +124,7 @@ export class RouterAnalyticsService {
     this.currentPage.location = this.geolocation;
   }
 
-  constructor(private router: Router, private http: HttpClient) {
+  constructor(private router: Router, private http: HttpClient, private timerService: TimerService) {
     this.setCurrentPage();
 
   }

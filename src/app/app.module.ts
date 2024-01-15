@@ -36,6 +36,7 @@ import { KnownPipe } from './pipes/known.pipe';
 import { TestComponent } from './components/test/test.component';
 import { initServiceFactory } from './factories/initServiceFactory';
 import { RouterAnalyticsService } from './services/routerAnalytics.service';
+import { TimerService } from './services/timer.service';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,7 @@ import { RouterAnalyticsService } from './services/routerAnalytics.service';
     {
       provide: APP_INITIALIZER,
       useFactory: () => initServiceFactory,
-      deps: [RouterAnalyticsService],
+      deps: [RouterAnalyticsService, TimerService],
       multi: true,
     }
   ],

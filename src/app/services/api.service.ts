@@ -10,14 +10,13 @@ import { Song } from '../models/song';
 import { Patron } from '../models/patron';
 import { PatronDTO } from '../models/patronDTO';
 import { SongDTO } from '../models/songDTO';
-import { RouterAnalyticsService } from './routerAnalytics.service';
-import { ButtonAnalyticsService } from './button-analytics.service';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient, private routerAnalyticsService: RouterAnalyticsService, private buttonAnalyticsService: ButtonAnalyticsService) {}
+  constructor(private http: HttpClient) {}
   events: Array<LiveEvent> = [];
   songs: Array<Song> = [];
 
@@ -172,12 +171,12 @@ export class ApiService {
     return newPatron;
   }
 
-  public sendAnalyticsBundle(): void {
+  public sendAnalyticsBundle(pagesViewed:any, buttonAnalyticsCache:any): void {
     let url = `${environment.BASE_URL}${environment.LOG_ENDPOINT}`;
     // console.log(url + ' is the url');
     let bundle = {
-      pagesViewed: this.routerAnalyticsService.pagesViewed,
-      buttonsClicked: this.buttonAnalyticsService.buttonAnalyticsCache,
+      pagesViewed: pagesViewed,
+      buttonsClicked: buttonAnalyticsCache,
     };
     console.log(bundle);
     // this.http.post(url, bundle).subscribe((response) => {
