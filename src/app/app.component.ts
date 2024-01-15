@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { RouterAnalyticsService } from './services/routerAnalytics.service';
 
 @Component({
   selector: 'app-root',

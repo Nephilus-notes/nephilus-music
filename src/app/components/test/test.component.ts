@@ -11,12 +11,14 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent {
-  constructor(private buttonAnalyticsService: ButtonAnalyticsService, private routerAnalyticsService: RouterAnalyticsService, private http: HttpClient) { }
+  constructor(private buttonAnalyticsService: ButtonAnalyticsService, 
+    // private routerAnalyticsService: RouterAnalyticsService,
+     private http: HttpClient) { }
 
   ip:string = '';
   public logAnalytics() {
     console.log(this.buttonAnalyticsService.buttonAnalyticsCache);
-    console.log(this.routerAnalyticsService.pagesViewed);
+    // console.log(this.routerAnalyticsService.pagesViewed);
     this.getIpAddressLocation();
     // this.getLocation();
   }
