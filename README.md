@@ -55,6 +55,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 6. Abstract environment into a service
 
+7. Add a wrapper for http requests that creates an insertion point for the logging/tracking
+
 
 4. 1. ~~Get general location of users (city)~~
 <!-- 4. 2. Track time on page without navigating away -->
