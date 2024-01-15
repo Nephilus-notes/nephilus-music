@@ -7,6 +7,7 @@ import { By } from '@angular/platform-browser';
 
 import { NavBarComponent } from './nav-bar.component';
 import { Router } from '@angular/router';
+import { ButtonComponent } from '../button/button.component';
 
 describe('NavBarComponent', () => {
   let component: NavBarComponent;
@@ -21,7 +22,7 @@ describe('NavBarComponent', () => {
         { path: 'performances', component: NavBarComponent },
         { path: 'listen-online', component: NavBarComponent },
       ])],
-      declarations: [NavBarComponent], // will I need to import the other components?
+      declarations: [NavBarComponent, ButtonComponent], // will I need to import the other components?
     }).compileComponents();
 
     // router = TestBed.inject(Router);
@@ -76,7 +77,7 @@ describe('NavBarComponent', () => {
     pending();
   });
   it('should have a link to performances that is called Events', () => {
-    const compiled = fixture.nativeElement;
+    // const compiled = fixture.nativeElement;
     // create a new variable for the performances link that searches for the id performancesLink
 
     let performancesLink = fixture.debugElement.query(By.css('#performancesLink')).nativeElement;
