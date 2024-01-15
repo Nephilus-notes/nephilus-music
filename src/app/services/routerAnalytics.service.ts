@@ -5,7 +5,7 @@ import { NavigationEnd, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
-export class AnalyticsService {
+export class RouterAnalyticsService {
   pagesViewed: any = {};
 
   lastIn: number = 0;

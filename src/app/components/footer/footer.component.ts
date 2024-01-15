@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AnalyticsService } from 'src/app/services/routerAnalytics.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,6 +6,6 @@ import { AnalyticsService } from 'src/app/services/routerAnalytics.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-  constructor(public analyticsService: AnalyticsService) { }
+  constructor() { }
 
 }

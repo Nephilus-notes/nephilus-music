@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ButtonInfo } from 'src/app/models/buttonInfo';
+import { ButtonAnalyticsService } from 'src/app/services/button-analytics.service';
+import { RouterAnalyticsService } from 'src/app/services/routerAnalytics.service';
 
 @Component({
   selector: 'app-test',
@@ -7,12 +9,18 @@ import { ButtonInfo } from 'src/app/models/buttonInfo';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent {
+  constructor(private buttonAnalyticsService: ButtonAnalyticsService, private routerAnalyticsService: RouterAnalyticsService) { }
+
+  public logAnalytics() {
+    console.log(this.buttonAnalyticsService.buttonAnalyticsCache);
+    console.log(this.routerAnalyticsService.pagesViewed);
+  }
 
     buttonInfo: ButtonInfo = {
     id: 'testBioButton',
-    type: 'link',
-    text: 'Bio',
-    url: '/bio',
+    type: 'info',
+    text: 'Check Analytics',
+    url: '',
     classes: 'movingBackgroundLeft button active navLink',
     title: 'Bio',
     ariaLabel: 'Link to bio page.'
