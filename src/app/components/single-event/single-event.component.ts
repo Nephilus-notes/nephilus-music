@@ -45,9 +45,11 @@ export class SingleEventComponent {
       this.show = this.apiService.getOneEventFromCache(this.id);
       // console.log('getting events from cache');
     }
-    if (this.show.id !== this.id) {
+    if (!this.show ?? this.show.id !== this.id) {
+    // if (this.show.id !== this.id) {
       this.apiService.getOneEventFromApi(this.id).subscribe((event) => {
         this.show = event;
+        console.log(this.show)
       });
     }
   }
