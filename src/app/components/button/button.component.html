@@ -1,5 +1,5 @@
 <a class="{{buttonInfo.classes}}" title="{{buttonInfo.title}}" 
 attr.aria-label=" {{buttonInfo.ariaLabel}}" 
- 
+
 routerLink="{{buttonInfo.url}}" id="{{id}}" (click)="logButtonClick()"
-          routerLinkActive="active">{{buttonInfo.text}}</a>
+          [attr.routerLinkActive]="buttonInfo.type!='link'? null: true" >{{buttonInfo.text}}</a>
