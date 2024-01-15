@@ -52,25 +52,25 @@ export class RouterAnalyticsService {
         }
 
         this.setCurrentUrl(event);
-        this.getIpAddressLocation();
+        this.getIpAddressAndLocation();
       }
     });
   }
 
-  private cachePreviousPageUrl(event: any) {
+  public cachePreviousPageUrl(event: any) {
     this.previousUrl = this.currentUrl;
     this.pagesViewed[event.routerEvent.url].priorPages.push(this.previousUrl);
   }
 
-  private cacheNextPageUrl(event: any) {
+  public cacheNextPageUrl(event: any) {
     this.pagesViewed[this.previousUrl].nextPages.push(event.routerEvent.url);
   }
 
-  private setCurrentUrl(event: any) {
+  public setCurrentUrl(event: any) {
     this.currentUrl = event.routerEvent.url;
   }
 
-  private createPageAnalyticsObject(event: any) {
+  public createPageAnalyticsObject(event: any) {
     this.currentPage = {
       pageUrl: event.routerEvent.url,
       // pageName: val.url.split('/')[1],
@@ -84,11 +84,7 @@ export class RouterAnalyticsService {
     };
   }
 
-  getIpAddress(): string {
-    return document.location.hostname;
-  }
-
-  public getIpAddressLocation() {
+  public getIpAddressAndLocation() {
     // console.log('checking ip address')
     if (!this.ip) {
       // console.log('getting ip address')
@@ -115,11 +111,11 @@ export class RouterAnalyticsService {
     }
   }
 
-  private addPageToCache() {
+  public addPageToCache() {
     this.pagesViewed[this.currentPage.pageUrl] = this.currentPage;
   }
 
-  private addLocationAndIpToPage() {
+  public addLocationAndIpToPage() {
     this.currentPage.ipAddress = this.ip;
     this.currentPage.location = this.geolocation;
   }
