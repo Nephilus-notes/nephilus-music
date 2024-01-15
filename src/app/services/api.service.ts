@@ -10,20 +10,21 @@ import { Song } from '../models/song';
 import { Patron } from '../models/patron';
 import { PatronDTO } from '../models/patronDTO';
 import { SongDTO } from '../models/songDTO';
+import { EnvironmentService } from './environment.service';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private environmentService: EnvironmentService) {}
   events: Array<LiveEvent> = [];
   songs: Array<Song> = [];
 
   // event functions
   public getAllEvents(): Observable<Array<LiveEvent>> {
-    let url = `${environment.BASE_URL}${environment.SHOW_EXT}${environment.URL_SUFFIX}`;
-     console.log(url + ' is the url')
+    let url = this.environmentService.allEvents;
+    //  console.log(url + ' is the url')
     const events = this.http.get<Array<LiveEvent>>(url);
 
     return events;
@@ -33,8 +34,8 @@ export class ApiService {
     this.events = events;
   }
 
-  public getOneEventFromAPI(id: number): Observable<LiveEvent> {
-    let url = `${environment.BASE_URL}${environment.SHOW_EXT}${id}${environment.URL_SUFFIX}`;
+  public getOneEventFromApi(id: number): Observable<LiveEvent> {
+    let url = this.environmentService.buildOneEventUrl(id);
     // console.log(url + ' is the url');
     const event = this.http.get<LiveEvent>(url);
 
@@ -59,7 +60,7 @@ export class ApiService {
   // setlist functions
 
   public getAllSetlists(): Observable<Array<Setlist>> {
-    let url = `${environment.BASE_URL}${environment.SETLIST_EXT}${environment.URL_SUFFIX}`;
+    let url = this.environmentService.allSetlistsUrl;
     // console.log(url + ' is the url')
     const setlists = this.http.get<Array<Setlist>>(url);
 
@@ -67,7 +68,7 @@ export class ApiService {
   }
 
   public getOneSetlist(id: number): Observable<Setlist> {
-    let url = `${environment.BASE_URL}${environment.SETLIST_EXT}${id}${environment.URL_SUFFIX}`;
+    let url = this.environmentService.buildOneSetlistUrl(id);
     // console.log(url + ' is the url')
     const setlist = this.http.get<Setlist>(url);
 
@@ -77,7 +78,7 @@ export class ApiService {
   // song functions
 
   public getAllSongs(): Observable<Array<Song>> {
-    let url = `${environment.BASE_URL}${environment.SONG_EXT}${environment.URL_SUFFIX}`;
+    let url = this.environmentService.allSongsUrl;
     const songs = this.http.get<Array<Song>>(url);
     return songs;
   }
@@ -87,13 +88,13 @@ export class ApiService {
   }
 
   public getOneSong(id: number): Observable<Song> {
-    let url = `${environment.BASE_URL}${environment.SONG_EXT}${id}${environment.URL_SUFFIX}`;
+    let url = this.environmentService.buildOneSongUrl(id);
     const song = this.http.get<Song>(url);
     return song;
   }
 
   public updateSong(song: Song): Observable<Song> {
-    let url = `${environment.BASE_URL}${environment.SONG_EXT}${song.id}${environment.URL_SUFFIX}`;
+    let url = this.environmentService.buildSongUpdateUrl(song.id);
     let updatedSong = this.http.put<Song>(url, song);
     updatedSong.subscribe((response) => {
       // console.log(response);
@@ -106,7 +107,7 @@ export class ApiService {
     // check database to see if songs exists using it's title
     // if it does, return the song
     // if not, return null
-    let url = `${environment.BASE_URL}${environment.SONG_EXT}${title}${environment.URL_SUFFIX}`;
+    let url = this.environmentService.buildSongByTitleUrl(title);
     const song = this.http.get<Song>(url);
     return song;
   }
@@ -135,7 +136,7 @@ export class ApiService {
   }
 
   public addSong(song: SongDTO): Observable<Song> {
-    let url = `${environment.BASE_URL}${environment.SONG_EXT}`;
+    let url = this.environmentService.buildSongRequestUrl;
     // console.log(url + ' is the url')
     // console.log(song);
     let newSong = this.http.post<Song>(url, song);
@@ -161,7 +162,7 @@ export class ApiService {
 
   public postPatron(patron: PatronDTO): Observable<any> {
     // let newPatron!: Patron;
-    let url = `${environment.BASE_URL}${environment.SUBSCRIBE_EXT}`;
+    let url = this.environmentService.subscribeUrl;
     // console.log(url + ' is the url')
     // console.log(patron);
     let newPatron = this.http.post<Patron>(url, patron);
@@ -172,7 +173,7 @@ export class ApiService {
   }
 
   public sendAnalyticsBundle(pagesViewed:any, buttonAnalyticsCache:any): void {
-    let url = `${environment.BASE_URL}${environment.LOG_ENDPOINT}`;
+    let url = this.environmentService.getLogUrl;
     // console.log(url + ' is the url');
     let bundle = {
       pagesViewed: pagesViewed,

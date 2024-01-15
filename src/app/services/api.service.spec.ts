@@ -238,7 +238,7 @@ describe('ApiService', () => {
 
   it('should return one event', () =>  {
   spyOn(httpClient, 'get').and.returnValue(of(events[1]));
-  let localEvents = service.getOneEventFromAPI(1);
+  let localEvents = service.getOneEventFromApi(1);
   expect(localEvents).toBeTruthy();
   expect(httpClient.get).toHaveBeenCalledTimes(1);
 
