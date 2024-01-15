@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +34,7 @@ import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { UpcomingPipe } from './pipes/upcoming.pipe';
 import { KnownPipe } from './pipes/known.pipe';
 import { TestComponent } from './components/test/test.component';
+import { initServiceFactory } from './factories/initServiceFactory';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,13 @@ import { TestComponent } from './components/test/test.component';
     HttpClientModule,
  
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => initServiceFactory,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

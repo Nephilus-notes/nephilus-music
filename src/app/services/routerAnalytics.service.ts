@@ -80,6 +80,11 @@ export class RouterAnalyticsService {
     };
   }
 
+
+  public check() {
+    console.log(this.pagesViewed);
+  }
+  
   getIpAddress(): string {
     return document.location.hostname;
   }
@@ -110,6 +115,6 @@ export class RouterAnalyticsService {
 
   constructor(private router: Router) {
     this.setCurrentPage();
-    
+
   }
 }
