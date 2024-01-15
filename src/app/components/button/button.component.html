@@ -1,5 +1,7 @@
-<a class="{{buttonInfo.classes}}" title="{{buttonInfo.title}}" 
-attr.aria-label=" {{buttonInfo.ariaLabel}}" 
+<a class="{{buttonInfo.classes}}" title="{{buttonInfo.title}}" attr.aria-label=" {{buttonInfo.ariaLabel}}"
+    id="{{id}}" (click)="logButtonClick()"
+    *ngIf="buttonInfo.type !== 'link'" >{{buttonInfo.text}}</a>
 
-routerLink="{{buttonInfo.url}}" id="{{id}}" (click)="logButtonClick()"
-          [attr.routerLinkActive]="buttonInfo.type!='link'? null: true" >{{buttonInfo.text}}</a>
+<a *ngIf="buttonInfo.type === 'link'" class="{{buttonInfo.classes}}" title="{{buttonInfo.title}}"
+    attr.aria-label=" {{buttonInfo.ariaLabel}}" routerLink="{{buttonInfo.url}}" id="{{id}}" (click)="logButtonClick()"
+    routerLinkActive="active">{{buttonInfo.text}}</a>
