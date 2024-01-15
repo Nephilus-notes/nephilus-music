@@ -10,7 +10,7 @@ describe('LogService', () => {
   beforeEach(() => {
     
     TestBed.configureTestingModule({
-      providers: [Logger],
+      // providers: [Logger],
 
     }).compileComponents();
     service = TestBed.inject(LogService);

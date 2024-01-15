@@ -10,9 +10,9 @@ import { filter } from 'rxjs';
 export class LogService {
   // private logger: Logger;
 
-  constructor(private logger: Logger) { }
+  // constructor(private logger: Logger) { }
 
   public initialize() {
-    this.logger= new Logger(environment.title, environment.LOG_ENDPOINT);
+    // this.logger= new Logger(environment.title, environment.LOG_ENDPOINT);
   }
 }
