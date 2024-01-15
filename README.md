@@ -53,6 +53,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 5. Add page for leatherworking/verbiage about site building
 
+6. Abstract environment into a service
+
 
 4. 1. ~~Get general location of users (city)~~
 <!-- 4. 2. Track time on page without navigating away -->
