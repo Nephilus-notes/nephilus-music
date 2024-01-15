@@ -9,5 +9,7 @@ export const environment = {
   SUBSCRIBE_EXT: ``,
   REQUEST_EXT: ``,
   URL_SUFFIX: ``,
-  LOG_ENDPOINT: ``
+  LOG_ENDPOINT: ``,
+  IP_GEOLOCATION_ENDPOINT: '',
+  IP_GEOLOCATION_API_KEY: '$'
   };
