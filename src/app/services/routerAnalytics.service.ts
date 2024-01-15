@@ -38,7 +38,7 @@ export class AnalyticsService {
         }
         
         this.addPageToCache();
-        console.log(this.pagesViewed);
+        // console.log(this.pagesViewed);
         this.lastIn = Date.now();
 
         if(this.currentUrl) {

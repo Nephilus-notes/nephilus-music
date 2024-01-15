@@ -5,7 +5,7 @@ export interface buttonAnalytics {
     ariaLabel: string;
     clicks: number;
     uniqueClicks: number;
-    niqueIpAddresses: Array<string>;
+    uniqueIpAddresses?: Array<string>;
     pageClickedFrom: string;
-    pageClickedTo: string;
+    pageClickedTo?: string;
 }
