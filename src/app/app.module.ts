@@ -35,6 +35,7 @@ import { UpcomingPipe } from './pipes/upcoming.pipe';
 import { KnownPipe } from './pipes/known.pipe';
 import { TestComponent } from './components/test/test.component';
 import { initServiceFactory } from './factories/initServiceFactory';
+import { RouterAnalyticsService } from './services/routerAnalytics.service';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { initServiceFactory } from './factories/initServiceFactory';
     {
       provide: APP_INITIALIZER,
       useFactory: () => initServiceFactory,
+      deps: [RouterAnalyticsService],
       multi: true,
     }
   ],

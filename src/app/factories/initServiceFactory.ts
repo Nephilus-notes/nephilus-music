@@ -4,7 +4,7 @@ export function initServiceFactory(
     routerAnalyticsService: RouterAnalyticsService
     ) {
   return async () => {
-    routerAnalyticsService.setCurrentPage()
+    // routerAnalyticsService.setCurrentPage()
     // routerAnalyticsService.check();
 };
 }
