@@ -17,12 +17,12 @@ export class TestComponent {
   }
 
     buttonInfo: ButtonInfo = {
-    id: 'testBioButton',
+    id: 'testAnalyticsButton',
     type: 'info',
     text: 'Check Analytics',
     url: '',
     classes: 'movingBackgroundLeft button active navLink',
-    title: 'Bio',
-    ariaLabel: 'Link to bio page.'
+    title: 'Analytics',
+    ariaLabel: 'See page and button analytics for this session'
   };
 }
