@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ButtonInfo } from 'src/app/models/buttonInfo';
+import { ButtonAnalyticsService } from 'src/app/services/button-analytics.service';
 
 @Component({
   selector: 'app-button',
@@ -18,7 +19,11 @@ export class ButtonComponent {
     }
   }
 
+  logButtonClick() {
+    this.buttonAnalyticsService.logButtonClick(this.buttonInfo);
+  }
 
+constructor(private buttonAnalyticsService: ButtonAnalyticsService) { }
   // buttonInfo: ButtonInfo = {
   //   id: 'testButton',
   //   type: 'link',
