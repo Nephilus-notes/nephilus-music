@@ -1,7 +1,8 @@
 <div class="component">
   <nav class="navbar">
     <div class="flexRow">
-      <a class="homeLink button movingBackgroundLeft" routerLink="/">Charles McCall</a>
+      <app-button [buttonInfo]="logoButtonInfo"></app-button>
+      <!-- <a class="homeLink button movingBackgroundLeft" routerLink="/">Charles McCall</a> -->
       <ul class="navbar-nav" [class.is-open]="isMenuOpen">
         <li>
           <app-button [buttonInfo]="homeButtonInfo"></app-button>

@@ -12,6 +12,16 @@ export class NavBarComponent {
   buttonText:string = "v"
 isMenuOpen:boolean = false;
 
+logoButtonInfo:ButtonInfo = {
+  id: 'navBarLogoButton',
+  type: 'link',
+  text: 'Nephilus Music',
+  url: '/',
+  classes: 'movingBackgroundLeft button active homeLink',
+  title: 'Charles McCall',
+  ariaLabel: 'Branded link to home page.'
+};
+
 homeButtonInfo:ButtonInfo = {
   id: 'navBarHomeButton',
   type: 'link',
