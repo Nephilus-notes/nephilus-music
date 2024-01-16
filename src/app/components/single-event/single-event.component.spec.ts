@@ -70,7 +70,7 @@ describe('SingleEventComponent', () => {
     // spyOn(httpClient, 'get').and.returnValue(of({show}));
     // console.warn('trying shit' + show)
     component.show = show;
-    spyOn(apiService, 'getOneEventFromAPI').and.returnValue(of(show));
+    spyOn(apiService, 'getOneEventFromApi').and.returnValue(of(show));
     fixture.detectChanges();
   });
 
