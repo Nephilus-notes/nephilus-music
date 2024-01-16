@@ -23,11 +23,11 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('nephilus-music');
   });
 
-  it('should render title', () => {
-    // const fixture = TestBed.createComponent(AppComponent);
-    // fixture.detectChanges();
-    // const compiled = fixture.nativeElement as HTMLElement;
-    // expect(compiled.querySelector('.content span')?.textContent).toContain('nephilus-music app is running!');
-    pending();
-  });
+  // it('should render title', () => {
+  //   // const fixture = TestBed.createComponent(AppComponent);
+  //   // fixture.detectChanges();
+  //   // const compiled = fixture.nativeElement as HTMLElement;
+  //   // expect(compiled.querySelector('.content span')?.textContent).toContain('nephilus-music app is running!');
+  //   pending();
+  // });
 });

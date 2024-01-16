@@ -70,7 +70,7 @@ describe('SingleSongComponent', () => {
   });
 
   // tests for the getSong function
-  it('should call the getOneSong function', () => {
+  it('should call the getOneSong function to retrieve a song from the database', () => {
     component.getSong();
     expect(apiService.getOneSong).toHaveBeenCalled();
     expect(component.song).toEqual(song);
@@ -80,7 +80,10 @@ describe('SingleSongComponent', () => {
   // it('should not be zero', (done) => {
   //   // paramsSubject.next({ id1: 1, id2: 3});
   //   route.params.subscribe(params => {
-  //     expect(params['id1']).not.toBe(0);
+  //     console.log(params);
+  //     expect(params.params['id']).not.toBe(0);
+  //     expect(params['id']).not.toBe(0);
+  //     // expect(params['id']).toBe(1);
   //     done();
   //   });
   // });
