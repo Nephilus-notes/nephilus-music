@@ -33,20 +33,18 @@ describe('AnalyticsService', () => {
   });
 
   it('should be created', () => {
-    pending();
-    // expect(service).toBeTruthy();
+    expect(service).toBeTruthy();
   });
 
   it('should create an analytics object', () => {
-    pending();
-    // let analytics = service.createPageAnalyticsObject(event);
-    // expect(analytics).toBeTruthy();
+    service.createPageAnalyticsObject(event);
+    expect(service.currentPage).toBeTruthy();
   });
 
   it('should add a page analytics object to the cache', () => {
-    pending();
-    // service.addPageToCache();
-    // expect(service.pagesViewed[service.currentPage.pageUrl]).toBeTruthy();
+    service.createPageAnalyticsObject(event);
+    service.addPageToCache();
+    expect(service.pagesViewed[service.currentPage.pageUrl]).toBeTruthy();
   });
 
   it('should increment the views property of a pageAnalytics object', () => {
@@ -56,21 +54,32 @@ describe('AnalyticsService', () => {
   });
 
   it('should set the currentUrl property', () => {
-    pending();
-    // service.setCurrentUrl(event);
-    // expect(service.currentUrl).toEqual('/bio');
+    // pending();
+    service.setCurrentUrl(event);
+    expect(service.currentUrl).toEqual('/bio');
   });
 
-  it('should set the previousUrl property', () => {
-    pending();
-    // service.cachePreviousPageUrl(event);
-    // expect(service.previousUrl).toEqual('/bio');
+  it('should push previousUrl to the prior pages list in the analytics object', () => {
+    service.createPageAnalyticsObject(event);
+
+    service.addPageToCache();
+
+    service.currentUrl = event.routerEvent.url;
+
+    service.cachePreviousPageUrl(event);
+    expect(service.currentPage.priorPages[0]).toEqual('/bio');
   });
 
-  it('should set the nextUrl property', () => {
-    pending();
-    // service.cacheNextPageUrl(event);
-    // expect(service.nextUrl).toEqual('/bio');
+  it('should set the next url on the previous page when navigating to a new page', () => {
+    // pending();
+    service.createPageAnalyticsObject(event);
+    service.addPageToCache();
+    service.previousUrl = event.routerEvent.url;
+
+
+    service.cacheNextPageUrl(event);
+    console.warn(service.pagesViewed);
+    expect(service.currentPage.nextPages[0]).toEqual('/bio');
   });
 
   it('should set the current page', () => {
