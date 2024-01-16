@@ -384,15 +384,51 @@ describe('NavBarComponent', () => {
   it('should have a link called Charles McCall', () => {
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('a').textContent).toContain(
+      'Nephilus Music'
+    );
+  });
+
+  it('should have a logo link that is active', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('a').classList).toContain(
+      'active'
+    );
+  });
+
+  it('should have a logo link with the aria label "Branded link to home page."', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('a').getAttribute('aria-label')).toContain(
+      'Branded link to home page.'
+    );
+  });
+
+  it('should have a logo link that has a title of "Charles McCall"', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('a').getAttribute('title')).toContain(
       'Charles McCall'
     );
   });
 
-  // it('should have a logo link that is active', () => {
-  //   const compiled = fixture.nativeElement;
-  //   expect(compiled.querySelector('a').classList).toContain(
-  //     'active'
-  //   );
-  // });
+  it('should have a link that navigates to /', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('a').getAttribute('href')).toContain(
+      '/'
+    );
+  });
+
+  it('should have a logo link that has the id navBarLogoButton', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('a').getAttribute('id')).toContain(
+      'navBarLogoButton'
+    );
+  });
+
+  it('should have a logo link that has the class movingBackgroundLeft button active homeLink', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('a').getAttribute('class')).toContain(
+      'active button homeLink movingBackgroundLeft'
+    );
+  });
+
 
 });
