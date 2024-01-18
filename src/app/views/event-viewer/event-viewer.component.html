@@ -18,7 +18,7 @@ barefoot, playing his original songs.">
                 routerLink="/event/{{show.id}}" routerLinkActive="active">
                 <h3 class="eventDisplay"> {{show.title}}
                 </h3>
-                <h3 class="eventTime">{{show.start_date|date:"shortTime"}} - {{show.end_date|date:"shortTime"}}
+                <h3 class="eventTime">{{show.start_date|date:"h:mm"}} - {{show.end_date|date:"shortTime"}}
                 </h3>
                 <h3 class="eventDate">
                     {{show.start_date.toDateString()}}</h3>
