@@ -10,7 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [NavBarComponent, FooterComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  // providers: [Router]
+  providers: [RouterAnalyticsService]
 })
 export class AppComponent {
   title = 'nephilus-music';

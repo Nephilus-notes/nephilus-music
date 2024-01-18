@@ -7,6 +7,7 @@ import { DatePipe } from "@angular/common";
 import { PROVIDERS } from "./app/services/providers";
 import { FACTORIES } from "./app/factories/factories";
 import { AppComponent } from "./app/app.component";
+import { RouterAnalyticsService } from "./app/services/routerAnalytics.service";
 
 
 
@@ -20,8 +21,18 @@ bootstrapApplication(AppComponent, {
         PROVIDERS.ButtonAnalyticsService,
         {
             provide: APP_INITIALIZER,
-            useFactory: () => FACTORIES.initServiceFactory,
-            deps: [PROVIDERS.RouterAnalyticsService],
+            useFactory: (routerAnalyticsService: RouterAnalyticsService) => {
+                return () => {
+                    // console.log("APP_INITIALIZER");
+                    // console.log(routerAnalyticsService.router)
+                    // routerAnalyticsService.setCurrentPage();
+                    // routerAnalyticsService.sendFirstLog();
+                    // console.log(routerAnalyticsService.router)
+                    return routerAnalyticsService;
+                }
+            
+            },
+            deps: [RouterAnalyticsService],
             multi: true,
         }
     ]

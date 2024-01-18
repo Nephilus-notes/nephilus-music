@@ -43,7 +43,7 @@ export class RouterAnalyticsService {
         }
 
         this.addPageToCache();
-        // console.log(this.pagesViewed);
+        console.log(this.pagesViewed);
         this.lastIn = Date.now();
 
         if (this.currentUrl) {
@@ -124,8 +124,9 @@ export class RouterAnalyticsService {
     this.apiService.sendAnalyticsBundle(this.pagesViewed, this.currentPage);
   }
 
-  constructor(private router: Router, private http: HttpClient,private apiService: ApiService) {
+  constructor(public router: Router, private http: HttpClient,private apiService: ApiService) {
     this.setCurrentPage();
+    console.log('analytics starting')
 
   }
 }

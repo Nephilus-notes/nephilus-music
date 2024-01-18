@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HeroImageComponent } from 'src/app/components/hero-image/hero-image.component';
+import { RouterAnalyticsService } from 'src/app/services/routerAnalytics.service';
 
 @Component({
   standalone: true,
@@ -9,10 +10,11 @@ import { HeroImageComponent } from 'src/app/components/hero-image/hero-image.com
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent {
-  // constructor(private logger:LoggerService) {}
+  // constructor(private routerAnalyticsService:RouterAnalyticsService) {}
   // ngOnInit(): void {
   //   // this.logger.logLocation();
-  //   this.logger.apiLocationLog();
+  //   // this.routerAnalyticsService.setCurrentPage();
+  //   this.routerAnalyticsService.sendFirstLog();
   // }
 title= "Charles McCall - Dev and Creative"
 musicUrlList: Array<string> = ["https://drive.google.com/file/d/1wD7Beul2z8LMgrgPnG33Ik0kuIuNKF1A/preview", "https://drive.google.com/file/d/1U9GbAlxaBik5ZilaQAfme1ARyUfLmU5e/preview"]
