@@ -11,7 +11,7 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe],
 })
 export class SingleEventComponent {
-  @Input() id!: string;
+  @Input() id = '';
   show!: LiveEvent;
   months: string[] = [
     'January',
@@ -48,6 +48,7 @@ export class SingleEventComponent {
     if (!this.show ?? this.show.id !== +this.id) {
     // if (this.show.id !== this.id) {
       this.apiService.getOneEventFromApi(+this.id).subscribe((event) => {
+        console.log(this.id)
         this.show = event;
         console.log(this.show)
       });

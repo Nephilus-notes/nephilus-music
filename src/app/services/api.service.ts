@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
@@ -19,6 +19,7 @@ import { EnvironmentService } from './environment.service';
 export class ApiService {
   constructor(private http: HttpClient, private environmentService: EnvironmentService) {}
   events: Array<LiveEvent> = [];
+  selectedEvent!: LiveEvent;
   songs: Array<Song> = [];
 
   // event functions
@@ -35,6 +36,12 @@ export class ApiService {
   }
 
   public getOneEventFromApi(id: number): Observable<LiveEvent> {
+    this.getAllEvents().subscribe((events) => {
+      this.events = events;
+    }
+    );
+    return of(this.getOneEventFromCache(id));
+
     let url = this.environmentService.buildOneEventUrl(id);
     // console.log(url + ' is the url');
     const event = this.http.get<LiveEvent>(url);
@@ -43,12 +50,15 @@ export class ApiService {
   }
 
   public getOneEventFromCache(id: number): LiveEvent {
-    for (let event of this.events) {
-      if (event.id === id) {
-        return event;
+    let eventIndex = 0;
+    for (let [index, event] of this.events.entries()) {
+
+      if (+event.id === +id) {
+      console.log(event.id + ' is the event id')
+      eventIndex = index;
       }
     }
-    return this.events[0];
+    return this.events[eventIndex];
   }
 
   public sortEventsByDate(show_list: Array<LiveEvent>): void {
