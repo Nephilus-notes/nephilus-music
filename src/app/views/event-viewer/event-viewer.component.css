@@ -10,7 +10,8 @@ background-image: URL("/assets/img/Enchanted Evening.jpg");
 
 
 .event_header {
-    font-size: 3rem;
+    /* font-size: 3rem; */
+    @apply grid grid-cols-3 text-4xl content-between flex-wrap justify-between mb-2 border-none;
 }
 
 .event_thumbnail {
@@ -29,4 +30,33 @@ p {
 
 .mapLink {
     @apply text-center block mt-2;
+}
+
+h3 {
+    @apply inline-block;
+}
+
+.address {
+    @apply text-left
+}
+
+/* .eventDisplay {
+    text-align-last: justify ;
+    @apply inline-flex;
+} */
+
+.eventDate {
+    @apply text-right;
+}
+
+.eventTime {
+    @apply text-right;
+}
+
+.line {
+    grid-column: 1 / 4;
+}
+
+.pageTitle {
+    @apply text-5xl text-center my-2 mb-20
 }

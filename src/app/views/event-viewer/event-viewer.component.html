@@ -1,19 +1,37 @@
 <div class="relative bg viewer" title="Charles McCall in an otherwordly red garden,
 barefoot, playing his original songs.">
-    <div class="container mx-auto pb-16 pt-4">
-        <h1 class="text-5xl text-center  my-20">Events</h1>
+    <div class="container mx-auto pb-16 pt-24">
         <!-- <div class="h-60"></div> -->
         <!-- <app-card *ngFor="let show of show_list|sortByDate|upcoming" [show]="show" [control]="showControl" class="p-3 mt-20"></app-card>  -->
         <!-- <p *ngIf="(show_list|sortByDateImpure|upcomingImpure) ? (show_list|sortByDateImpure|upcomingImpure)"></p> -->
-        <div class="card" *ngIf="openMicBoolean">
 
-            <p>No upcoming solo shows. </p>
-            <br>
-            <p> Catch me at various open mics including 1860s Saloon Tuesday late, Highway 61 Roadhouse Wednesday 9pm,
-                and the Blue Strawberry Sunday Night.</p>
+            
+        <div class="card eventList">  
+                  <h1 class="pageTitle">Events</h1>
+
+            <p *ngIf="openMicBoolean">No upcoming solo shows. 
+                <br>
+                Catch me at various open mics including 1860s Saloon Tuesday late, Highway 61 Roadhouse Wednesday 9pm,
+                    and the Blue Strawberry Sunday Night.</p>
+            <!-- <div class="event"> -->
+            <a *ngFor="let show of show_list|sortByDateImpure|upcomingImpure" class="event_header"
+                routerLink="/event/{{show.id}}" routerLinkActive="active">
+                <h3 class="eventDisplay"> {{show.title}}
+                </h3>
+                <h3 class="eventTime">{{show.start_date|date:"shortTime"}} - {{show.end_date|date:"shortTime"}}
+                </h3>
+                <h3 class="eventDate">
+                    {{show.start_date.toDateString()}}</h3>
+                    <hr class="line">
+                </a>
+            <!-- <p *ngIf="show.venue_address" class="address">
+                        {{show.venue_address}}, {{show.venue_city}}, {{show.venue_state}}, {{show.venue_zip_code}}
+                    </p> -->
+
+            <!-- </div> -->
         </div>
-        <div *ngFor="let show of show_list|sortByDateImpure|upcomingImpure" class="card">
-            <!-- |sortByDateImpure|upcomingImpure -->
+        <!-- <div *ngFor="let show of show_list|sortByDateImpure|upcomingImpure" class="card">
+            |sortByDateImpure|upcomingImpure
             <a class="event_header" routerLink="/event/{{show.id}}" routerLinkActive="active">
                 <p class="event_header">
 
@@ -24,18 +42,18 @@ barefoot, playing his original songs.">
             <a class="mapLink" *ngIf="show.venue_address; else justName" target="blank"
                 href="https://www.google.com/maps/place/{{show.venue_name}}">
                 {{show.venue_address}}, {{show.venue_city}}, {{show.venue_state}}, {{show.venue_zip_code}} </a>
-            <!-- </a> -->
+            </a>
             <p class="text-2xl">{{show.start_date.toDateString()}}</p>
             <p class="mb-3">{{show.start_date|date:"shortTime"}} - {{show.end_date|date:"shortTime"}}</p>
-            <!-- <p class="mb-3">{{show.start_date.toTimeString()}} - {{show.end_date.toLocaleTimeString('en-us')}}</p>  -->
+             <p class="mb-3">{{show.start_date.toTimeString()}} - {{show.end_date.toLocaleTimeString('en-us')}}</p> 
             <p class="mb-2">{{show.description}}</p>
-            <!-- <p class="text-2xl">Venue:</p> -->
+             <p class="text-2xl">Venue:</p> 
             <ng-template #justName>
                 <p>{{show.venue_name}}</p>
             </ng-template>
             <p> Website: <a *ngIf="show.venue_url" target="blank" href="https://{{show.venue_url}}"
                     class="venue_link">Click here</a> Phone: {{show.venue_phone}} </p>
-        </div>
+        </div> -->
 
     </div>
 
