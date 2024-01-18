@@ -20,14 +20,14 @@ export class RouterAnalyticsService {
 
   setCurrentPage() {
     this.router.events.subscribe((event: any) => {
-      // console.log(event)
       // check if event is a scroll event (type 15) the final event in the Angular Router chain
-      if (event.type === 15) {
+      if (event instanceof NavigationEnd) {
+        // console.log(event)
         // this.getIpAddressLocation();
         // create current page if it does not exis
         if (
           !this.currentPage ||
-          this.pagesViewed[event.routerEvent.url] === undefined
+          this.pagesViewed[event.url] === undefined
         ) {
           this.createPageAnalyticsObject(event);
           // this.currentUrl = event.routerEvent.url;
@@ -36,8 +36,8 @@ export class RouterAnalyticsService {
           this.currentPage.timeOnPage += Number(Date.now() - this.lastIn);
 
           // because page is in cache, increment views and set to currentPage
-          this.pagesViewed[event.routerEvent.url].views++;
-          this.currentPage = this.pagesViewed[event.routerEvent.url];
+          this.pagesViewed[event.url].views++;
+          this.currentPage = this.pagesViewed[event.url];
           // this.previousUrl = this.currentUrl;
           // this.currentUrl = event.routerEvent.url;
         }
@@ -59,20 +59,20 @@ export class RouterAnalyticsService {
 
   public cachePreviousPageUrl(event: any) {
     this.previousUrl = this.currentUrl;
-    this.pagesViewed[event.routerEvent.url].priorPages.push(this.previousUrl);
+    this.pagesViewed[event.url].priorPages.push(this.previousUrl);
   }
 
   public cacheNextPageUrl(event: any) {
-    this.pagesViewed[this.previousUrl].nextPages.push(event.routerEvent.url);
+    this.pagesViewed[this.previousUrl].nextPages.push(event.url);
   }
 
   public setCurrentUrl(event: any) {
-    this.currentUrl = event.routerEvent.url;
+    this.currentUrl = event.url;
   }
 
   public createPageAnalyticsObject(event: any) {
     this.currentPage = {
-      pageUrl: event.routerEvent.url,
+      pageUrl: event.url,
       // pageName: val.url.split('/')[1],
       views: 1,
       uniqueViews: 1,
@@ -125,8 +125,8 @@ export class RouterAnalyticsService {
   }
 
   constructor(public router: Router, private http: HttpClient,private apiService: ApiService) {
-    this.setCurrentPage();
-    console.log('analytics starting')
+    // this.setCurrentPage();
+    // console.log('analytics starting')
 
   }
 }
