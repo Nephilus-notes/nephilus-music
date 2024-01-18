@@ -10,7 +10,7 @@ import { DatePipe, NgIf } from '@angular/common';
   selector: 'app-single-event',
   templateUrl: './single-event.component.html',
   styleUrls: ['./single-event.component.css'],
-  // providers: [DatePipe],
+  providers: [DatePipe],
 })
 export class SingleEventComponent {
   @Input() id = '';
@@ -49,11 +49,17 @@ export class SingleEventComponent {
     }
     if (!this.show ?? this.show.id !== +this.id) {
     // if (this.show.id !== this.id) {
-      this.apiService.getOneEventFromApi(+this.id).subscribe((event) => {
-        console.log(this.id)
-        this.show = event;
-        console.log(this.show)
+      // console.log('getting events from api')
+      this.apiService.getAllEvents().subscribe((events) => {
+        this.apiService.cacheEvents(events);
+        this.show = this.apiService.getOneEventFromCache(+this.id);
+        // console.log(this.show)
       });
+      // this.apiService.getOneEventFromApi(+this.id).subscribe((event) => {
+      //   console.log(this.id)
+      //   this.show = event;
+      //   console.log(this.show)
+      // });
     }
   }
 

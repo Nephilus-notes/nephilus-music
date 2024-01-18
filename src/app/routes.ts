@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'bio', component: BioViewerComponent },
   { 
-    path: 'events', 
+    path: 'performances', 
     // instead of component I use loadChildren to lazy load the module
     // import event routes.then(r => r.EVENT_ROUTES)
     // component: EventViewerComponent 

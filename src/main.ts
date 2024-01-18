@@ -24,7 +24,7 @@ bootstrapApplication(AppComponent, {
             useFactory: (routerAnalyticsService: RouterAnalyticsService) => {
                 return () => {
                     routerAnalyticsService.setCurrentPage();
-                    
+                    console.log('analytics starting')
                     // console.log("APP_INITIALIZER");
                     // console.log(routerAnalyticsService.router)
                     // routerAnalyticsService.setCurrentPage();

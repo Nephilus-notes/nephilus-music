@@ -13,8 +13,12 @@
             {{show.venue_address}} {{show.venue_city}}, {{show.venue_state}},
             {{show.venue_zip_code}} </a>
         <p>{{show.start_date|date:"shortTime"}} - {{show.end_date|date:"shortTime"}},
-            {{weeks[show.start_date.getDay()]}} {{months[show.start_date.getMonth()]}}
-            {{show.start_date.getDate()}}</p>
+            {{show.start_date|date:"EE LLL d"}} 
+            <!-- 
+                {{months[show.start_date.getMonth()]}}
+            {{show.start_date.getDate()}}
+         -->
+        </p>
         <p>{{show.description}}</p>
         <p> Website: <a *ngIf="show.venue_url" target="blank" href="https://{{show.venue_url}}">Click here</a></p>
 
