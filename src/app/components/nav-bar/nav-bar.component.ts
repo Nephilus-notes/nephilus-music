@@ -85,6 +85,16 @@ requestButtonInfo:ButtonInfo = {
   ariaLabel: 'Link to request page.'
 };
 
+testButtonInfo:ButtonInfo = {
+  id: 'navBarTestButton',
+  type: 'link',
+  text: 'Test',
+  url: '/test',
+  classes: 'movingBackgroundLeft button active navLink',
+  title: 'Test',
+  ariaLabel: 'Test'
+};
+
 
 toggleMenu(): void {
   this.isMenuOpen = !this.isMenuOpen;

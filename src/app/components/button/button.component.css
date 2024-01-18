@@ -41,3 +41,7 @@
 .homeLink {
   @apply text-xl md:text-3xl mx-auto max-w-fit p-3 block;
 }
+
+.button {
+  @apply hover:cursor-pointer;
+}

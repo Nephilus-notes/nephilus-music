@@ -22,7 +22,9 @@ export class TestComponent {
 
   ip:string = '';
   public logAnalytics() {
+    console.log("button analytics - ")
     console.log(this.buttonAnalyticsService.buttonAnalyticsCache);
+    console.log("router analytics - ")
     console.log(this.routerAnalyticsService.pagesViewed);
     // this.getIpAddressLocation();
     // this.getLocation();
