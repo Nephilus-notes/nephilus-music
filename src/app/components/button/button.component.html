@@ -3,5 +3,5 @@
     *ngIf="buttonInfo.type !== 'link'" >{{buttonInfo.text}}</a>
 
 <a *ngIf="buttonInfo.type === 'link'" class="{{buttonInfo.classes}}" title="{{buttonInfo.title}}"
-    attr.aria-label=" {{buttonInfo.ariaLabel}}" routerLink="{{buttonInfo.url}}" id="{{id}}" (click)="logButtonClick()"
+    attr.aria-label=" {{buttonInfo.ariaLabel}}" attr.routerLink="{{buttonInfo.url}}" id="{{id}}" (click)="logButtonClick()"
     routerLinkActive="active">{{buttonInfo.text}}</a>

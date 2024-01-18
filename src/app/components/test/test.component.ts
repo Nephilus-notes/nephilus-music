@@ -4,8 +4,11 @@ import { ButtonInfo } from 'src/app/models/buttonInfo';
 import { ButtonAnalyticsService } from 'src/app/services/button-analytics.service';
 import { RouterAnalyticsService } from 'src/app/services/routerAnalytics.service';
 import { environment } from 'src/environments/environment';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
+  standalone: true,
+  imports: [ButtonComponent],
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.css']

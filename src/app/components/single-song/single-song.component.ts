@@ -1,9 +1,12 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Song } from 'src/app/models/song';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
+  standalone: true,
+  imports: [NgIf],
   selector: 'app-single-song',
   templateUrl: './single-song.component.html',
   styleUrls: ['./single-song.component.css']

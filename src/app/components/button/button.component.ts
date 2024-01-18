@@ -1,8 +1,11 @@
+import { NgFor, NgIf } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ButtonInfo } from 'src/app/models/buttonInfo';
 import { ButtonAnalyticsService } from 'src/app/services/button-analytics.service';
 
 @Component({
+  standalone: true,
+  imports: [NgFor, NgIf],
   selector: 'app-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.css']

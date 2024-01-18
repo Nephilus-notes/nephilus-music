@@ -3,7 +3,8 @@ import { LiveEvent } from '../models/liveEvent';
 
 @Pipe({
   name: 'upcomingImpure',
-  pure: false
+  pure: false,
+  standalone: true
 })
 export class UpcomingPipe implements PipeTransform {
 

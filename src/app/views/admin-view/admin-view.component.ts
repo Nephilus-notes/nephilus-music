@@ -1,4 +1,6 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { CardComponent } from 'src/app/components/card/card.component';
 import { LiveEvent } from 'src/app/models/liveEvent';
 import { Patron } from 'src/app/models/patron';
 import { Setlist } from 'src/app/models/setlist';
@@ -6,6 +8,8 @@ import { Song } from 'src/app/models/song';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
+  standalone: true,
+  imports: [CardComponent, NgFor],
   selector: 'app-admin-view',
   templateUrl: './admin-view.component.html',
   styleUrls: ['./admin-view.component.css'],

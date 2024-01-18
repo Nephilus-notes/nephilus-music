@@ -1,12 +1,11 @@
 import { bootstrapApplication } from "@angular/platform-browser";
 import { provideRouter, withComponentInputBinding } from "@angular/router";
-import { routes } from "./app/routes";
+import { routes } from "./routes";
 import { provideHttpClient } from "@angular/common/http";
 import { APP_INITIALIZER } from "@angular/core";
 import { DatePipe } from "@angular/common";
-import { PROVIDERS } from "./app/services/providers";
-import { FACTORIES } from "./app/factories/factories";
-import { AppComponent } from "./app/app.component";
+import { PROVIDERS } from "./services/providers";
+import { FACTORIES } from "./factories/factories";
 
 
 

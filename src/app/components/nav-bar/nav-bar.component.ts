@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { ButtonInfo } from 'src/app/models/buttonInfo';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
+  standalone: true,
+  imports: [ButtonComponent],
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css',

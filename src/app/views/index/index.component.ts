@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { HeroImageComponent } from 'src/app/components/hero-image/hero-image.component';
 
 @Component({
+  standalone: true,
+  imports: [HeroImageComponent],
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']

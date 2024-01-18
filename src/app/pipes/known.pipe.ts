@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Song } from '../models/song';
 
 @Pipe({
-  name: 'known'
+  name: 'known',
+  standalone: true
 })
 export class KnownPipe implements PipeTransform {
 

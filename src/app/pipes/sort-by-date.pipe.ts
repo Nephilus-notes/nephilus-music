@@ -3,7 +3,8 @@ import { LiveEvent } from '../models/liveEvent';
 
 @Pipe({
   name: 'sortByDateImpure',
-  pure: false
+  pure: false,
+  standalone: true
 })
 export class SortByDatePipe implements PipeTransform {
 

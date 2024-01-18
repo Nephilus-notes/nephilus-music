@@ -2,13 +2,15 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LiveEvent } from 'src/app/models/liveEvent';
 import { ApiService } from 'src/app/services/api.service';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgIf } from '@angular/common';
 
 @Component({
+  standalone: true,
+  imports: [DatePipe, NgIf],
   selector: 'app-single-event',
   templateUrl: './single-event.component.html',
   styleUrls: ['./single-event.component.css'],
-  providers: [DatePipe],
+  // providers: [DatePipe],
 })
 export class SingleEventComponent {
   @Input() id = '';

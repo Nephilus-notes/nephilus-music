@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgFor, NgIf } from '@angular/common';
 
 import { ApiService } from 'src/app/services/api.service';
 import { LiveEvent } from 'src/app/models/liveEvent';
 import { SortByDatePipe } from 'src/app/pipes/sort-by-date.pipe';
 import { UpcomingPipe } from 'src/app/pipes/upcoming.pipe';
+import {  RouterLink  } from '@angular/router';
 
 @Component({
+  standalone: true,
   selector: 'app-event-viewer',
   templateUrl: './event-viewer.component.html',
   styleUrls: ['./event-viewer.component.css'],
+  imports: [DatePipe, SortByDatePipe, UpcomingPipe, NgIf, RouterLink, NgFor],
   providers: [DatePipe, SortByDatePipe, UpcomingPipe],
 })
 export class EventViewerComponent {
