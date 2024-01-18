@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LiveEvent } from 'src/app/models/liveEvent';
 import { ApiService } from 'src/app/services/api.service';
@@ -11,7 +11,7 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe],
 })
 export class SingleEventComponent {
-  id!: number;
+  @Input() id!: string;
   show!: LiveEvent;
   months: string[] = [
     'January',
@@ -42,12 +42,12 @@ export class SingleEventComponent {
 
   public populateEvents(): void {
     if (this.apiService.events.length > 0) {
-      this.show = this.apiService.getOneEventFromCache(this.id);
+      this.show = this.apiService.getOneEventFromCache(+this.id);
       // console.log('getting events from cache');
     }
-    if (!this.show ?? this.show.id !== this.id) {
+    if (!this.show ?? this.show.id !== +this.id) {
     // if (this.show.id !== this.id) {
-      this.apiService.getOneEventFromApi(this.id).subscribe((event) => {
+      this.apiService.getOneEventFromApi(+this.id).subscribe((event) => {
         this.show = event;
         console.log(this.show)
       });
@@ -59,11 +59,11 @@ export class SingleEventComponent {
   // }
 
   ngOnInit(): void {
-    let id = this.route.snapshot.params['id'];
-    if (id) {
-      // plus sign converts string to number
-      this.id = +id;
-    }
+    // let id = this.route.snapshot.params['id'];
+    // if (id) {
+    //   // plus sign converts string to number
+    //   this.id = +id;
+    // }
     // console.log(this.id)
     this.populateEvents();
   }
