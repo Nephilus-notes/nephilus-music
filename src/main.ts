@@ -16,7 +16,7 @@ bootstrapApplication(AppComponent, {
         provideRouter(routes, withComponentInputBinding()),
         provideHttpClient(),
         PROVIDERS.ApiService,
-        PROVIDERS.RouterAnalyticsService,
+        // PROVIDERS.RouterAnalyticsService,
         PROVIDERS.EnvironmentService,
         PROVIDERS.ButtonAnalyticsService,
         {
@@ -24,7 +24,7 @@ bootstrapApplication(AppComponent, {
             useFactory: (routerAnalyticsService: RouterAnalyticsService) => {
                 return () => {
                     routerAnalyticsService.setCurrentPage();
-                    console.log('analytics starting')
+                    // console.log('analytics starting')
                     // console.log("APP_INITIALIZER");
                     // console.log(routerAnalyticsService.router)
                     // routerAnalyticsService.setCurrentPage();

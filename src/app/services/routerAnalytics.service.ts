@@ -124,9 +124,9 @@ export class RouterAnalyticsService {
     this.apiService.sendAnalyticsBundle(this.pagesViewed, this.currentPage);
   }
 
-  constructor(public router: Router, private http: HttpClient,private apiService: ApiService) {
+  constructor(private router: Router, private http: HttpClient,private apiService: ApiService) {
     // this.setCurrentPage();
-    // console.log('analytics starting')
+    console.log('Analytics starting')
 
   }
 }
