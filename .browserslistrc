@@ -8,7 +8,8 @@
 # You can see what browsers were selected by your queries by running:
 #   npx browserslist
 
->0.3%, 
+<!-- >0.3%,  -->
+>= 0.05% in us
 last 5 Chrome versions, 
 last 8 safari versions, 
 not dead, 
