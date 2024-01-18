@@ -29,6 +29,7 @@ export class EventViewerComponent {
       //   console.log('show has not happened yet')
       // }
     }
+    console.log(full_list)
     console.log(this.show_list)
     }
 
