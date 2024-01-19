@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { pageAnalytics } from '../models/pageAnalytics';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { TimerService } from './timer.service';
@@ -20,24 +20,25 @@ export class RouterAnalyticsService {
 
   setCurrentPage() {
     this.router.events.subscribe((event: any) => {
+      // this.trackingRoutingTime(event)
       // console.log(event)
       // check if event is a scroll event (type 15) the final event in the Angular Router chain
-      if (event.type === 15) {
+      if (event instanceof NavigationEnd) {
         // this.getIpAddressLocation();
         // create current page if it does not exis
         if (
           !this.currentPage ||
-          this.pagesViewed[event.routerEvent.url] === undefined
+          this.pagesViewed[event.url] === undefined
         ) {
           this.createPageAnalyticsObject(event);
-          // this.currentUrl = event.routerEvent.url;
+          // this.currentUrl = event.url;
         } else if (this.currentPage) {
           // if current page exists, add time spent on page to timeOnPage and add it to the cache
           this.currentPage.timeOnPage += Number(Date.now() - this.lastIn);
 
           // because page is in cache, increment views and set to currentPage
-          this.pagesViewed[event.routerEvent.url].views++;
-          this.currentPage = this.pagesViewed[event.routerEvent.url];
+          this.pagesViewed[event.url].views++;
+          this.currentPage = this.pagesViewed[event.url];
           // this.previousUrl = this.currentUrl;
           // this.currentUrl = event.routerEvent.url;
         }
@@ -57,22 +58,42 @@ export class RouterAnalyticsService {
     });
   }
 
+  trackingRoutingTime() {
+    this.router.events.subscribe((event: any) => {
+
+      let started:number = Date.now();
+
+      let routingTime: number;
+      if(event instanceof NavigationStart) {
+        started = Date.now();
+        console.log('starting ' + started)
+      }
+      else if ( event instanceof NavigationEnd) {
+        let end = Date.now()
+        routingTime = end - started
+        console.log (`start time ${started} end time: ${end}`)
+        console.log(event.url + " " + routingTime + " ms")
+      }
+    })
+
+  }
+
   public cachePreviousPageUrl(event: any) {
     this.previousUrl = this.currentUrl;
-    this.pagesViewed[event.routerEvent.url].priorPages.push(this.previousUrl);
+    this.pagesViewed[event.url].priorPages.push(this.previousUrl);
   }
 
   public cacheNextPageUrl(event: any) {
-    this.pagesViewed[this.previousUrl].nextPages.push(event.routerEvent.url);
+    this.pagesViewed[this.previousUrl].nextPages.push(event.url);
   }
 
   public setCurrentUrl(event: any) {
-    this.currentUrl = event.routerEvent.url;
+    this.currentUrl = event.url;
   }
 
   public createPageAnalyticsObject(event: any) {
     this.currentPage = {
-      pageUrl: event.routerEvent.url,
+      pageUrl: event.url,
       // pageName: val.url.split('/')[1],
       views: 1,
       uniqueViews: 1,
@@ -122,6 +143,7 @@ export class RouterAnalyticsService {
 
   constructor(private router: Router, private http: HttpClient, private timerService: TimerService) {
     this.setCurrentPage();
+    this.trackingRoutingTime();
 
   }
 }

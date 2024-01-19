@@ -16,7 +16,7 @@ export class TrackingInterceptor implements HttpInterceptor {
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const started = Date.now();
+    const started: number = Date.now();
     let ok: string;
 
     // console.log('request made at ' + started.toLocaleString());
