@@ -36,7 +36,6 @@ import { KnownPipe } from './pipes/known.pipe';
 import { TestComponent } from './components/test/test.component';
 import { initServiceFactory } from './factories/initServiceFactory';
 import { RouterAnalyticsService } from './services/routerAnalytics.service';
-import { TimerService } from './services/timer.service';
 import { TrackingInterceptor } from './http-interceptors/tracking.interceptor';
 
 @NgModule({
@@ -83,7 +82,7 @@ import { TrackingInterceptor } from './http-interceptors/tracking.interceptor';
     {
       provide: APP_INITIALIZER,
       useFactory: () => initServiceFactory,
-      deps: [RouterAnalyticsService, TimerService],
+      deps: [RouterAnalyticsService],
       multi: true,
     },
     {

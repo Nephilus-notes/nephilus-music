@@ -3,7 +3,6 @@ import { pageAnalytics } from '../models/pageAnalytics';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { TimerService } from './timer.service';
 
 @Injectable({
   providedIn: 'root',
@@ -141,7 +140,7 @@ export class RouterAnalyticsService {
     this.currentPage.location = this.geolocation;
   }
 
-  constructor(private router: Router, private http: HttpClient, private timerService: TimerService) {
+  constructor(private router: Router, private http: HttpClient ) {
     this.setCurrentPage();
     this.trackingRoutingTime();
 
