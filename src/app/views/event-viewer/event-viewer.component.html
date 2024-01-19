@@ -16,7 +16,7 @@ barefoot, playing his original songs.">
             <!-- <div class="event"> -->
             <a *ngFor="let show of show_list|sortByDateImpure|upcomingImpure" class="event_header"
                 routerLink="/event/{{show.id}}" routerLinkActive="active">
-                <h3 class="eventDisplay"> {{show.id}}{{show.title}}
+                <h3 class="eventDisplay"> {{show.title}}
                 </h3>
                 <h3 class="eventTime">{{show.start_date|date:"h:mm"}} - {{show.end_date|date:"shortTime"}}
                 </h3>
