@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, withComponentInputBinding } from '@angular/router';
 import { IndexComponent } from './views/index/index.component';
 import { BioViewerComponent } from './views/bio-viewer/bio-viewer.component';
 import { EventViewerComponent } from './views/event-viewer/event-viewer.component';
@@ -26,11 +26,12 @@ const routes: Routes = [
   { path: 'request', component: RequestFormComponent},
   { path: 'subscribe', component: SubscribeFormComponent},
   { path: 'test', component: TestComponent},
-  { path: '**', component: IndexComponent}
+  { path: '**', component: IndexComponent},
+ 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
