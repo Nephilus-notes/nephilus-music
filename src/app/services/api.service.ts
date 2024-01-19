@@ -195,6 +195,20 @@ export class ApiService {
     // });
   }
 
+  public getIpAddress(): Observable<any> {
+    let ipUrl = `https://myexternalip.com/json`;
+    // console.log(ipUrl + ' is the url');
+    let ip = this.http.get(ipUrl);
+    return ip;
+  }
+
+  public getGeolocation(ip:string): Observable<any> {
+    let geoUrl = `${environment.IP_GEOLOCATION_ENDPOINT}?apiKey=${environment.IP_GEOLOCATION_API_KEY}&ip=${ip}`;
+    // console.log(geoUrl + ' is the url');
+    let geolocation = this.http.get(geoUrl);
+    return geolocation;
+  }
+
   // public getNewPatronId(): number {
   //   let id = 0
   //   this.getAllPatrons().subscribe((patrons) => {
