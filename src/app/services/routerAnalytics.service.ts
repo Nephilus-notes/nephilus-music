@@ -66,13 +66,13 @@ export class RouterAnalyticsService {
       let routingTime: number;
       if(event instanceof NavigationStart) {
         started = Date.now();
-        console.log('starting ' + started)
+        // console.log('starting ' + started)
       }
       else if ( event instanceof NavigationEnd) {
         let end = Date.now()
         routingTime = end - started
-        console.log (`start time ${started} end time: ${end}`)
-        console.log(event.url + " " + routingTime + " ms")
+        // console.log (`start time ${started} end time: ${end}`)
+        // console.log(event.url + " " + routingTime + " ms")
       }
     })
 
@@ -139,6 +139,10 @@ export class RouterAnalyticsService {
   public addLocationAndIpToPage() {
     this.currentPage.ipAddress = this.ip;
     this.currentPage.location = this.geolocation;
+  }
+
+  public sendFirstLog() {
+    this.apiService.sendAnalyticsBundle(this.pagesViewed, this.currentPage);
   }
 
   constructor(private router: Router, private apiService: ApiService ) {

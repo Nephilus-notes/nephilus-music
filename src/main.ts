@@ -1,13 +1,15 @@
 import { bootstrapApplication } from "@angular/platform-browser";
 import { provideRouter, withComponentInputBinding } from "@angular/router";
 import { routes } from "./app/routes";
-import { provideHttpClient } from "@angular/common/http";
+import { provideHttpClient, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { APP_INITIALIZER } from "@angular/core";
 import { DatePipe } from "@angular/common";
 import { PROVIDERS } from "./app/services/providers";
 import { FACTORIES } from "./app/factories/factories";
 import { AppComponent } from "./app/app.component";
 import { RouterAnalyticsService } from "./app/services/routerAnalytics.service";
+import { TrackingInterceptor } from "./app/http-interceptors/tracking.interceptor";
+
 
 
 
@@ -36,7 +38,10 @@ bootstrapApplication(AppComponent, {
             },
             deps: [RouterAnalyticsService],
             multi: true,
-        }
+        },
+        {
+            provide: HTTP_INTERCEPTORS, useClass: TrackingInterceptor, multi: true
+          }
     ]
 
 });
