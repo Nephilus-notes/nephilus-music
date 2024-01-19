@@ -141,7 +141,7 @@ export class RouterAnalyticsService {
     this.currentPage.location = this.geolocation;
   }
 
-  constructor(private router: Router, private http: HttpClient, private apiService: ApiService ) {
+  constructor(private router: Router, private apiService: ApiService ) {
     this.setCurrentPage();
     this.trackingRoutingTime();
 
