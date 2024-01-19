@@ -2,7 +2,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { EventViewerComponent } from './views/event-viewer/event-viewer.component';
 import { PageTemplateComponent } from './views/page-template/page-template.component';
@@ -37,6 +37,7 @@ import { TestComponent } from './components/test/test.component';
 import { initServiceFactory } from './factories/initServiceFactory';
 import { RouterAnalyticsService } from './services/routerAnalytics.service';
 import { TimerService } from './services/timer.service';
+import { TrackingInterceptor } from './http-interceptors/tracking.interceptor';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,9 @@ import { TimerService } from './services/timer.service';
       useFactory: () => initServiceFactory,
       deps: [RouterAnalyticsService, TimerService],
       multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS, useClass: TrackingInterceptor, multi: true
     }
   ],
   bootstrap: [AppComponent]
