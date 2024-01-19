@@ -36,21 +36,17 @@ export class ApiService {
   }
 
   public getOneEventFromApi(id: number): Observable<LiveEvent> {
-    // this.getAllEvents().subscribe((events) => {
-    //   this.events = events;
-    //   // console.log(this.events)
-    //   return of(this.getOneEventFromCache(id));
-    // }
-    // );
-    
-    // console.log(this.getOneEventFromCache(id));
+    this.getAllEvents().subscribe((events) => {
+      this.events = events;
+    }
+    );
     return of(this.getOneEventFromCache(id));
 
-    // let url = this.environmentService.buildOneEventUrl(id);
-    // // console.log(url + ' is the url');
-    // const event = this.http.get<LiveEvent>(url);
+    let url = this.environmentService.buildOneEventUrl(id);
+    // console.log(url + ' is the url');
+    const event = this.http.get<LiveEvent>(url);
 
-    // return event;
+    return event;
   }
 
   public getOneEventFromCache(id: number): LiveEvent {
@@ -58,7 +54,7 @@ export class ApiService {
     for (let [index, event] of this.events.entries()) {
 
       if (+event.id === +id) {
-      // console.log(event.id + ' is the event id')
+      console.log(event.id + ' is the event id')
       eventIndex = index;
       }
     }
@@ -197,6 +193,20 @@ export class ApiService {
     // this.http.post(url, bundle).subscribe((response) => {
       // console.log(response);
     // });
+  }
+
+  public getIpAddress(): Observable<any> {
+    let ipUrl = `https://myexternalip.com/json`;
+    // console.log(ipUrl + ' is the url');
+    let ip = this.http.get(ipUrl);
+    return ip;
+  }
+
+  public getGeolocation(ip:string): Observable<any> {
+    let geoUrl = `${environment.IP_GEOLOCATION_ENDPOINT}?apiKey=${environment.IP_GEOLOCATION_API_KEY}&ip=${ip}`;
+    // console.log(geoUrl + ' is the url');
+    let geolocation = this.http.get(geoUrl);
+    return geolocation;
   }
 
   // public getNewPatronId(): number {
