@@ -213,7 +213,8 @@ describe('ApiService', () => {
   it('tests the HttpClient.get method', () => {
     const testData: LiveEvent = events[1];
 
-    // mockHttp.mockGet().and.returnValue(of(testData));
+    spyOn(httpClient, 'get').and.returnValue(of(events));
+
   });
 
   it('should return a complete list of events from calling the mockapi using getAllEvents', () =>  { 
@@ -237,7 +238,8 @@ describe('ApiService', () => {
   });
 
   it('should return one event', () =>  {
-  spyOn(httpClient, 'get').and.returnValue(of(events[1]));
+    // currently retrieving all events from api adn returning on from the array because the api doesn't have a getOneEvent method
+  spyOn(httpClient, 'get').and.returnValue(of(events));
   let localEvents = service.getOneEventFromApi(1);
   expect(localEvents).toBeTruthy();
   expect(httpClient.get).toHaveBeenCalledTimes(1);
