@@ -64,4 +64,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 4. 3. ~~Time tracking for HTTP reqeusts~~
 4. 4. ~~Track time spent on pages and overall page view count~~
 4. 4. 1. Track time before navigating to a new internal page.
-4. 5. Adjust services to add a log cadence controller/timer
+4. 5. Adjust services to add a log cadence controller/ - add analytics submission to http interceptor, then add a cadence for if the interceptor hasn't gone.
