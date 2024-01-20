@@ -58,26 +58,6 @@ export class RouterAnalyticsService {
     });
   }
 
-  trackingRoutingTime() {
-    this.router.events.subscribe((event: any) => {
-
-      let started:number = Date.now();
-
-      let routingTime: number;
-      if(event instanceof NavigationStart) {
-        started = Date.now();
-        console.log('starting ' + started)
-      }
-      else if ( event instanceof NavigationEnd) {
-        let end = Date.now()
-        routingTime = end - started
-        console.log (`start time ${started} end time: ${end}`)
-        console.log(event.url + " " + routingTime + " ms")
-      }
-    })
-
-  }
-
   public cachePreviousPageUrl(event: any) {
     this.previousUrl = this.currentUrl;
     this.pagesViewed[event.url].priorPages.push(this.previousUrl);
@@ -140,6 +120,28 @@ export class RouterAnalyticsService {
     this.currentPage.ipAddress = this.ip;
     this.currentPage.location = this.geolocation;
   }
+
+  
+  trackingRoutingTime() {
+    this.router.events.subscribe((event: any) => {
+
+      let started:number = Date.now();
+
+      let routingTime: number;
+      if(event instanceof NavigationStart) {
+        started = Date.now();
+        console.log('starting ' + started)
+      }
+      else if ( event instanceof NavigationEnd) {
+        let end = Date.now()
+        routingTime = end - started
+        console.log (`start time ${started} end time: ${end}`)
+        console.log(event.url + " " + routingTime + " ms")
+      }
+    })
+
+  }
+
 
   constructor(private router: Router, private apiService: ApiService ) {
     this.setCurrentPage();
