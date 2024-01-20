@@ -1,7 +1,7 @@
 import { ApplicationConfig } from "@angular/core";
 import { provideRouter } from "@angular/router";
 import { routes } from "./routes";
-import { provideHttpClient, HTTP_INTERCEPTORS,  } from "@angular/common/http";
+import { provideHttpClient, HTTP_INTERCEPTORS, withInterceptors,  } from "@angular/common/http";
 import { APP_INITIALIZER } from "@angular/core";
 import { PROVIDERS } from "./services/providers";
 import { RouterAnalyticsService } from "./services/routerAnalytics.service";
@@ -13,7 +13,7 @@ import { withComponentInputBinding } from "@angular/router";
 export const appConfig: ApplicationConfig = {
     providers: [
         provideRouter(routes, withComponentInputBinding()),
-        provideHttpClient(),
+        provideHttpClient(withInterceptors([TrackingInterceptor])),
         PROVIDERS.ApiService,
         // PROVIDERS.RouterAnalyticsService,
         PROVIDERS.EnvironmentService,
@@ -30,8 +30,8 @@ export const appConfig: ApplicationConfig = {
             deps: [RouterAnalyticsService],
             multi: true,
         },
-        {
-            provide: HTTP_INTERCEPTORS, useClass: TrackingInterceptor, multi: true
-          }
+        // {
+        //     provide: HTTP_INTERCEPTORS, useClass: TrackingInterceptor, multi: true
+        //   }
     ]
 }
