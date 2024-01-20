@@ -16,7 +16,7 @@ describe('EventViewerComponent', () => {
   let apiService: ApiService;
   let events: Array<LiveEvent> ;
   let show_list: Array<LiveEvent> = [];
-  let httpClient: HttpClient;
+  let httpClient: HttpClientTestingModule;
   // const mockEventsList = {
   //   allEvents: of({})
   // }
@@ -108,6 +108,7 @@ describe('EventViewerComponent', () => {
     }).compileComponents();
     apiService = TestBed.inject(ApiService);
     apiService.events = events;
+    spyOn(apiService, 'getAllEvents').and.returnValue(of(events));
    
   });
 
@@ -122,25 +123,47 @@ describe('EventViewerComponent', () => {
   });
 
   it('should create', () => {
-    
-    // console.warn(events)
-    // debug
-    // apiService.populateEvents().and.returnValue(events);
-    // console.warn(events)
 
     expect(component).toBeTruthy();
   });
 
   it('#getAllEvents should return multiple events (not async)', (done: DoneFn) => {
-    // console.warn(events)
-    // apiService.getAllEvents.and.returnValue(events);
-    // done();
-    pending();
+    console.warn(events)
+    component.getAllEvents();
+
+    // expect(component.show_list.length).toBeGreaterThan(0);
+    expect(apiService.getAllEvents).toHaveBeenCalled();
+    
+    // pending();
   });
 
-  it('populateEvents should determine if there are events in the cache and return them or call the getAllEvents function', () => {
-    pending();
+  it('populateEvents should determine if there are events in the cache and return them', () => {
+
+    component.populateEvents();
+
+    expect(component.show_list.length).toBeGreaterThan(0);
+    expect(component.show_list).toEqual(events);
+
   });
 
+it('populate events should call getAllEvents if there are no events in the cache', () => {
+  apiService.events = [];
+  component.populateEvents();
+  expect(apiService.getAllEvents).toHaveBeenCalled();
+
+});
+
+
+  it('should have a boolean for whether or not there are upcoming events that returns false if there are events', () => {
+    apiService.events = events;
+
+    component.populateEvents();
+    expect(component.openMicBoolean).toEqual(false);
+  });
+
+  it('should have a boolean for whether or not there are upcoming events that returns true if there are no events', () => {
+    component.openMicCheck();
+    expect(component.openMicBoolean).toEqual(true);
+  });
 
 });
