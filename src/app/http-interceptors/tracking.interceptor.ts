@@ -19,7 +19,8 @@ export class TrackingInterceptor implements HttpInterceptor {
     const started: number = Date.now();
     let ok: string;
 
-    // console.log('request made at ' + started.toLocaleString());
+
+    console.log('request made at ' + started.toLocaleString());
 
     // extend server response observable with logging
     return next.handle(req).pipe(

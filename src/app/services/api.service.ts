@@ -205,7 +205,7 @@ export class ApiService {
   public getGeolocation(ip:string): Observable<any> {
     let geoUrl = `${environment.IP_GEOLOCATION_ENDPOINT}?apiKey=${environment.IP_GEOLOCATION_API_KEY}&ip=${ip}`;
     // console.log(geoUrl + ' is the url');
-    let geolocation = this.http.get(geoUrl);
+    let geolocation = this.http.get(geoUrl)
     return geolocation;
   }
 

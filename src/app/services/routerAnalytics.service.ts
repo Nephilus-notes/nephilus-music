@@ -58,25 +58,7 @@ export class RouterAnalyticsService {
     });
   }
 
-  trackingRoutingTime() {
-    this.router.events.subscribe((event: any) => {
-
-      let started:number = Date.now();
-
-      let routingTime: number;
-      if(event instanceof NavigationStart) {
-        started = Date.now();
-        // console.log('starting ' + started)
-      }
-      else if ( event instanceof NavigationEnd) {
-        let end = Date.now()
-        routingTime = end - started
-        // console.log (`start time ${started} end time: ${end}`)
-        // console.log(event.url + " " + routingTime + " ms")
-      }
-    })
-
-  }
+  
 
   public cachePreviousPageUrl(event: any) {
     this.previousUrl = this.currentUrl;
@@ -105,14 +87,23 @@ export class RouterAnalyticsService {
     };
   }
 
+ 
+
+  public addPageToCache() {
+    this.pagesViewed[this.currentPage.pageUrl] = this.currentPage;
+  }
+
+  
+
+  public sendFirstLog() {
+    this.apiService.sendAnalyticsBundle(this.pagesViewed, this.currentPage);
+    console.log('sent first log');
+  }
+
   public getIpAddressAndLocation() {
     // console.log('checking ip address')
     if (!this.ip) {
-      // console.log('getting ip address')
-      // other link https://myexternalip.com/json
-
       let geoUrl = `${environment.IP_GEOLOCATION_ENDPOINT}?apiKey=${environment.IP_GEOLOCATION_API_KEY}&ip=`;
-      // const url = 'https://api.ipify.org/?format=json';
 
       this.apiService.getIpAddress().subscribe((response: any) => {
 
@@ -124,6 +115,7 @@ export class RouterAnalyticsService {
             state: response.state_prov
           }
           this.addLocationAndIpToPage();
+          
           return response;
         });
         // this.ip = 
@@ -132,17 +124,31 @@ export class RouterAnalyticsService {
     }
   }
 
-  public addPageToCache() {
-    this.pagesViewed[this.currentPage.pageUrl] = this.currentPage;
-  }
-
   public addLocationAndIpToPage() {
     this.currentPage.ipAddress = this.ip;
     this.currentPage.location = this.geolocation;
+    // console.log(this.ip + ' is the ip. ' )
+    console.log(this.geolocation)
   }
 
-  public sendFirstLog() {
-    this.apiService.sendAnalyticsBundle(this.pagesViewed, this.currentPage);
+  trackingRoutingTime() {
+    this.router.events.subscribe((event: any) => {
+
+      let started:number = Date.now();
+
+      let routingTime: number;
+      if(event instanceof NavigationStart) {
+        started = Date.now();
+        // console.log('starting ' + started)
+      }
+      else if ( event instanceof NavigationEnd) {
+        let end = Date.now()
+        routingTime = end - started
+        // console.log (`start time ${started} end time: ${end}`)
+        // console.log(event.url + " " + routingTime + " ms")
+      }
+    })
+
   }
 
   constructor(private router: Router, private apiService: ApiService ) {
