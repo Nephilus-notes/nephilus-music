@@ -18,6 +18,8 @@ describe('SingleEventComponent', () => {
   let router: ActivatedRoute;
   let route: ActivatedRoute;
   let show: LiveEvent;
+  let show2: LiveEvent;
+  let oneEventSpy: any;
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
@@ -59,6 +61,29 @@ describe('SingleEventComponent', () => {
       short_description: 'This is my second test event',
     }
 
+    show2 = {
+      id: 2,
+      title: 'Smok N Pi',
+      description:
+        'Me and my guitar playing music from all times, Cash to Cornell, Presley to Petty, and everything in between.',
+      start_date: new Date('12-02-2023 18:00:00'),
+      end_date: new Date('12-02-2023 21:00:00'),
+      venue_name: 'Smok N Pi',
+      venue_address: '2636 Hwy 21',
+      venue_city: 'DeSoto',
+      venue_state: 'Missouri',
+      venue_zip_code: '12345',
+      venue_country: 'US',
+      venue_url: 'http://www.cafesmoknpi.com/',
+      venue_phone: '6363375577',
+      created_at: new Date(),
+      updated_at: new Date(),
+      deleted_at: new Date(),
+      deleted: false,
+      event_type: 'Test Type',
+      short_description: 'This is my second test event',
+    }
+
     httpClient = TestBed.inject(HttpClient);
     router=TestBed.inject(ActivatedRoute);
     route = TestBed.inject(ActivatedRoute);
@@ -69,16 +94,77 @@ describe('SingleEventComponent', () => {
     component = fixture.componentInstance;
     // spyOn(httpClient, 'get').and.returnValue(of({show}));
     // console.warn('trying shit' + show)
-    component.show = show;
-    spyOn(apiService, 'getOneEventFromApi').and.returnValue(of(show));
+    // component.show = show;
+    oneEventSpy = spyOn(apiService, 'getOneEventFromApi').and.returnValue(of(show));
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
   // at least two tests are possible here
-  it('should populate the html with populateEvent by either calling the cached event with the same id or making an api call'), () => {
-    pending();
-  }
+  it('should populate the html with populateEvent by making an api call', () => {
+
+    // component.populateEvents();
+
+    expect(apiService.getOneEventFromApi).toHaveBeenCalledTimes(1)
+    expect(component.show).toEqual(show)
+  });
+
+  it('should get another event from the api if the id is different to the event that is already displayed', () => {
+
+    // here we are show 1
+    expect(component.show).toEqual(show);
+    expect(apiService.getOneEventFromApi).toHaveBeenCalledTimes(1);
+
+
+    // Resetting spy and setting cache 
+    oneEventSpy.calls.reset();
+    apiService.events = [show2];
+    
+    component.id = '' + show2.id;
+    // console.warn(component.id)
+    component.populateEvents();
+    expect(component.show).toEqual(show2);
+    
+    // setting component id, emptying cache can calling populateEvents
+    component.id = '' + show.id;
+    apiService.events = [];
+    component.populateEvents();
+    
+    expect(apiService.getOneEventFromApi).toHaveBeenCalledTimes(1)
+    expect(component.show).toEqual(show);
+
+
+  });
+
+  it('should get another event from the cache if the id is different to the event that is already displayed', () => {
+    apiService.events = [show2]
+
+    component.id = '' + show2.id
+    // console.warn(component.id)
+
+    expect(component.show).toEqual(show)
+
+    component.populateEvents()
+
+    expect(component.show).toEqual(show2)
+  });
+
+
+
+  it('should populate events by chossing an event from the api cache', () => {
+    // component.populateEvents();    
+    apiService.events = [show, show2]
+
+    component
+
+    // init of componenet already calls populateEvents, so we need to reset the spy
+    oneEventSpy.calls.reset()
+    expect(apiService.getOneEventFromApi).toHaveBeenCalledTimes(0)
+    expect(component.show).toEqual(show)
+  });
 });
+
+
