@@ -24,6 +24,7 @@ export class RouterAnalyticsService {
       // console.log(event)
       // check if event is a scroll event (type 15) the final event in the Angular Router chain
       if (event instanceof NavigationEnd) {
+        console.log(event)
         // this.getIpAddressLocation();
         // create current page if it does not exis
         if (
@@ -33,14 +34,7 @@ export class RouterAnalyticsService {
           this.createPageAnalyticsObject(event);
           // this.currentUrl = event.url;
         } else if (this.currentPage) {
-          // if current page exists, add time spent on page to timeOnPage and add it to the cache
-          this.currentPage.timeOnPage += Number(Date.now() - this.lastIn);
-
-          // because page is in cache, increment views and set to currentPage
-          this.pagesViewed[event.url].views++;
-          this.currentPage = this.pagesViewed[event.url];
-          // this.previousUrl = this.currentUrl;
-          // this.currentUrl = event.routerEvent.url;
+          this.incrementPageViews(event);
         }
 
         this.addPageToCache();
@@ -69,6 +63,15 @@ export class RouterAnalyticsService {
 
   public setCurrentUrl(event: any) {
     this.currentUrl = event.url;
+  }
+
+  public incrementPageViews(event: any) {
+     // if current page exists, add time spent on page to timeOnPage and add it to the cache
+     this.currentPage.timeOnPage += Number(Date.now() - this.lastIn);
+
+     // because page is in cache, increment views and set to currentPage
+     this.pagesViewed[event.url].views++;
+     this.currentPage = this.pagesViewed[event.url];
   }
 
   public createPageAnalyticsObject(event: any) {

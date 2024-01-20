@@ -12,13 +12,10 @@ describe('AnalyticsService', () => {
 
   beforeEach(() => {
     event = {
-      routerEvent:{
-        url: '/bio',
-        navigationTrigger: 'imperative',
-        id: 15,
-        urlAfterRedirects: '/bio',
-        state: null
-      }
+      id: 1,
+      type: 1,
+      url: "/bio",
+      urlAfterRedirects: "/bio",
     }
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -48,13 +45,15 @@ describe('AnalyticsService', () => {
   });
 
   it('should increment the views property of a pageAnalytics object', () => {
-    pending();
-    // service.incrementPageViews();
-    // expect(service.currentPage.views).toEqual(2);
+    service.createPageAnalyticsObject(event);
+    service.addPageToCache();
+    service.setCurrentUrl(event);
+
+    service.incrementPageViews(event);
+    expect(service.currentPage.views).toEqual(2);
   });
 
   it('should set the currentUrl property', () => {
-    // pending();
     service.setCurrentUrl(event);
     expect(service.currentUrl).toEqual('/bio');
   });
@@ -64,7 +63,7 @@ describe('AnalyticsService', () => {
 
     service.addPageToCache();
 
-    service.currentUrl = event.routerEvent.url;
+    service.setCurrentUrl(event);
 
     service.cachePreviousPageUrl(event);
     expect(service.currentPage.priorPages[0]).toEqual('/bio');
@@ -74,7 +73,8 @@ describe('AnalyticsService', () => {
     // pending();
     service.createPageAnalyticsObject(event);
     service.addPageToCache();
-    service.previousUrl = event.routerEvent.url;
+    // service.cachePreviousPageUrl(event);
+    service.previousUrl = event.url;
 
 
     service.cacheNextPageUrl(event);
@@ -90,17 +90,28 @@ describe('AnalyticsService', () => {
   });
 
   it('should get the ip address and location', () => {
-    pending();
+    pending()
+    /**
+     * need to mock the http request 
+     */
+    // service.ip = '';
+    // service.geolocation = {city: 'St', state: 'MO', country: 'USA'};
+
+
     // service.getIpAddressAndLocation();
     // expect(service.ip).toEqual('localhost');
     // expect(service.geolocation).toEqual({city: 'St Louis', state: 'MO', country: 'USA'});
   });
 
-  it('should set the ip and location properties', () => {
-    pending();
-    // service.addLocationAndIpToPage();
-    // expect(service.currentPage.ipAddress).toEqual('localhost');
-    // expect(service.currentPage.location).toEqual({city: 'St Louis', state: 'MO', country: 'USA'});
+  it('should set the ip and location properties on the current page', () => {
+    // pending();
+    service.createPageAnalyticsObject(event);
+    service.addPageToCache();
+    service.setCurrentUrl(event);
+
+    service.addLocationAndIpToPage();
+    expect(service.currentPage.ipAddress).toEqual('localhost');
+    expect(service.currentPage.location).toEqual({city: 'St Louis', state: 'MO', country: 'USA'});
   });
 
 });
