@@ -21,7 +21,7 @@ export class EventViewerComponent {
     let full_list = [...this.apiService.getAllEvents()]
     for (let show of full_list) {
       let today = new Date()
-      console.log(show.start_date, today)
+      // console.log(show.start_date, today)
       if (show.start_date > today) {
         this.show_list.push(show)
       }
