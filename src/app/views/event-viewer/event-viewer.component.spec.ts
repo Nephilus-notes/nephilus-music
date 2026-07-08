@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventViewerComponent } from './event-viewer.component';
+import { LiveEvent } from 'src/app/models/liveEvent';
 
 describe('EventViewerComponent', () => {
   let component: EventViewerComponent;
