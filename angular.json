@@ -47,6 +47,12 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
+                },
+                {
+                  "optimization": {
+                  "scripts": false,
+                  "styles": true
+                  }
                 }
               ],
               "outputHashing": "all"
