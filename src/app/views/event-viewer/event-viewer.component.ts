@@ -110,15 +110,15 @@ export class EventViewerComponent {
         event_type: 'restaurant',
         short_description:
           "Performing in Union Avenue Opera's performance of Fiddler on the Roof as an ensemble member, featured in dance, song, and character.",
-        image_url: '/assets/img/cafe_smok_n_pi.jfif',
+        image_url: '/assets/img/UAO Logo.png',
       },
       {
         id: 5,
         title: 'Fiddler on the Roof',
         description:
           'Set in the close-knit village of Anatevka, Fiddler on the Roof is a heartfelt story of family, faith, and the courage to change. As Tevye struggles to uphold tradition while his daughters follow their hearts, the musical blends warmth, humor, and profound humanity. Featuring iconic songs like “Tradition,” “If I Were a Rich Man,” and “Sunrise, Sunset,” this beloved classic remains as moving and relevant as ever.',
-        start_date: new Date('7-11-2023 18:00:00'),
-        end_date: new Date('7-11-2023 21:00:00'),
+        start_date: new Date('7-11-2026 18:00:00'),
+        end_date: new Date('7-11-2026 21:00:00'),
         venue_name: 'Union Avenue Opera',
         venue_address: '733 N. Union Blvd',
         venue_city: 'St. Louis',
@@ -134,7 +134,7 @@ export class EventViewerComponent {
         event_type: 'restaurant',
         short_description:
           "Performing in Union Avenue Opera's performance of Fiddler on the Roof as an ensemble member, featured in dance, song, and character.",
-         image_url: '/assets/img/cafe_smok_n_pi.jfif',
+         image_url: '/assets/img/UAO Logo.png',
       },
       {
         id: 6,
@@ -158,7 +158,7 @@ export class EventViewerComponent {
         event_type: 'Concert',
         short_description:
           'A free performance of my accoustic project, Nephilus Dreams, featuring songs I wrote, composed, and now arranged to play with my parents, Anna Lackschewitz (viola), and Alvin McCall (cello).',
-        image_url: '/assets/img/DarkBG.png',
+        image_url: '/assets/img/Symbol.png',
       },
     ]
     for (let show of full_list) {
