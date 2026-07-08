@@ -160,7 +160,8 @@ export class EventViewerComponent {
           'A free performance of my accoustic project, Nephilus Dreams, featuring songs I wrote, composed, and now arranged to play with my parents, Anna Lackschewitz (viola), and Alvin McCall (cello).',
         image_url: '/assets/img/Symbol.png',
       },
-    ]
+    ];
+    
     for (let show of full_list) {
       let today = new Date()
       // console.log(show.start_date, today)
