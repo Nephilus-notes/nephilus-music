@@ -21,7 +21,7 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/DarkBG.ico",
+              "src/Nephilus Dark Background cropped to Icon.ico",
               "src/assets"
             ],
             "styles": [
@@ -83,7 +83,7 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              "src/DarkBG.ico",
+              "src/Nephilus Dark Background cropped to Icon.ico",
               "src/assets"
             ],
             "styles": [
