@@ -249,6 +249,30 @@ export class ApiService {
           "Performing in Union Avenue Opera's performance of Samson et Dalila.",
         image_url: '/assets/img/UAO Logo.png',
       },
+      {
+        id: 11,
+        title: 'Of Masques and Magic - Nephilus Dreams',
+        description:
+          "A free Halloween show by Nephilus Dreams full of songs of misdirection and magic with Anna Lackschewitz (viola), and Alvin McCall (cello). Feel free to come in costume! In addition to new original songs (Slateface, Searching), new covers (I Put a Spell on You) the second half will feature the Demonblade song cycle. Other songs include Will o' Wisp, Trouble You Can Borrow, Armor, Wicked Game, and Carry the Torch.",
+        start_date: new Date('10-26-2026 19:00:00'),
+        end_date: new Date('10-26-2026 21:00:00'),
+        venue_name: 'Focal Point',
+        venue_address: '2720 Sutton Blvd',
+        venue_city: 'Maplewood',
+        venue_state: 'Missouri',
+        venue_zip_code: '63143',
+        venue_country: 'US',
+        venue_url: 'https://thefocalpoint.org',
+        venue_phone: '(314)560-2778',
+        created_at: new Date('9-18-2026'),
+        updated_at: new Date('9-18-2026'),
+        deleted_at: new Date('9-18-2026'),
+        deleted: false,
+        event_type: 'Concert',
+        short_description:
+          'A free Halloween show by Nephilus Dreams full of songs of misdirection and magic with Anna Lackschewitz (viola), and Alvin McCall (cello). Feel free to come in costume! In addition to new original songs (Slateface, Searching), new covers (I Put a Spell on You) the second half will feature the Demonblade song cycle.',
+        image_url: '/assets/img/Symbol.png',
+      },
     ]
 
 
